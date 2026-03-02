@@ -117,3 +117,82 @@ if (window.location.hash === '#demoRegisterForm') {
         }
     }, 100);
 }
+
+// Contact Form Handling
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for your message! We will get back to you shortly.');
+        contactForm.reset();
+    });
+}
+
+// Resources Page Logic
+document.addEventListener('DOMContentLoaded', function() {
+    // Filtering
+    const filterBtns = document.querySelectorAll('.res-filter-btn');
+    const resCards = document.querySelectorAll('.res-card');
+
+    if (filterBtns.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filterValue = btn.getAttribute('data-filter');
+                
+                resCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'flex';
+                        // Add a small animation effect
+                        card.style.opacity = '0';
+                        setTimeout(() => card.style.opacity = '1', 50);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // Resource Modal
+    const resModal = document.getElementById('resourceModal');
+    const resLinks = document.querySelectorAll('.res-link');
+    const resClose = document.querySelector('.close-resource');
+    const resModalImg = document.getElementById('resModalImg');
+    const resModalTitle = document.getElementById('resModalTitle');
+    const resModalText = document.getElementById('resModalText');
+
+    if (resModal && resLinks.length > 0) {
+        resLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = this.closest('.res-card');
+                const title = card.querySelector('h3').innerText;
+                const imgSrc = card.querySelector('.res-card-media img').src;
+                const hiddenContent = card.querySelector('.res-hidden-content').innerHTML;
+
+                resModalTitle.innerText = title;
+                resModalImg.src = imgSrc;
+                resModalText.innerHTML = hiddenContent;
+                
+                resModal.style.display = 'block';
+            });
+        });
+
+        if (resClose) {
+            resClose.addEventListener('click', function() {
+                resModal.style.display = 'none';
+            });
+        }
+
+        window.addEventListener('click', function(e) {
+            if (e.target === resModal) {
+                resModal.style.display = 'none';
+            }
+        });
+    }
+});
