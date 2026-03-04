@@ -168,6 +168,67 @@ document.addEventListener('DOMContentLoaded', function() {
     const resModalTag = document.getElementById('resModalTag');
     const resModalContent = document.querySelector('.resource-modal-content');
     const modalThemeClasses = ['modal-theme-blog', 'modal-theme-coach', 'modal-theme-insights', 'modal-theme-faqs'];
+    
+    function stripHtml(html) {
+        const temp = document.createElement('div');
+        temp.innerHTML = html || '';
+        return (temp.textContent || temp.innerText || '').replace(/\s+/g, ' ').trim();
+    }
+
+    function buildBlogModalMarkup(section, currentCard) {
+        const blogCards = section ? section.querySelectorAll('.res-card') : [];
+        const cardsMarkup = Array.from(blogCards).map((blogCard, index) => {
+            const title = blogCard.querySelector('h3') ? blogCard.querySelector('h3').innerText.trim() : 'Guide';
+            const image = blogCard.querySelector('.res-card-media img');
+            const imageSrc = image ? image.src : '';
+            const contentHtml = blogCard.querySelector('.res-hidden-content') ? blogCard.querySelector('.res-hidden-content').innerHTML : '';
+            const description = stripHtml(contentHtml).slice(0, 115);
+            const activeClass = blogCard === currentCard ? ' is-active' : '';
+
+            return `
+                <article class="blog-guide-card${activeClass}" data-card-index="${index}">
+                    <div class="blog-guide-bg" style="background-image:url('${imageSrc}')"></div>
+                    <div class="blog-guide-shade"></div>
+                    <div class="blog-guide-content">
+                        <p class="blog-guide-brand">ROATRE</p>
+                        <h3>REPORT: ${title.toUpperCase()}</h3>
+                        <span class="blog-guide-rule"></span>
+                        <p>${description}</p>
+                    </div>
+                </article>
+            `;
+        }).join('');
+
+        return `
+            <div class="blog-modal-shell">
+                <h2 class="blog-modal-title">REPORTS &amp; GUIDES</h2>
+                <div class="blog-modal-carousel-wrap">
+                    <button type="button" class="blog-modal-nav blog-modal-nav--prev" aria-label="Previous guides">&#10094;</button>
+                    <div class="blog-modal-track" id="blogModalTrack">${cardsMarkup}</div>
+                    <button type="button" class="blog-modal-nav blog-modal-nav--next" aria-label="Next guides">&#10095;</button>
+                </div>
+            </div>
+        `;
+    }
+
+    function initBlogModalCarousel() {
+        const track = document.getElementById('blogModalTrack');
+        const prev = document.querySelector('.blog-modal-nav--prev');
+        const next = document.querySelector('.blog-modal-nav--next');
+        if (!track || !prev || !next) return;
+
+        const scrollAmount = () => {
+            const firstCard = track.querySelector('.blog-guide-card');
+            return firstCard ? firstCard.offsetWidth + 14 : 320;
+        };
+
+        prev.addEventListener('click', function() {
+            track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+        });
+        next.addEventListener('click', function() {
+            track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+        });
+    }
 
     if (resModal && resLinks.length > 0) {
         resLinks.forEach(link => {
@@ -193,6 +254,20 @@ document.addEventListener('DOMContentLoaded', function() {
                         resModalContent.classList.add('modal-theme-' + sectionTheme);
                     }
                 }
+
+                if (sectionTheme === 'blog') {
+                    resModalTitle.innerText = 'Reports & Guides';
+                    resModalImg.style.display = 'none';
+                    if (resModalTag) resModalTag.style.display = 'none';
+                    resModalTitle.style.display = 'none';
+                    resModalText.innerHTML = buildBlogModalMarkup(section, card);
+                    initBlogModalCarousel();
+                } else {
+                    resModalImg.style.display = 'block';
+                    if (resModalTag) resModalTag.style.display = 'inline-block';
+                    resModalTitle.style.display = 'block';
+                    resModalText.innerHTML = hiddenContent;
+                }
                 
                 resModal.style.display = 'block';
             });
@@ -216,6 +291,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const resourceSections = document.querySelectorAll('.resources-page-wrapper .resource-section');
     const resourcesCenter = document.getElementById('resources-center');
     const resourcesNavMainLink = document.querySelector('.resources-nav-item > a[href*="resources.html"]');
+    const isOnResourcesPage = window.location.pathname.toLowerCase().endsWith('/resources.html') ||
+        window.location.pathname.toLowerCase().endsWith('resources.html');
 
     function showAllResourceSections() {
         if (resourceSections.length === 0) return null;
@@ -229,8 +306,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (resourcesNavMainLink) {
         resourcesNavMainLink.addEventListener('click', function(e) {
-            const isOnResourcesPage = window.location.pathname.toLowerCase().endsWith('/resources.html') ||
-                window.location.pathname.toLowerCase().endsWith('resources.html');
             if (!isOnResourcesPage) return;
 
             e.preventDefault();
@@ -248,7 +323,15 @@ document.addEventListener('DOMContentLoaded', function() {
         resourceSectionLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
-                const target = targetId ? document.querySelector(targetId) : null;
+                if (!targetId) return;
+
+                if (!isOnResourcesPage) {
+                    e.preventDefault();
+                    window.location.href = `resources.html${targetId}`;
+                    return;
+                }
+
+                const target = document.querySelector(targetId);
                 if (!target) return;
                 e.preventDefault();
                 showAllResourceSections();
@@ -258,6 +341,60 @@ document.addEventListener('DOMContentLoaded', function() {
                 const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
 
                 window.scrollTo({ top: y, behavior: 'smooth' });
+            });
+        });
+    }
+
+    // Blog section horizontal navigation
+    const blogTrack = document.querySelector('.blog-feature-track');
+    const blogPrev = document.querySelector('.blog-section-nav--prev');
+    const blogNext = document.querySelector('.blog-section-nav--next');
+    if (blogTrack && blogPrev && blogNext) {
+        const blogScrollAmount = () => {
+            const firstCard = blogTrack.querySelector('.blog-feature-card');
+            return firstCard ? firstCard.offsetWidth + 12 : 320;
+        };
+
+        blogPrev.addEventListener('click', function() {
+            blogTrack.scrollBy({ left: -blogScrollAmount(), behavior: 'smooth' });
+        });
+        blogNext.addEventListener('click', function() {
+            blogTrack.scrollBy({ left: blogScrollAmount(), behavior: 'smooth' });
+        });
+    }
+
+    // FAQ accordion behavior (single-open pattern)
+    const faqItems = document.querySelectorAll('.faq-item');
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    if (faqQuestions.length > 0) {
+        faqQuestions.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const currentItem = this.closest('.faq-item');
+                const isOpen = currentItem && currentItem.classList.contains('is-open');
+
+                faqItems.forEach(item => {
+                    item.classList.remove('is-open');
+                    const q = item.querySelector('.faq-question');
+                    if (q) q.setAttribute('aria-expanded', 'false');
+                });
+
+                if (currentItem && !isOpen) {
+                    currentItem.classList.add('is-open');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    }
+
+    // Help center topic search
+    const helpTopicSearch = document.getElementById('helpTopicSearch');
+    const helpTopicCards = document.querySelectorAll('.help-topic-card');
+    if (helpTopicSearch && helpTopicCards.length > 0) {
+        helpTopicSearch.addEventListener('input', function() {
+            const q = this.value.trim().toLowerCase();
+            helpTopicCards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                card.style.display = !q || text.includes(q) ? 'flex' : 'none';
             });
         });
     }
