@@ -9,6 +9,44 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 .site-nav .main-menu li{margin:0}
 .site-nav .main-menu li a{color:#fff;text-decoration:none;padding:6px 8px;border-radius:4px;opacity:0.95;text-transform:uppercase;font-weight:700;letter-spacing:1.6px;font-size:13px}
 .site-nav .main-menu li a:hover{color:#ffd85a}
+.resources-nav-item{position:relative}
+.resources-submenu{
+	position:absolute;
+	top:100%;
+	left:0;
+	min-width:230px;
+	list-style:none;
+	padding:8px 0;
+	margin:10px 0 0;
+	background:rgba(10,10,10,0.98);
+	border:1px solid rgba(255,216,90,0.2);
+	border-radius:10px;
+	box-shadow:0 14px 30px rgba(0,0,0,0.45);
+	opacity:0;
+	visibility:hidden;
+	transform:translateY(8px);
+	transition:opacity .22s ease,transform .22s ease,visibility .22s ease;
+	z-index:220;
+}
+.resources-submenu li{width:100%}
+.resources-submenu li a{
+	display:block;
+	padding:10px 14px !important;
+	font-size:12px !important;
+	letter-spacing:1.1px !important;
+	color:#efefef !important;
+	border-radius:0 !important;
+}
+.resources-submenu li a:hover{
+	background:rgba(255,216,90,0.12);
+	color:#ffd85a !important;
+}
+.resources-nav-item:hover .resources-submenu,
+.resources-nav-item:focus-within .resources-submenu{
+	opacity:1;
+	visibility:visible;
+	transform:translateY(0);
+}
 
 /* Contact button style (last menu item) */
 .site-nav .main-menu > li:last-child > a{
@@ -16,6 +54,22 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 	padding:8px 14px;color:#fff;border-radius:4px;box-shadow:0 6px 18px rgba(255,75,43,0.12);
 }
 .site-nav .main-menu > li:last-child > a:hover{transform:translateY(-2px)}
+
+@media (max-width:900px){
+	.resources-submenu{
+		position:static;
+		margin-top:8px;
+		min-width:100%;
+		opacity:1;
+		visibility:visible;
+		transform:none;
+		display:none;
+	}
+	.resources-nav-item:hover .resources-submenu,
+	.resources-nav-item:focus-within .resources-submenu{
+		display:block;
+	}
+}
 .hero{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:36px;padding-top:96px;text-align:center;color:#ffd85a;background:linear-gradient(180deg,rgba(0,0,0,0.2),rgba(0,0,0,0.5))}
 .hero-content{display:flex;flex-direction:column;align-items:center;gap:24px}
 .hero h1{font-size:64px;font-weight:700;letter-spacing:2px;margin:0;text-transform:uppercase;color:#fff}
@@ -1207,3 +1261,6 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
         grid-template-columns: 1fr;
     }
 }
+
+.resource-section.is-hidden{display:none}
+

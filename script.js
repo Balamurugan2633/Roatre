@@ -211,8 +211,39 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Resources submenu anchor navigation
+    // Resources submenu navigation: keep all content visible and scroll to target section
     const resourceSectionLinks = document.querySelectorAll('.resources-submenu a[href^="#"]');
+    const resourceSections = document.querySelectorAll('.resources-page-wrapper .resource-section');
+    const resourcesCenter = document.getElementById('resources-center');
+    const resourcesNavMainLink = document.querySelector('.resources-nav-item > a[href*="resources.html"]');
+
+    function showAllResourceSections() {
+        if (resourceSections.length === 0) return null;
+
+        resourceSections.forEach(section => {
+            section.classList.remove('is-hidden');
+        });
+
+        return resourcesCenter || resourceSections[0];
+    }
+
+    if (resourcesNavMainLink) {
+        resourcesNavMainLink.addEventListener('click', function(e) {
+            const isOnResourcesPage = window.location.pathname.toLowerCase().endsWith('/resources.html') ||
+                window.location.pathname.toLowerCase().endsWith('resources.html');
+            if (!isOnResourcesPage) return;
+
+            e.preventDefault();
+            const topSection = showAllResourceSections();
+            if (topSection) {
+                const header = document.querySelector('.site-header');
+                const headerOffset = header ? header.offsetHeight + 18 : 0;
+                const y = topSection.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        });
+    }
+
     if (resourceSectionLinks.length > 0) {
         resourceSectionLinks.forEach(link => {
             link.addEventListener('click', function(e) {
@@ -220,7 +251,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 const target = targetId ? document.querySelector(targetId) : null;
                 if (!target) return;
                 e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                showAllResourceSections();
+
+                const header = document.querySelector('.site-header');
+                const headerOffset = header ? header.offsetHeight + 18 : 0;
+                const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+                window.scrollTo({ top: y, behavior: 'smooth' });
             });
         });
     }
