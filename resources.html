@@ -19,162 +19,269 @@
 					<li><a href="demo.html">Demo</a></li>
 					<li><a href="solution.html">Solution</a></li>
 					<li><a href="roatre.html">Why Roatre</a></li>
-                    <li><a href="resources.html">Resources</a></li>
+					<li><a href="resources.html">Resources</a></li>
 					<li><a href="contact.html">Contact</a></li>
 				</ul>
 			</nav>
 		</header>
 
-		<main class="resources-page-wrapper">
-			<section class="resources-hero">
-				<h1>Roatre <span>Knowledge Hub</span></h1>
-				<p>Expert insights, training drills, and platform guides to elevate your game. Explore our latest resources for athletes and coaches.</p>
+		<main class="resources-page-wrapper resources-magazine">
+			<section class="resources-search-strip" aria-label="Search resources">
+				<input type="search" placeholder="Search Articles, Guides, Webinars, &amp; More..." aria-label="Search resources">
+				<button type="button">Search</button>
+			</section>
+			<section class="resources-block resource-section" id="resources-center">
+				<h2 class="resources-section-title">Resources Center</h2>
 			</section>
 
-			<!-- Filter Buttons -->
-			<div class="resources-filter">
-				<button class="res-filter-btn active" data-filter="all">All Resources</button>
-				<button class="res-filter-btn" data-filter="athlete">For Athletes</button>
-				<button class="res-filter-btn" data-filter="coach">For Coaches</button>
-				<button class="res-filter-btn" data-filter="platform">Platform Guides</button>
-			</div>
+			<section class="resources-block resource-section resource-section--blog" id="blog" data-section="Blog" data-modal-theme="blog">
+				<h2 class="resources-section-title">Blog</h2>
+				<div class="resource-section-description">
+					<p>Stay updated with the latest insights in sports performance, coaching techniques, and athlete development.</p>
+					<p>Our blog covers topics such as:</p>
+					<ul>
+						<li>Performance tracking methods</li>
+						<li>Skill development strategies</li>
+						<li>Training improvement tips</li>
+						<li>Sports science insights</li>
+						<li>Athlete development pathways</li>
+					</ul>
+				</div>
+				<div class="resources-grid resources-grid--3">
+					<article class="res-card">
+						<div class="res-card-media"><img src="assets/service-athletes.jpg" alt="Performance tracking methods"></div>
+						<div class="res-card-body">
+							<h3>Performance Tracking Methods for Weekly Training</h3>
+							<p>Learn how to measure athlete progress using simple weekly indicators.</p>
+							<div class="res-card-footer"><a href="#" class="res-link">Read Blog</a><span class="res-date">6 min</span></div>
+							<div class="res-hidden-content" style="display:none;">
+								<p><strong>Track what matters consistently.</strong> Focus on a small set of metrics: session intensity, sprint counts, recovery score, and technical execution quality.</p>
+								<p>This article shows a weekly template coaches can apply without overcomplicating data collection.</p>
+							</div>
+						</div>
+					</article>
+					<article class="res-card">
+						<div class="res-card-media"><img src="assets/service-coaches.jpeg" alt="Coaching methods for consistency"></div>
+						<div class="res-card-body">
+							<h3>Coaching Methods that Improve Match Consistency</h3>
+							<p>Structure drills to convert training quality into match-day output.</p>
+							<div class="res-card-footer"><a href="#" class="res-link">Read Blog</a><span class="res-date">8 min</span></div>
+							<div class="res-hidden-content" style="display:none;">
+								<p>This article explains progression-based drill design, decision-making constraints, and review cycles that improve consistency under pressure.</p>
+								<p>Includes a practical session flow from warm-up to game simulation.</p>
+							</div>
+						</div>
+					</article>
+					<article class="res-card">
+						<div class="res-card-media"><img src="assets/service-athletes.jpg" alt="Sports academy workflow systems"></div>
+						<div class="res-card-body">
+							<h3>Building a Better Academy Workflow with Data</h3>
+							<p>Use data checkpoints to align coaches, analysts, and academy managers.</p>
+							<div class="res-card-footer"><a href="#" class="res-link">Read Blog</a><span class="res-date">7 min</span></div>
+							<div class="res-hidden-content" style="display:none;">
+								<p>Define a single weekly workflow for planning, review, and adjustment so every staff member works from the same priorities.</p>
+								<p>Ideal for academies scaling across multiple age groups.</p>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
 
-			<!-- Resources Grid -->
-			<div class="resources-grid">
-				
-				<!-- Card 1 -->
-				<article class="res-card" data-category="athlete">
-					<div class="res-card-media">
-						<span class="res-badge">Athlete Development</span>
-						<img src="assets/service-athletes.jpg" alt="Athlete training">
-					</div>
-					<div class="res-card-body">
-						<h3>Mastering the Mental Game</h3>
-						<p>Physical skills are only half the battle. Learn how top athletes build resilience and focus under pressure.</p>
-						<div class="res-card-footer">
-							<a href="#" class="res-link">Read Article &rarr;</a>
-							<span class="res-date">5 min read</span>
+			<section class="resources-block resource-section resource-section--coach" id="coach-education" data-section="Coach Education" data-modal-theme="coach">
+				<h2 class="resources-section-title">Coach Education</h2>
+				<div class="resource-section-description">
+					<p>Roatre provides educational resources to help coaches use performance data effectively.</p>
+					<p>Learn how to:</p>
+					<ul>
+						<li>Analyse player movements</li>
+						<li>Use video feedback for coaching</li>
+						<li>Track athlete development</li>
+						<li>Improve training session planning</li>
+						<li>Apply data-driven coaching techniques</li>
+					</ul>
+				</div>
+				<div class="coach-stories-layout">
+					<article class="res-card coach-feature-card">
+						<div class="res-card-media"><img src="assets/service-coaches.jpeg" alt="Coach dashboard setup and data use"></div>
+						<div class="res-card-body">
+							<h3>How Coaches Should Read Training Dashboards</h3>
+							<p>Understand workload, readiness, and movement quality at a glance with a repeatable match-week process.</p>
+							<div class="res-card-footer"><a href="#" class="res-link">Open Guide</a><span class="res-date">Guide</span></div>
+							<div class="res-hidden-content" style="display:none;">
+								<p>Learn how to interpret daily dashboard signals and make smart decisions before, during, and after sessions.</p>
+								<p>Includes red-flag rules for fatigue, overload, and reduced movement quality.</p>
+							</div>
 						</div>
-						<!-- Hidden content for modal -->
-						<div class="res-hidden-content" style="display:none;">
-							<p><strong>Focus is the key to performance.</strong> In high-pressure situations, the ability to maintain concentration often separates good athletes from great ones. This guide explores visualization techniques, breathing exercises, and pre-game routines used by elite professionals.</p>
-							<p>We break down the "3 R's" of mental resilience: Reset, Refocus, and React. Learn how to apply these simple steps during training to build a mindset that holds up when the game is on the line.</p>
-							<p>Key takeaways include: Developing a mistake-recovery ritual, using positive self-talk, and simulating pressure during practice sessions.</p>
-						</div>
+					</article>
+					<div class="coach-side-list">
+						<article class="res-card coach-side-card">
+							<div class="res-card-media"><img src="assets/service-athletes.jpg" alt="Data-driven training plans"></div>
+							<div class="res-card-body">
+								<h3>Using Data to Adjust Weekly Training Plans</h3>
+								<p>Adapt volume and intensity from match feedback.</p>
+								<div class="res-card-footer"><a href="#" class="res-link">Open Guide</a><span class="res-date">Guide</span></div>
+								<div class="res-hidden-content" style="display:none;">
+									<p>This guide provides a Monday-to-Saturday planning model using match and workload data.</p>
+									<p>Use it to reduce injury risk while maintaining performance intensity.</p>
+								</div>
+							</div>
+						</article>
+						<article class="res-card coach-side-card">
+							<div class="res-card-media"><img src="assets/service-coaches.jpeg" alt="Coach communication using data"></div>
+							<div class="res-card-body">
+								<h3>Communicating Data Clearly to Athletes</h3>
+								<p>Turn complex numbers into short coaching messages.</p>
+								<div class="res-card-footer"><a href="#" class="res-link">Open Guide</a><span class="res-date">Guide</span></div>
+								<div class="res-hidden-content" style="display:none;">
+									<p>Use a 3-step communication model: what happened, why it matters, and what to do next session.</p>
+									<p>Designed for both youth and senior athlete communication.</p>
+								</div>
+							</div>
+						</article>
 					</div>
-				</article>
+				</div>
+			</section>
 
-				<!-- Card 2 -->
-				<article class="res-card" data-category="coach">
-					<div class="res-card-media">
-						<span class="res-badge">Coaching</span>
-						<img src="assets/service-coaches.jpeg" alt="Coach analyzing game">
-					</div>
-					<div class="res-card-body">
-						<h3>Data-Driven Coaching Strategies</h3>
-						<p>How to use video analysis and performance metrics to build better training sessions for your team.</p>
-						<div class="res-card-footer">
-							<a href="#" class="res-link">Read Guide &rarr;</a>
-							<span class="res-date">8 min read</span>
+			<section class="resources-block resource-section resource-section--insights" id="performance-insights" data-section="Performance Insights" data-modal-theme="insights">
+				<h2 class="resources-section-title">Performance Insights</h2>
+				<div class="resource-section-description">
+					<p>Understand how performance analysis can transform athlete development.</p>
+					<p>This section includes examples of:</p>
+					<ul>
+						<li>Match performance breakdowns</li>
+						<li>Training session analysis</li>
+						<li>Technical skill evaluation</li>
+						<li>Athlete progress tracking</li>
+					</ul>
+					<p>These insights help coaches and athletes make smarter training decisions.</p>
+				</div>
+				<div class="resources-grid resources-grid--4">
+					<article class="res-card">
+						<div class="res-card-media"><img src="assets/service-athletes.jpg" alt="Match analysis attack transition"></div>
+						<div class="res-card-body">
+							<h3>Match Analysis: Transition Attack Breakdown</h3>
+							<p>Step-by-step review of transition speed and final-third decisions.</p>
+							<div class="res-card-footer"><a href="#" class="res-link">View Breakdown</a><span class="res-date">Case</span></div>
+							<div class="res-hidden-content" style="display:none;">
+								<p>See how analysts tagged transition moments and connected them with sprint load data to improve attacking patterns.</p>
+								<p>Includes clip structure and next-session drill recommendations.</p>
+							</div>
 						</div>
-						<div class="res-hidden-content" style="display:none;">
-							<p>Modern coaching is about more than just intuition; it's about information. By leveraging video analysis and performance metrics, coaches can identify patterns that are invisible to the naked eye.</p>
-							<p>This guide covers how to set up a basic data tracking system for your team, which metrics actually correlate with winning, and how to present this data to players without overwhelming them.</p>
-							<p>Learn to use Roatre's analytics dashboard to track player workload, technical efficiency, and tactical adherence over the course of a season.</p>
+					</article>
+					<article class="res-card">
+						<div class="res-card-media"><img src="assets/service-coaches.jpeg" alt="Defensive shape performance review"></div>
+						<div class="res-card-body">
+							<h3>Defensive Shape Review with Performance Data</h3>
+							<p>Identify line spacing issues and corrective actions for compactness.</p>
+							<div class="res-card-footer"><a href="#" class="res-link">View Breakdown</a><span class="res-date">Case</span></div>
+							<div class="res-hidden-content" style="display:none;">
+								<p>This analysis links positional spacing metrics with video moments where team shape broke down.</p>
+								<p>Used to design focused defensive correction sessions.</p>
+							</div>
 						</div>
-					</div>
-				</article>
+					</article>
+					<article class="res-card">
+						<div class="res-card-media"><img src="assets/service-athletes.jpg" alt="Athlete load and recovery insights"></div>
+						<div class="res-card-body">
+							<h3>Load vs Recovery: Weekly Decision Framework</h3>
+							<p>Balance high-intensity sessions with smart recovery timing.</p>
+							<div class="res-card-footer"><a href="#" class="res-link">View Breakdown</a><span class="res-date">Case</span></div>
+							<div class="res-hidden-content" style="display:none;">
+								<p>Understand how to adjust load when recovery markers trend down for key athletes.</p>
+								<p>Framework includes green-yellow-red thresholds and response plans.</p>
+							</div>
+						</div>
+					</article>
+					<article class="res-card">
+						<div class="res-card-media"><img src="assets/service-coaches.jpeg" alt="Performance analysis in elite sports"></div>
+						<div class="res-card-body">
+							<h3>What is Performance Analysis in Elite Sports?</h3>
+							<p>Understand how top clubs structure analysis workflows from staff to athletes.</p>
+							<div class="res-card-footer"><a href="#" class="res-link">View Breakdown</a><span class="res-date">Case</span></div>
+							<div class="res-hidden-content" style="display:none;">
+								<p>This overview explains the role of video tagging, live coding, and post-match reporting in elite sports environments.</p>
+								<p>Includes a workflow map you can adapt for academy-level teams.</p>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
 
-				<!-- Card 3 -->
-				<article class="res-card" data-category="platform">
-					<div class="res-card-media">
-						<span class="res-badge">Platform Guide</span>
-						<img src="assets/service-athletes.jpg" alt="Roatre App Usage">
-					</div>
-					<div class="res-card-body">
-						<h3>Getting Started with Roatre</h3>
-						<p>A complete walkthrough of setting up your profile, uploading your first video, and connecting with coaches.</p>
-						<div class="res-card-footer">
-							<a href="#" class="res-link">Watch Video &rarr;</a>
-							<span class="res-date">Video • 4:20</span>
+			<section class="resources-block resource-section resource-section--faqs" id="faqs" data-section="FAQs" data-modal-theme="faqs">
+				<h2 class="resources-section-title">FAQs</h2>
+				<div class="resource-section-description">
+					<p>Find answers to common questions about Roatre.</p>
+					<p>Topics include:</p>
+					<ul>
+						<li>How to upload training videos</li>
+						<li>How coaches analyse player performance</li>
+						<li>Account and login help</li>
+						<li>Parent and athlete permissions</li>
+						<li>Data privacy and security</li>
+					</ul>
+				</div>
+				<div class="resources-grid resources-grid--3">
+					<article class="res-card">
+						<div class="res-card-media"><img src="assets/service-coaches.jpeg" alt="Account and team setup FAQs"></div>
+						<div class="res-card-body">
+							<h3>How do I set up teams, roles, and permissions?</h3>
+							<p>Common account structure questions for academy owners and admins.</p>
+							<div class="res-card-footer"><a href="#" class="res-link">Read FAQ</a><span class="res-date">Admin</span></div>
+							<div class="res-hidden-content" style="display:none;">
+								<p>Guidance for creating team groups, assigning coach permissions, and restricting athlete data visibility by role.</p>
+								<p>Best for initial onboarding and governance setup.</p>
+							</div>
 						</div>
-						<div class="res-hidden-content" style="display:none;">
-							<p>Welcome to Roatre! This video walkthrough guides you through the initial setup process to ensure you get the most out of the platform.</p>
-							<p>We cover: 1. Creating your athlete profile. 2. Uploading high-quality training footage. 3. Tagging your coaches for feedback. 4. Understanding your performance dashboard.</p>
+					</article>
+					<article class="res-card">
+						<div class="res-card-media"><img src="assets/service-athletes.jpg" alt="Billing and subscription FAQs"></div>
+						<div class="res-card-body">
+							<h3>How do billing cycles and renewals work?</h3>
+							<p>Answers for invoices, renewal dates, and payment troubleshooting.</p>
+							<div class="res-card-footer"><a href="#" class="res-link">Read FAQ</a><span class="res-date">Billing</span></div>
+							<div class="res-hidden-content" style="display:none;">
+								<p>Get clear steps for checking active plans, downloading invoices, and resolving failed payment cases.</p>
+								<p>Includes what to do before renewal to avoid service interruption.</p>
+							</div>
 						</div>
-					</div>
-				</article>
+					</article>
+					<article class="res-card">
+						<div class="res-card-media"><img src="assets/service-coaches.jpeg" alt="Data upload FAQs"></div>
+						<div class="res-card-body">
+							<h3>How do I upload and review performance data?</h3>
+							<p>FAQ on data formats, upload errors, and verification process.</p>
+							<div class="res-card-footer"><a href="#" class="res-link">Read FAQ</a><span class="res-date">Data</span></div>
+							<div class="res-hidden-content" style="display:none;">
+								<p>Supported format checklist, validation steps, and quick fixes for the most common import issues.</p>
+								<p>Includes a post-upload quality check before coach review.</p>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
 
-				<!-- Card 4 -->
-				<article class="res-card" data-category="athlete">
-					<div class="res-card-media">
-						<span class="res-badge">Nutrition</span>
-						<img src="assets/service-coaches.jpeg" alt="Healthy nutrition">
-					</div>
-					<div class="res-card-body">
-						<h3>Fueling for Match Day</h3>
-						<p>Expert nutrition advice on what to eat before, during, and after games to maintain peak energy levels.</p>
-						<div class="res-card-footer">
-							<a href="#" class="res-link">Read Article &rarr;</a>
-							<span class="res-date">6 min read</span>
-						</div>
-						<div class="res-hidden-content" style="display:none;">
-							<p>What you eat before a match can determine how you finish it. This article outlines the ideal macronutrient balance for pre-game meals (high carb, moderate protein, low fat) and timing strategies.</p>
-							<p>Hydration strategies are also discussed, including electrolyte management for hot weather games. We provide sample meal plans for morning, afternoon, and evening kick-offs.</p>
-							<p>Don't let fatigue set in early—fuel your body like the engine it is.</p>
-						</div>
-					</div>
-				</article>
+			<section class="resources-block resource-section resource-section--help" id="help-center" data-section="Help Center" data-modal-theme="faqs">
+				<h2 class="resources-section-title">Help Center</h2>
+				<div class="resource-section-description">
+					<p>Our help center provides step-by-step guidance for using Roatre.</p>
+					<p>You can find help with:</p>
+					<ul>
+						<li>Account setup</li>
+						<li>Uploading videos</li>
+						<li>Using analysis tools</li>
+						<li>Managing athletes and teams</li>
+						<li>Troubleshooting common issues</li>
+					</ul>
+					<p>If you need additional help, our support team is available at <a href="mailto:support@roatre.com">support@roatre.com</a>.</p>
+				</div>
+			</section>
 
-				<!-- Card 5 -->
-				<article class="res-card" data-category="coach">
-					<div class="res-card-media">
-						<span class="res-badge">Academy Growth</span>
-						<img src="assets/service-athletes.jpg" alt="Academy management">
-					</div>
-					<div class="res-card-body">
-						<h3>Scaling Your Sports Academy</h3>
-						<p>Tips for academy owners on managing larger rosters, automating payments, and retaining talent.</p>
-						<div class="res-card-footer">
-							<a href="#" class="res-link">Download PDF &rarr;</a>
-							<span class="res-date">Guide</span>
-						</div>
-						<div class="res-hidden-content" style="display:none;">
-							<p>Growing an academy brings new challenges: administrative bloat, communication gaps, and financial tracking. This guide offers a blueprint for scaling sustainably.</p>
-							<p>Topics include: Automating fee collection to improve cash flow, using digital tools to manage larger rosters, and strategies for retaining top coaching talent.</p>
-							<p>Download the full PDF to access checklists and templates for academy operations.</p>
-						</div>
-					</div>
-				</article>
-
-				<!-- Card 6 -->
-				<article class="res-card" data-category="platform">
-					<div class="res-card-media">
-						<span class="res-badge">Support</span>
-						<img src="assets/service-coaches.jpeg" alt="Technical support">
-					</div>
-					<div class="res-card-body">
-						<h3>Video Analysis 101</h3>
-						<p>Learn the basics of breaking down game footage to identify key moments for improvement.</p>
-						<div class="res-card-footer">
-							<a href="#" class="res-link">Read Article &rarr;</a>
-							<span class="res-date">7 min read</span>
-						</div>
-						<div class="res-hidden-content" style="display:none;">
-							<p>Video analysis is a powerful tool for improvement. This article teaches you the basics of breaking down game footage effectively.</p>
-							<p>Learn what to look for: off-the-ball movement, defensive positioning, and technical execution. We also discuss how to use Roatre's annotation tools to highlight key moments for your athletes.</p>
-						</div>
-					</div>
-				</article>
-
-			</div>
-
-			<!-- Resource Reader Modal -->
 			<div id="resourceModal" class="modal">
 				<div class="modal-content resource-modal-content">
 					<span class="close-resource">&times;</span>
 					<div class="res-modal-body">
 						<img id="resModalImg" src="" alt="">
+						<span id="resModalTag" class="res-modal-tag"></span>
 						<h2 id="resModalTitle"></h2>
 						<div id="resModalText"></div>
 					</div>
@@ -217,7 +324,7 @@
 						</div>
 					</div>
 				</div>
-				<p class="footer-copy">© 2026 Roatre. All rights reserved.</p>
+				<p class="footer-copy">&copy; 2026 Roatre. All rights reserved.</p>
 			</div>
 		</footer>
 		<script src="script.js"></script>

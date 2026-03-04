@@ -165,6 +165,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const resModalImg = document.getElementById('resModalImg');
     const resModalTitle = document.getElementById('resModalTitle');
     const resModalText = document.getElementById('resModalText');
+    const resModalTag = document.getElementById('resModalTag');
+    const resModalContent = document.querySelector('.resource-modal-content');
+    const modalThemeClasses = ['modal-theme-blog', 'modal-theme-coach', 'modal-theme-insights', 'modal-theme-faqs'];
 
     if (resModal && resLinks.length > 0) {
         resLinks.forEach(link => {
@@ -174,10 +177,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 const title = card.querySelector('h3').innerText;
                 const imgSrc = card.querySelector('.res-card-media img').src;
                 const hiddenContent = card.querySelector('.res-hidden-content').innerHTML;
+                const section = card.closest('.resource-section');
+                const sectionName = section ? section.getAttribute('data-section') : 'Resource';
+                const sectionTheme = section ? section.getAttribute('data-modal-theme') : '';
 
                 resModalTitle.innerText = title;
                 resModalImg.src = imgSrc;
                 resModalText.innerHTML = hiddenContent;
+                if (resModalTag) {
+                    resModalTag.innerText = sectionName;
+                }
+                if (resModalContent) {
+                    resModalContent.classList.remove(...modalThemeClasses);
+                    if (sectionTheme) {
+                        resModalContent.classList.add('modal-theme-' + sectionTheme);
+                    }
+                }
                 
                 resModal.style.display = 'block';
             });
@@ -193,6 +208,20 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === resModal) {
                 resModal.style.display = 'none';
             }
+        });
+    }
+
+    // Resources submenu anchor navigation
+    const resourceSectionLinks = document.querySelectorAll('.resources-submenu a[href^="#"]');
+    if (resourceSectionLinks.length > 0) {
+        resourceSectionLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                const target = targetId ? document.querySelector(targetId) : null;
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
         });
     }
 });

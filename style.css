@@ -11,11 +11,11 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 .site-nav .main-menu li a:hover{color:#ffd85a}
 
 /* Contact button style (last menu item) */
-.site-nav .main-menu li:last-child a{
+.site-nav .main-menu > li:last-child > a{
 	background:linear-gradient(90deg,#ff4b2b,#ffb400);
 	padding:8px 14px;color:#fff;border-radius:4px;box-shadow:0 6px 18px rgba(255,75,43,0.12);
 }
-.site-nav .main-menu li:last-child a:hover{transform:translateY(-2px)}
+.site-nav .main-menu > li:last-child > a:hover{transform:translateY(-2px)}
 .hero{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:36px;padding-top:96px;text-align:center;color:#ffd85a;background:linear-gradient(180deg,rgba(0,0,0,0.2),rgba(0,0,0,0.5))}
 .hero-content{display:flex;flex-direction:column;align-items:center;gap:24px}
 .hero h1{font-size:64px;font-weight:700;letter-spacing:2px;margin:0;text-transform:uppercase;color:#fff}
@@ -421,50 +421,6 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 	}
 }
 
-/* Contact Image Modal */
-.contact-image {
-    width: 100%;
-    max-width: 800px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.9);
-}
-
-.modal-content {
-    margin: auto;
-    display: block;
-    max-width: 90%;
-    max-height: 90%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.close {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover {
-    color: #bbb;
-}
 
 /* Why Roatre Modal */
 .modal {
@@ -1040,4 +996,214 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 
 .res-modal-body strong {
     color: #fff;
+}
+
+.resource-section-description {
+    margin-bottom: 30px;
+    color: #b0b0b0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+}
+
+.resource-section-description p {
+    margin-bottom: 15px;
+}
+
+.resource-section-description ul {
+    list-style-position: inside;
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.resource-section-description li {
+    margin-bottom: 8px;
+    padding-left: 10px;
+    position: relative;
+}
+
+.resource-section-description li::before {
+    content: '•';
+    color: #ffd85a;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    position: absolute;
+    left: 0;
+}
+
+
+
+/* Resources page professional layout overrides */
+.resources-magazine {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-inline: 20px;
+}
+
+.resources-search-strip {
+    width: min(980px, 100%);
+    margin: 0 auto 36px;
+    padding: 10px;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #141414, #0e0e0e);
+    border: 1px solid rgba(255, 216, 90, 0.12);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+}
+
+.resources-search-strip input {
+    border: 1px solid #2b2b2b;
+    background: #090909;
+    color: #eee;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 0.98rem;
+}
+
+.resources-search-strip input:focus {
+    outline: none;
+    border-color: #ffd85a;
+    box-shadow: 0 0 0 3px rgba(255, 216, 90, 0.15);
+}
+
+.resources-search-strip button {
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(100deg, #ffd85a, #f2b400);
+    color: #101010;
+    padding: 0 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.resource-section {
+    margin-bottom: 52px;
+    padding: 30px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(20,20,20,0.98), rgba(11,11,11,0.98));
+    border: 1px solid rgba(255, 216, 90, 0.12);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+}
+
+.resource-section--help {
+    margin-bottom: 24px;
+}
+
+.resources-section-title {
+    margin: 0 0 18px;
+    color: #fff;
+    font-size: clamp(1.6rem, 2.2vw, 2.3rem);
+    letter-spacing: 0.02em;
+}
+
+.resource-section-description {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 216, 90, 0.12);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 28px;
+    color: #d0d0d0;
+    font-size: 1.03rem;
+    line-height: 1.65;
+    max-width: 100%;
+}
+
+.resource-section-description p {
+    margin: 0 0 12px;
+}
+
+.resource-section-description p:last-child {
+    margin-bottom: 0;
+}
+
+.resource-section-description ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.resource-section-description li {
+    margin-bottom: 8px;
+    padding-left: 18px;
+    position: relative;
+}
+
+.resource-section-description li::before {
+    content: "\2022";
+    color: #ffd85a;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    position: absolute;
+    left: 0;
+}
+
+.resource-section-description a {
+    color: #ffd85a;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.resource-section-description a:hover {
+    text-decoration: underline;
+}
+
+.resources-grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.resources-grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.coach-stories-layout {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 24px;
+}
+
+.coach-side-list {
+    display: grid;
+    gap: 24px;
+}
+
+@media (max-width: 1100px) {
+    .resources-grid--4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .resources-grid--3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .coach-stories-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .resources-magazine {
+        padding-inline: 14px;
+    }
+
+    .resources-search-strip {
+        grid-template-columns: 1fr;
+        padding: 12px;
+    }
+
+    .resources-search-strip button {
+        min-height: 44px;
+    }
+
+    .resource-section {
+        padding: 18px;
+        margin-bottom: 30px;
+    }
+
+    .resources-grid--3,
+    .resources-grid--4 {
+        grid-template-columns: 1fr;
+    }
 }
