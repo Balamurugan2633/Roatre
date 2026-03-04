@@ -2258,3 +2258,164 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
     }
 }
 
+/* Coach Education pathway layout (distinct from insights) */
+.coach-pathway{
+    display: grid;
+    grid-template-columns: 330px 1fr;
+    gap: 18px;
+    align-items: start;
+}
+
+.coach-path-intro{
+    position: sticky;
+    top: 104px;
+    border: 1px solid rgba(255,216,90,0.24);
+    border-radius: 14px;
+    background: linear-gradient(150deg, rgba(255,216,90,0.1), rgba(13,13,13,0.98) 62%);
+    padding: 20px 18px;
+}
+
+.coach-path-kicker{
+    margin: 0 0 8px;
+    color: #ffcf74;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+}
+
+.coach-path-intro h3{
+    margin: 0 0 10px;
+    color: #fff;
+    font-size: 1.55rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.coach-path-intro p{
+    margin: 0 0 10px;
+    color: #d2d2d2;
+    line-height: 1.6;
+}
+
+.coach-path-intro ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.coach-path-intro li{
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    color: #ededed;
+}
+
+.coach-path-intro li::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ffb12d;
+}
+
+.coach-path-steps{
+    position: relative;
+    display: grid;
+    gap: 14px;
+}
+
+.coach-path-steps::before{
+    content: "";
+    position: absolute;
+    left: 28px;
+    top: 14px;
+    bottom: 14px;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(255,191,70,0.65), rgba(255,191,70,0.08));
+}
+
+.coach-step-card{
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    min-height: 190px;
+    border: 1px solid rgba(255,255,255,0.13);
+    background: linear-gradient(145deg, #121212, #090909);
+    position: relative;
+}
+
+.coach-step-card::before{
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 3px solid #ffbf46;
+    background: #0a0a0a;
+    z-index: 2;
+}
+
+.coach-step-card .res-card-media{
+    height: 100%;
+}
+
+.coach-step-card .res-card-body{
+    padding: 18px 18px 16px 22px;
+}
+
+.coach-step-no{
+    margin: 0 0 8px;
+    color: #ffbf46;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+}
+
+.coach-step-card .res-card-body h3{
+    margin: 0 0 8px;
+    color: #fff;
+    font-size: 1.35rem;
+    line-height: 1.18;
+}
+
+.coach-step-card .res-card-body p{
+    margin-bottom: 10px;
+    color: #d0d0d0;
+}
+
+@media (max-width: 1200px){
+    .coach-pathway{
+        grid-template-columns: 1fr;
+    }
+
+    .coach-path-intro{
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 780px){
+    .coach-path-steps::before{
+        display: none;
+    }
+
+    .coach-step-card{
+        grid-template-columns: 1fr;
+    }
+
+    .coach-step-card::before{
+        display: none;
+    }
+
+    .coach-step-card .res-card-media{
+        height: 170px;
+    }
+}
+
