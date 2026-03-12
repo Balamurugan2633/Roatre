@@ -98,6 +98,77 @@ if (whyRoatreModal) {
     });
 }
 
+// Solution Template Modal
+const solutionTemplateBtn = document.getElementById('solutionTemplateBtn');
+const solutionTemplateBtnAlt = document.getElementById('solutionTemplateBtnAlt');
+const solutionTemplateModal = document.getElementById('solutionTemplateModal');
+const solutionTemplateClose = document.querySelector('.solution-modal-close');
+
+function openSolutionTemplateModal() {
+    if (!solutionTemplateModal) return;
+    solutionTemplateModal.style.display = 'block';
+    solutionTemplateModal.setAttribute('aria-hidden', 'false');
+}
+
+function closeSolutionTemplateModal() {
+    if (!solutionTemplateModal) return;
+    solutionTemplateModal.style.display = 'none';
+    solutionTemplateModal.setAttribute('aria-hidden', 'true');
+}
+
+if (solutionTemplateBtn) {
+    solutionTemplateBtn.addEventListener('click', openSolutionTemplateModal);
+}
+
+if (solutionTemplateBtnAlt) {
+    solutionTemplateBtnAlt.addEventListener('click', openSolutionTemplateModal);
+}
+
+if (solutionTemplateClose) {
+    solutionTemplateClose.addEventListener('click', closeSolutionTemplateModal);
+}
+
+if (solutionTemplateModal) {
+    solutionTemplateModal.addEventListener('click', function(e) {
+        if (e.target === solutionTemplateModal) {
+            closeSolutionTemplateModal();
+        }
+    });
+}
+
+// Support Modal
+const supportModalBtn = document.getElementById('supportModalBtn');
+const supportModal = document.getElementById('supportModal');
+const supportModalClose = document.querySelector('.support-modal-close');
+
+function openSupportModal() {
+    if (!supportModal) return;
+    supportModal.style.display = 'block';
+    supportModal.setAttribute('aria-hidden', 'false');
+}
+
+function closeSupportModal() {
+    if (!supportModal) return;
+    supportModal.style.display = 'none';
+    supportModal.setAttribute('aria-hidden', 'true');
+}
+
+if (supportModalBtn) {
+    supportModalBtn.addEventListener('click', openSupportModal);
+}
+
+if (supportModalClose) {
+    supportModalClose.addEventListener('click', closeSupportModal);
+}
+
+if (supportModal) {
+    supportModal.addEventListener('click', function(e) {
+        if (e.target === supportModal) {
+            closeSupportModal();
+        }
+    });
+}
+
 // Demo Registration Form
 const demoForm = document.getElementById('demoRegisterForm');
 if (demoForm) {
@@ -398,4 +469,44 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+});
+
+// Coach Education Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+	const coachModal = document.getElementById('coachModal');
+	const coachCloseBtn = document.querySelector('.close-coach');
+	const coachLinks = document.querySelectorAll('.coach-academy-card .res-link');
+
+	coachLinks.forEach(link => {
+		link.addEventListener('click', function(e) {
+			e.preventDefault();
+			const card = this.closest('.coach-academy-card');
+			const tag = card.querySelector('.coach-academy-card-tag').textContent;
+			const title = card.querySelector('h3').textContent;
+			const img = card.querySelector('.res-card-media img').src;
+			const hiddenContent = card.querySelector('.res-hidden-content').innerHTML;
+
+			document.getElementById('coachModalTag').textContent = tag;
+			document.getElementById('coachModalTitle').textContent = title;
+			document.getElementById('coachModalImg').src = img;
+			document.getElementById('coachModalText').innerHTML = hiddenContent;
+
+			coachModal.style.display = 'block';
+			document.body.style.overflow = 'hidden';
+		});
+	});
+
+	if (coachCloseBtn) {
+		coachCloseBtn.addEventListener('click', function() {
+			coachModal.style.display = 'none';
+			document.body.style.overflow = 'auto';
+		});
+	}
+
+	window.addEventListener('click', function(e) {
+		if (e.target === coachModal) {
+			coachModal.style.display = 'none';
+			document.body.style.overflow = 'auto';
+		}
+	});
 });

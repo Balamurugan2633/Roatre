@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -15,7 +15,7 @@
 				<ul class="main-menu">
 					<li><a href="index.html">Home</a></li>
 					<li><a href="about.html">About</a></li>
-					<li><a href="support.html">Support</a></li>
+					<li><a href="support.html"class="active">Support</a></li>
 					<li><a href="demo.html">Demo</a></li>
 					<li><a href="solution.html">Solution</a></li>
 					<li><a href="roatre.html">Why Roatre</a></li>
@@ -34,19 +34,99 @@
 			</nav>
 		</header>
 		<main>
-			<section class="about-story">
-				<div class="about-story-image-wrap">
+			<section class="support-hero">
+				<div class="support-hero-left">
 					<div class="tagline-box">
-						<h2>We're Here to Help</h2>
+						<h2>Support Built for High-Performance Teams</h2>
 					</div>
 				</div>
 
-				<div class="about-story-content">
-					<h1><span>SUPPORT</span></h1>
-					<p><span class="dropcap">R</span>oatre is committed to providing reliable assistance to athletes, coaches and academies using the platform. Our support team helps with account setup, video uploads, coaching workflows, permissions and technical issues to ensure uninterrupted training and analysis. Users can access help resources, FAQs and direct assistance whenever needed. For any queries or assistance, contact our support team at <span class="support-email">support@roatre.com</span></p>
+				<div class="support-hero-right">
+					<p class="support-hero-kicker">SUPPORT</p>
+					<h1 class="support-hero-title">Elite Assistance. Zero Downtime.</h1>
+					<p class="support-hero-copy"><span class="dropcap">R</span>oatre delivers professional-grade support for athletes, coaches, and academies. From account setup to video workflows, roster permissions, and performance analytics, our team keeps your training pipeline moving without delays.</p>
+					<div class="support-hero-actions">
+						<button class="support-primary-btn" type="button" id="supportModalBtn">Open Support Modal</button>
+						<a class="support-link-btn" href="contact.html">Contact Support</a>
+					</div>
+					<div class="support-hero-divider"></div>
+					<div class="support-hero-contact">
+						<span>Priority Desk</span>
+						<p>support@roatre.com</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="support-grid">
+				<div class="support-card">
+					<h3>Matchday Operations</h3>
+					<p>Get instant help on live video uploads, analyst tags, and real-time coaching workflows.</p>
+				</div>
+				<div class="support-card">
+					<h3>Performance Analytics</h3>
+					<p>We troubleshoot data sync, workload dashboards, and player readiness reports.</p>
+				</div>
+				<div class="support-card">
+					<h3>Academy Enablement</h3>
+					<p>Training plans, access control, and athlete onboarding support for every age group.</p>
+				</div>
+				<div class="support-card">
+					<h3>Security &amp; Compliance</h3>
+					<p>Privacy settings, audit trails, and federation compliance built into the platform.</p>
 				</div>
 			</section>
 		</main>
+
+		<div class="support-modal" id="supportModal" aria-hidden="true">
+			<div class="support-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="supportModalTitle">
+				<button class="support-modal-close" type="button" aria-label="Close support modal">&times;</button>
+				<div class="support-modal-body">
+					<header class="support-modal-header">
+						<div>
+							<p class="support-modal-eyebrow">Professional Sports Support</p>
+							<h2 id="supportModalTitle">Roatre Support Operations Center</h2>
+						</div>
+						<span class="support-status">Live Now</span>
+					</header>
+
+					<section class="support-modal-grid">
+						<div class="support-panel">
+							<h4>Rapid Response</h4>
+							<ul>
+								<li>Live matchday escalation channel</li>
+								<li>15-minute response SLA for pro teams</li>
+								<li>Dedicated analyst workflow assistance</li>
+							</ul>
+						</div>
+						<div class="support-panel">
+							<h4>Knowledge Base</h4>
+							<div class="support-resource">
+								<strong>Video Upload Playbook</strong>
+								<p>Best practices for 4K analysis and tagging.</p>
+							</div>
+							<div class="support-resource">
+								<strong>Performance Dashboard Setup</strong>
+								<p>Configure player load and wellness metrics.</p>
+							</div>
+						</div>
+						<div class="support-panel">
+							<h4>Contact Channels</h4>
+							<p>Priority email: support@roatre.com</p>
+							<p>On-call hotline: +1 (000) 555-0148</p>
+							<button type="button">Start Support Ticket</button>
+						</div>
+					</section>
+
+					<section class="support-modal-footer">
+						<div>
+							<h4>Built for Clubs &amp; Federations</h4>
+							<p>Our support team understands high-stakes matchday operations and athlete development timelines.</p>
+						</div>
+						<button type="button" class="support-secondary-btn">Book Support Briefing</button>
+					</section>
+				</div>
+			</div>
+		</div>
 
 		<footer class="site-footer">
 			<div class="footer-shell">
@@ -89,3 +169,4 @@
 		<script src="script.js"></script>
 	</body>
 </html>
+
