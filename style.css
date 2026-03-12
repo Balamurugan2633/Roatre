@@ -270,7 +270,7 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
     max-width:100%;
     margin:0 auto;
     padding:56px 54px 28px;
-    background:linear-gradient(110deg,#000,#000,#000,#000);
+    background:linear-gradient(110deg,#000,#000,#ffd85a,#000);
     background-size:220% 220%;
     animation:footerGradientMove 20s ease-in-out infinite;
 }
