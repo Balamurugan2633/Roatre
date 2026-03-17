@@ -3,6 +3,43 @@ document.addEventListener('DOMContentLoaded', function () {
 	const siteVideo = document.getElementById('siteBgVideo');
 	const scrollBtn = document.getElementById('scrollToServices');
 
+	// Hamburger nav
+	const nav = document.querySelector('.site-nav');
+	if (nav && header) {
+		const overlay = document.createElement('div');
+		overlay.className = 'nav-overlay';
+		document.body.appendChild(overlay);
+
+		const toggle = document.createElement('button');
+		toggle.className = 'nav-toggle';
+		toggle.setAttribute('aria-label', 'Toggle navigation');
+		toggle.innerHTML = '<span></span><span></span><span></span>';
+		header.appendChild(toggle);
+
+		function closeNav() {
+			toggle.classList.remove('open');
+			nav.classList.remove('open');
+			overlay.classList.remove('open');
+			document.body.style.overflow = '';
+		}
+
+		toggle.addEventListener('click', function () {
+			const isOpen = nav.classList.toggle('open');
+			toggle.classList.toggle('open', isOpen);
+			overlay.classList.toggle('open', isOpen);
+			document.body.style.overflow = isOpen ? 'hidden' : '';
+		});
+
+		overlay.addEventListener('click', closeNav);
+
+		// Only close nav when clicking actual page links (not submenu parent)
+		nav.querySelectorAll('a').forEach(function (a) {
+			if (!a.closest('.resources-nav-item') || a.closest('.resources-submenu')) {
+				a.addEventListener('click', closeNav);
+			}
+		});
+	}
+
 	if (header) {
 		window.addEventListener('scroll', function () {
 			if (window.scrollY > 50) {

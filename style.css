@@ -104,20 +104,85 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 	background:#f2b400;
 }
 
+/* Hamburger button */
+.nav-toggle{
+	display:none;
+	background:transparent;
+	border:2px solid rgba(255,216,90,0.6);
+	border-radius:6px;
+	padding:6px 10px;
+	cursor:pointer;
+	z-index:200;
+	gap:5px;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+}
+.nav-toggle span{
+	display:block;
+	width:22px;
+	height:2px;
+	background:#ffd85a;
+	border-radius:2px;
+	transition:all .3s ease;
+}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
 @media (max-width:900px){
+	.nav-toggle{display:flex}
+	.site-nav{
+		position:fixed;
+		top:0;
+		right:0;
+		width:min(300px,80vw);
+		height:100vh;
+		background:#000;
+		border-left:1px solid rgba(255,216,90,0.15);
+		padding:90px 24px 32px;
+		overflow-y:auto;
+		transform:translateX(100%);
+		transition:transform .3s ease;
+		z-index:150;
+	}
+	.site-nav.open{transform:translateX(0)}
+	.site-nav .main-menu{
+		flex-direction:column;
+		gap:4px;
+		align-items:stretch;
+	}
+	.site-nav .main-menu li a{
+		display:block;
+		padding:12px 14px;
+		font-size:15px;
+	}
+	.site-nav .main-menu > li:last-child > a{
+		margin-top:8px;
+	}
 	.resources-submenu{
 		position:static;
-		margin-top:8px;
+		margin-top:4px;
 		min-width:100%;
 		opacity:1;
 		visibility:visible;
 		transform:none;
 		display:none;
+		border-radius:8px;
 	}
 	.resources-nav-item:hover .resources-submenu,
 	.resources-nav-item:focus-within .resources-submenu{
 		display:block;
 	}
+	/* overlay behind nav */
+	.nav-overlay{
+		display:none;
+		position:fixed;
+		inset:0;
+		background:rgba(0,0,0,0.55);
+		z-index:140;
+	}
+	.nav-overlay.open{display:block}
 }
 .hero{
 	display:flex;
@@ -144,7 +209,7 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 	z-index:1;
 }
 .hero-content{display:flex;flex-direction:column;align-items:center;gap:24px}
-.hero h1{font-size:64px;font-weight:700;letter-spacing:2px;margin:0;text-transform:uppercase;color:#ffd85a}
+.hero h1{font-size:clamp(32px,8vw,64px);font-weight:700;letter-spacing:2px;margin:0;text-transform:uppercase;color:#ffd85a}
 .scroll-cta{display:flex;flex-direction:column;align-items:center;gap:8px;background:transparent;border:2px solid rgba(255,180,0,0.5);color:#ffd85a;padding:12px 18px;border-radius:50px;cursor:pointer;transition:all .3s ease;margin-top:24px}
 .scroll-cta:hover{background:rgba(255,180,0,0.04);border-color:#ffd85a}
 .scroll-cta svg{animation:bounce 2s infinite}
@@ -223,6 +288,11 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 	.services-title{font-size:36px}
 }
 
+@media (max-width:480px){
+	.hero{padding:24px 16px;padding-top:80px}
+	.scroll-cta{padding:10px 14px}
+}
+
 /* Demo CTA section */
 .demo-cta{
 	padding:120px 20px 130px;
@@ -270,7 +340,7 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
     max-width:100%;
     margin:0 auto;
     padding:56px 54px 28px;
-    background:linear-gradient(110deg,#000,#000,#ffd85a,#000);
+    background:linear-gradient(110deg,#000,#000,#f3c632,#000,#000);
     background-size:220% 220%;
     animation:footerGradientMove 20s ease-in-out infinite;
 }
@@ -389,6 +459,12 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 	}
 }
 
+@media (max-width:480px){
+	.demo-cta{padding:60px 16px 70px}
+	.demo-cta h2{font-size:28px}
+	.demo-cta-btn{min-width:160px;font-size:16px;padding:12px 18px;margin-top:28px}
+}
+
 @media (max-width:900px){
 	.demo-cta{
 		padding:80px 20px 90px;
@@ -442,6 +518,22 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 		margin-top:18px;
 		padding-top:10px;
 	}
+}
+
+/* Tagline box responsive */
+.tagline-box{padding:24px;min-height:200px}
+@media (max-width:960px){
+	.tagline-box{min-height:160px}
+	.tagline-box h2{font-size:clamp(1.4rem,4vw,2.5rem)}
+}
+@media (max-width:480px){
+	.tagline-box{min-height:120px;padding:20px 16px}
+}
+
+/* Demo form responsive */
+@media (max-width:480px){
+	.demo-form{padding:24px 16px;margin-top:28px}
+	.demo-form h2{font-size:1.4rem}
 }
 
 /* About page */
@@ -1365,6 +1457,22 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 	.about-story-sign{
 		font-size:26px;
 	}
+}
+
+@media (max-width:480px){
+	.solution-hero,.demo-hero,.support-hero,.about-hero{
+		padding:90px 14px 40px;
+		gap:20px;
+	}
+	.solution-hero-title,.about-story-content h1{font-size:28px}
+	.solution-hero-kicker,.demo-hero-title,.support-hero-kicker{font-size:26px}
+	.solution-hero-copy,.demo-hero-copy,.support-hero-copy,.about-hero-copy{font-size:15px}
+	.about-hero-title{font-size:24px}
+	.about-story-content p{font-size:16px}
+	.feature-content{padding:24px 16px}
+	.feature-content h3{font-size:28px}
+	.services{padding:32px 14px 56px}
+	.services-title{font-size:26px;letter-spacing:3px}
 }
 
 @media (max-width:960px){
@@ -4059,4 +4167,30 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
     .why-cta h2 {
         font-size: 2rem;
     }
+
+    .value-card{padding:24px}
+    .value-grid{gap:20px}
+    .why-hero{padding:100px 16px 60px}
+    .value-proposition,.key-features,.use-cases,.why-cta{padding:60px 16px}
+    .feature-item{padding:20px}
+    .case-card{padding:20px}
+    .btn-primary,.btn-secondary{padding:12px 24px;font-size:1rem}
+}
+
+@media (max-width:480px){
+    .why-hero-content h1{font-size:1.9rem}
+    .hero-subtitle{font-size:1rem}
+    .hero-description{font-size:0.95rem}
+    .value-card h3{font-size:1.4rem}
+    .key-features h2,.use-cases h2,.why-cta h2{font-size:1.6rem}
+    .cta-buttons{flex-direction:column;align-items:center}
+    .btn-primary,.btn-secondary{width:100%;max-width:280px;text-align:center}
+}
+
+/* Contact page responsive */
+@media (max-width:480px){
+    .contact-page-wrapper{padding-top:90px;padding-bottom:40px}
+    .contact-hero h1{font-size:2rem}
+    .contact-info-card,.contact-form-professional{padding:24px 16px}
+    .contact-container{width:95%}
 }
