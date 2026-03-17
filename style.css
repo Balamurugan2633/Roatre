@@ -112,7 +112,7 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 	border-radius:6px;
 	padding:6px 10px;
 	cursor:pointer;
-	z-index:200;
+	z-index:170;
 	gap:5px;
 	flex-direction:column;
 	align-items:center;
@@ -144,7 +144,7 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 		overflow-y:auto;
 		transform:translateX(100%);
 		transition:transform .3s ease;
-		z-index:150;
+		z-index:160;
 	}
 	.site-nav.open{transform:translateX(0)}
 	.site-nav .main-menu{
@@ -174,13 +174,17 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 	.resources-nav-item:focus-within .resources-submenu{
 		display:block;
 	}
-	/* overlay behind nav */
+	/* overlay behind nav - only covers area outside the nav drawer */
 	.nav-overlay{
 		display:none;
 		position:fixed;
-		inset:0;
+		top:0;
+		left:0;
+		right:min(300px,80vw);
+		bottom:0;
 		background:rgba(0,0,0,0.55);
 		z-index:140;
+		cursor:pointer;
 	}
 	.nav-overlay.open{display:block}
 }

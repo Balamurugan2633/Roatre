@@ -30,12 +30,9 @@ document.addEventListener('DOMContentLoaded', function () {
 			document.body.style.overflow = isOpen ? 'hidden' : '';
 		});
 
-		overlay.addEventListener('click', closeNav);
-
-		// Only close nav when clicking actual page links (not submenu parent)
-		nav.querySelectorAll('a').forEach(function (a) {
-			if (!a.closest('.resources-nav-item') || a.closest('.resources-submenu')) {
-				a.addEventListener('click', closeNav);
+		overlay.addEventListener('click', function(e) {
+			if (!nav.contains(e.target)) {
+				closeNav();
 			}
 		});
 	}
