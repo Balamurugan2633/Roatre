@@ -2605,6 +2605,7 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
     padding: 2px 0 6px;
     scroll-behavior: smooth;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
 }
 
 .blog-feature-track::-webkit-scrollbar{
@@ -2703,12 +2704,32 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
         display: none;
     }
 
+    .blog-feature-track{
+        display: flex;
+        flex-direction: column;
+        overflow-x: visible;
+        gap: 16px;
+    }
+
     .resource-section--blog .blog-feature-card{
         min-height: 360px;
+        width: 100%;
     }
 
     .resource-section--blog .blog-feature-card h3{
         font-size: 1.35rem;
+    }
+}
+
+@media (max-width: 480px){
+    .resource-section--blog .blog-feature-card{
+        min-height: 280px;
+    }
+    .resource-section--blog .blog-feature-card h3{
+        font-size: 1.15rem;
+    }
+    .blog-feature-brand{
+        font-size: 0.9rem;
     }
 }
 
