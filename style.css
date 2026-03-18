@@ -1,6 +1,10 @@
 /* Basic layout */
 *{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#ffd85a;background:#000}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#ffd85a;background:#000;scrollbar-width:thin;scrollbar-color:#ffd85a #111}
+body::-webkit-scrollbar{width:8px}
+body::-webkit-scrollbar-track{background:#111}
+body::-webkit-scrollbar-thumb{background:#ffd85a;border-radius:4px}
+body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 .site-header{
 	align-items:center;
 	display:flex;
@@ -1664,7 +1668,22 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
     height: 100%;
     background-color: rgba(0,0,0,0.9);
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ffd85a #111;
 }
+#resourceModal{
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 0;
+}
+.modal::-webkit-scrollbar{width:8px}
+.modal::-webkit-scrollbar-track{background:#111}
+.modal::-webkit-scrollbar-thumb{background:#ffd85a;border-radius:4px}
+.modal::-webkit-scrollbar-thumb:hover{background:#ffcc00}
+#athleteModal::-webkit-scrollbar,#coachModal::-webkit-scrollbar,#ownerModal::-webkit-scrollbar{width:8px}
+#athleteModal::-webkit-scrollbar-track,#coachModal::-webkit-scrollbar-track,#ownerModal::-webkit-scrollbar-track{background:#111}
+#athleteModal::-webkit-scrollbar-thumb,#coachModal::-webkit-scrollbar-thumb,#ownerModal::-webkit-scrollbar-thumb{background:#ffd85a;border-radius:4px}
+#athleteModal::-webkit-scrollbar-thumb:hover,#coachModal::-webkit-scrollbar-thumb:hover,#ownerModal::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 
 .modal-dialog {
     position: relative;
@@ -2181,7 +2200,13 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
     max-height: 90vh;
     overflow-y: auto;
     display: block; /* Override grid from generic modal */
+    margin: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ffd85a #111;
 }
+.resource-modal-content::-webkit-scrollbar{width:8px}
+.resource-modal-content::-webkit-scrollbar-track{background:#111}
+.resource-modal-content::-webkit-scrollbar-thumb{background:#ffd85a;border-radius:4px}
 
 .close-resource {
     position: absolute;
@@ -3735,6 +3760,7 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 
 /* Coach Education Modal - Horizontal Layout */
 .modal-content.coach-modal-content {
+	display: block;
 	background-color: #0a0a0a;
 	margin: 5% auto;
 	padding: 0;

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>For Coaches – Roatre</title>
+	<style>
+		*{box-sizing:border-box;margin:0;padding:0}
+		body{background:#000;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+		.fc-page{padding:36px 32px 60px;max-width:960px;margin:0 auto}
+
+		/* ── TITLE ── */
+		.fc-title{
+			text-align:center;
+			font-size:clamp(2.2rem,6vw,3.6rem);
+			font-weight:900;
+			letter-spacing:4px;
+			text-transform:uppercase;
+			margin-bottom:32px;
+			font-family:Georgia,serif;
+			color:#fff;
+		}
+		.fc-title span{color:#ffd85a;font-style:italic}
+
+		/* ── HERO TEXT ── */
+		.fc-tagline{font-size:clamp(1.3rem,3vw,1.75rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:10px;text-transform:uppercase}
+		.fc-tagline .gold{color:#ffd85a}
+		.fc-intro{font-size:0.88rem;color:#bbb;line-height:1.7;max-width:480px;margin-bottom:48px}
+		.fc-intro a{color:#ffd85a;text-decoration:none}
+
+		/* ── CALLOUT BOX ── */
+		.fc-callout{
+			background:linear-gradient(135deg,rgba(180,100,0,0.55),rgba(120,60,0,0.4));
+			border:1px solid rgba(200,120,0,0.4);
+			border-radius:8px;
+			padding:14px 16px;
+			font-size:0.9rem;
+			color:#f0f0f0;
+			line-height:1.6;
+			margin-top:12px;
+		}
+		.fc-callout .dc{font-size:1.4rem;font-weight:700;color:#ffd85a;float:left;margin-right:3px;line-height:1}
+
+		/* ── SECTION 1: big text LEFT, text+callout RIGHT ── */
+		.fc-s1{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin-bottom:52px}
+
+		.fc-s1-big{
+			display:flex;align-items:center;justify-content:center;
+			background:linear-gradient(145deg,#0a0a0a,#111);
+			border:1px solid rgba(255,216,90,0.15);
+			border-radius:14px;
+			padding:32px 20px;
+			min-height:260px;
+		}
+		.fc-s1-big h2{
+			font-size:clamp(2rem,4vw,3.2rem);
+			font-weight:900;
+			text-transform:uppercase;
+			color:#ffd85a;
+			text-align:center;
+			line-height:1.1;
+			letter-spacing:2px;
+			text-shadow:0 0 30px rgba(255,216,90,0.25);
+			font-family:Georgia,serif;
+		}
+
+		.fc-s1-text p{font-size:0.9rem;color:#ccc;line-height:1.75;margin-bottom:10px}
+
+		/* ── SECTION 2: text+callout LEFT, big text RIGHT ── */
+		.fc-s2{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin-bottom:52px}
+
+		.fc-s2-text p{font-size:0.9rem;color:#ccc;line-height:1.75;margin-bottom:10px}
+
+		.fc-s2-big{
+			display:flex;align-items:center;justify-content:center;
+			background:linear-gradient(145deg,#0a0a0a,#111);
+			border:1px solid rgba(255,216,90,0.15);
+			border-radius:14px;
+			padding:32px 20px;
+			min-height:260px;
+		}
+		.fc-s2-big h2{
+			font-size:clamp(2rem,4vw,3.2rem);
+			font-weight:900;
+			text-transform:uppercase;
+			color:#ffd85a;
+			text-align:center;
+			line-height:1.1;
+			letter-spacing:2px;
+			text-shadow:0 0 30px rgba(255,216,90,0.25);
+			font-family:Georgia,serif;
+		}
+
+		/* ── SECTION 3: big text LEFT, image RIGHT ── */
+		.fc-s3{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin-bottom:52px}
+
+		.fc-s3-big{
+			display:flex;align-items:center;justify-content:center;
+			background:linear-gradient(145deg,#0a0a0a,#111);
+			border:1px solid rgba(255,216,90,0.15);
+			border-radius:14px;
+			padding:32px 20px;
+			min-height:260px;
+		}
+		.fc-s3-big h2{
+			font-size:clamp(2rem,4vw,3.2rem);
+			font-weight:900;
+			text-transform:uppercase;
+			color:#ffd85a;
+			text-align:center;
+			line-height:1.1;
+			letter-spacing:2px;
+			text-shadow:0 0 30px rgba(255,216,90,0.25);
+			font-family:Georgia,serif;
+		}
+		.fc-s3-img{border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.7)}
+		.fc-s3-img img{width:100%;height:260px;object-fit:cover;display:block}
+
+		@media(max-width:640px){
+			.fc-page{padding:24px 16px 40px}
+			.fc-s1,.fc-s2,.fc-s3{grid-template-columns:1fr}
+			.fc-s1-big,.fc-s2-big,.fc-s3-big{min-height:160px;padding:24px 16px}
+			.fc-s3-img img{height:200px}
+		}
+	</style>
+</head>
+<body>
+<div class="fc-page">
+
+	<!-- Title -->
+	<h1 class="fc-title"><span>For</span> COACHES</h1>
+
+	<!-- Tagline + intro -->
+	<p class="fc-tagline">COACH BETTER.<br><span class="gold">WITH DATA THAT WORKS.</span></p>
+	<p class="fc-intro">From grassroots to elite, manage your squad, guide every player's journey, and discover hidden talent — <a href="#">with a platform built to make coaching more focused and efficient.</a></p>
+
+	<!-- Section 1: big heading LEFT, description+callout RIGHT -->
+	<div class="fc-s1">
+		<div class="fc-s1-big">
+			<h2>Team Management<br>Made Simple</h2>
+		</div>
+		<div class="fc-s1-text">
+			<p>Add your players, assign personalized drills, plan sessions, and communicate clearly — all from one smart dashboard.</p>
+			<p>Easily add and organize your players by age, skill level, or position. Create customized training plans tailored to each athlete's needs and progress, centralize communication, files, and session notes — so everyone stays informed and aligned.</p>
+			<div class="fc-callout"><span class="dc">C</span>ut down on planning time. Boost on-field impact.</div>
+		</div>
+	</div>
+
+	<!-- Section 2: description+callout LEFT, big heading RIGHT -->
+	<div class="fc-s2">
+		<div class="fc-s2-text">
+			<p>Our system highlights players with high potential, tracks growth curves, and flags performance clips — so you can nurture talent with intention, not just intuition.</p>
+			<p>Identify hidden talent early through performance metrics, not just game-day impressions. Create detailed scouting reports with video highlights, stats, and coach notes — all in one place.</p>
+			<div class="fc-callout"><span class="dc">U</span>ncover the next star before others do.</div>
+		</div>
+		<div class="fc-s2-big">
+			<h2>Intelligent Talent<br>Scouting</h2>
+		</div>
+	</div>
+
+	<!-- Section 3: big heading LEFT, image RIGHT -->
+	<div class="fc-s3">
+		<div class="fc-s3-big">
+			<h2>Player Monitoring<br>Dashboard</h2>
+		</div>
+		<div class="fc-s3-img">
+			<img src="assets/service-coaches.jpeg" alt="Player Monitoring Dashboard" />
+		</div>
+	</div>
+
+</div>
+</body>
+</html>

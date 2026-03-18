@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Resource Modal
+    // Resource Modals (Generic and Coach)
     const resModal = document.getElementById('resourceModal');
     const resLinks = document.querySelectorAll('.res-link');
     const resClose = document.querySelector('.close-resource');
@@ -272,8 +272,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const resModalText = document.getElementById('resModalText');
     const resModalTag = document.getElementById('resModalTag');
     const resModalContent = document.querySelector('.resource-modal-content');
-    const modalThemeClasses = ['modal-theme-blog', 'modal-theme-coach', 'modal-theme-insights', 'modal-theme-faqs'];
     
+    const coachModal = document.getElementById('coachModal');
+    const coachClose = document.querySelector('.close-coach');
+    const coachModalImg = document.getElementById('coachModalImg');
+    const coachModalTitle = document.getElementById('coachModalTitle');
+    const coachModalText = document.getElementById('coachModalText');
+    const coachModalTag = document.getElementById('coachModalTag');
+    
+    const modalThemeClasses = ['modal-theme-blog', 'modal-theme-coach', 'modal-theme-insights', 'modal-theme-faqs'];
+
     function stripHtml(html) {
         const temp = document.createElement('div');
         temp.innerHTML = html || '';
@@ -335,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    if (resModal && resLinks.length > 0) {
+    if (resLinks.length > 0) {
         resLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -346,47 +354,67 @@ document.addEventListener('DOMContentLoaded', function() {
                 const section = card.closest('.resource-section');
                 const sectionName = section ? section.getAttribute('data-section') : 'Resource';
                 const sectionTheme = section ? section.getAttribute('data-modal-theme') : '';
+                const tagText = card.querySelector('.coach-academy-card-tag');
 
-                resModalTitle.innerText = title;
-                resModalImg.src = imgSrc;
-                resModalText.innerHTML = hiddenContent;
-                if (resModalTag) {
-                    resModalTag.innerText = sectionName;
-                }
-                if (resModalContent) {
-                    resModalContent.classList.remove(...modalThemeClasses);
-                    if (sectionTheme) {
-                        resModalContent.classList.add('modal-theme-' + sectionTheme);
+                if (sectionTheme === 'coach' && coachModal) {
+                    coachModalTitle.innerText = title;
+                    coachModalImg.src = imgSrc;
+                    coachModalText.innerHTML = hiddenContent;
+                    if (coachModalTag && tagText) {
+                        coachModalTag.innerText = tagText.innerText;
                     }
-                }
-
-                if (sectionTheme === 'blog') {
-                    resModalTitle.innerText = 'Reports & Guides';
-                    resModalImg.style.display = 'none';
-                    if (resModalTag) resModalTag.style.display = 'none';
-                    resModalTitle.style.display = 'none';
-                    resModalText.innerHTML = buildBlogModalMarkup(section, card);
-                    initBlogModalCarousel();
-                } else {
-                    resModalImg.style.display = 'block';
-                    if (resModalTag) resModalTag.style.display = 'inline-block';
-                    resModalTitle.style.display = 'block';
+                    coachModal.style.display = 'block';
+                } else if (resModal) {
+                    resModalTitle.innerText = title;
+                    resModalImg.src = imgSrc;
                     resModalText.innerHTML = hiddenContent;
+                    if (resModalTag) {
+                        resModalTag.innerText = sectionName;
+                    }
+                    if (resModalContent) {
+                        resModalContent.classList.remove(...modalThemeClasses);
+                        if (sectionTheme) {
+                            resModalContent.classList.add('modal-theme-' + sectionTheme);
+                        }
+                    }
+
+                    if (sectionTheme === 'blog') {
+                        resModalTitle.innerText = 'Reports & Guides';
+                        resModalImg.style.display = 'none';
+                        if (resModalTag) resModalTag.style.display = 'none';
+                        resModalTitle.style.display = 'none';
+                        resModalText.innerHTML = buildBlogModalMarkup(section, card);
+                        initBlogModalCarousel();
+                    } else {
+                        resModalImg.style.display = 'block';
+                        if (resModalTag) resModalTag.style.display = 'inline-block';
+                        resModalTitle.style.display = 'block';
+                        resModalText.innerHTML = hiddenContent;
+                    }
+                    
+                    resModal.style.display = 'flex';
                 }
-                
-                resModal.style.display = 'block';
             });
         });
 
         if (resClose) {
             resClose.addEventListener('click', function() {
-                resModal.style.display = 'none';
+                if(resModal) resModal.style.display = 'none';
+            });
+        }
+        
+        if (coachClose) {
+            coachClose.addEventListener('click', function() {
+                if(coachModal) coachModal.style.display = 'none';
             });
         }
 
         window.addEventListener('click', function(e) {
             if (e.target === resModal) {
                 resModal.style.display = 'none';
+            }
+            if (e.target === coachModal) {
+                coachModal.style.display = 'none';
             }
         });
     }
@@ -505,42 +533,91 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Coach Education Modal Functionality
-document.addEventListener('DOMContentLoaded', function() {
-	const coachModal = document.getElementById('coachModal');
-	const coachCloseBtn = document.querySelector('.close-coach');
-	const coachLinks = document.querySelectorAll('.coach-academy-card .res-link');
 
-	coachLinks.forEach(link => {
-		link.addEventListener('click', function(e) {
-			e.preventDefault();
-			const card = this.closest('.coach-academy-card');
-			const tag = card.querySelector('.coach-academy-card-tag').textContent;
-			const title = card.querySelector('h3').textContent;
-			const img = card.querySelector('.res-card-media img').src;
-			const hiddenContent = card.querySelector('.res-hidden-content').innerHTML;
 
-			document.getElementById('coachModalTag').textContent = tag;
-			document.getElementById('coachModalTitle').textContent = title;
-			document.getElementById('coachModalImg').src = img;
-			document.getElementById('coachModalText').innerHTML = hiddenContent;
+// Athlete Read More Modal
+const athleteReadMore = document.getElementById('athleteReadMore');
+const athleteModal = document.getElementById('athleteModal');
+const athleteModalClose = document.getElementById('athleteModalClose');
 
-			coachModal.style.display = 'block';
-			document.body.style.overflow = 'hidden';
-		});
+if (athleteReadMore) {
+	athleteReadMore.addEventListener('click', function(e) {
+		e.preventDefault();
+		athleteModal.style.display = 'block';
+		document.body.style.overflow = 'hidden';
 	});
+}
 
-	if (coachCloseBtn) {
-		coachCloseBtn.addEventListener('click', function() {
-			coachModal.style.display = 'none';
-			document.body.style.overflow = 'auto';
-		});
-	}
+if (athleteModalClose) {
+	athleteModalClose.addEventListener('click', function() {
+		athleteModal.style.display = 'none';
+		document.body.style.overflow = '';
+	});
+}
 
-	window.addEventListener('click', function(e) {
-		if (e.target === coachModal) {
-			coachModal.style.display = 'none';
-			document.body.style.overflow = 'auto';
+if (athleteModal) {
+	athleteModal.addEventListener('click', function(e) {
+		if (e.target === athleteModal) {
+			athleteModal.style.display = 'none';
+			document.body.style.overflow = '';
 		}
 	});
-});
+}
+
+// Coach Read More Modal
+const coachReadMore = document.getElementById('coachReadMore');
+const coachPageModal = document.getElementById('coachModal');
+const coachModalClose = document.getElementById('coachModalClose');
+
+if (coachReadMore) {
+	coachReadMore.addEventListener('click', function(e) {
+		e.preventDefault();
+		coachPageModal.style.display = 'block';
+		document.body.style.overflow = 'hidden';
+	});
+}
+
+if (coachModalClose) {
+	coachModalClose.addEventListener('click', function() {
+		coachPageModal.style.display = 'none';
+		document.body.style.overflow = '';
+	});
+}
+
+if (coachPageModal) {
+	coachPageModal.addEventListener('click', function(e) {
+		if (e.target === coachPageModal) {
+			coachPageModal.style.display = 'none';
+			document.body.style.overflow = '';
+		}
+	});
+}
+
+// Owner Read More Modal
+const ownerReadMore = document.getElementById('ownerReadMore');
+const ownerModal = document.getElementById('ownerModal');
+const ownerModalClose = document.getElementById('ownerModalClose');
+
+if (ownerReadMore) {
+	ownerReadMore.addEventListener('click', function(e) {
+		e.preventDefault();
+		ownerModal.style.display = 'block';
+		document.body.style.overflow = 'hidden';
+	});
+}
+
+if (ownerModalClose) {
+	ownerModalClose.addEventListener('click', function() {
+		ownerModal.style.display = 'none';
+		document.body.style.overflow = '';
+	});
+}
+
+if (ownerModal) {
+	ownerModal.addEventListener('click', function(e) {
+		if (e.target === ownerModal) {
+			ownerModal.style.display = 'none';
+			document.body.style.overflow = '';
+		}
+	});
+}

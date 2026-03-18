@@ -65,14 +65,14 @@
 					<div class="feature-content">
 						<h3>FOR <span>ATHLETES</span></h3>
 						<p>Unlock your full potential with smart insights and personalized support. From advanced performance tracking to tailored nutrition and exposure tools, our platform helps athletes grow faster, train smarter, and stay ahead — all while building a standout profile for coaches and scouts.</p>
-					<a class="read-more" href="#">→ Read more</a>
+					<a class="read-more" href="#" id="athleteReadMore">→ Read more</a>
 					</div>
 				</div>
 				<div class="feature feature--right">
 					<div class="feature-content">
 						<h3>FOR <span>COACHES</span></h3>
 						<p>Focus on coaching — we’ll handle the rest. Manage teams, scout talent, and monitor players with an all-in-one coaching assistant powered by data. Whether you run a local squad or elite academy, our tools let you coach more effectively with less admin.</p>
-						<a class="read-more" href="#">→ Read more</a>
+						<a class="read-more" href="#" id="coachReadMore">→ Read more</a>
 					</div>
 					<div class="feature-media">
 						<img src="assets/service-coaches.jpeg" alt="Coaches" />
@@ -85,7 +85,7 @@
 					<div class="feature-content">
 						<h3>FOR <span>OWNERS</span></h3>
 						<p>Run your academy like a pro with smart management tools. Easily handle salaries, track attendance, and streamline student payments - all from one place. We help you save time, reduce manual work, and focus on growing your academy sustainably.</p>
-						<a class="read-more" href="#">→ Read more</a>
+						<a class="read-more" href="#" id="ownerReadMore">→ Read more</a>
 					</div>
 				</div>
 			</div>
@@ -135,6 +135,27 @@
 				<p class="footer-copy">© 2026 Roatre. All rights reserved.</p>
 			</div>
 		</footer>
+		<!-- Coach Modal -->
+		<div id="coachModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#ffd85a #111;">
+			<div style="position:relative;max-width:1100px;margin:60px auto;padding:20px;">
+				<button id="coachModalClose" style="position:absolute;right:30px;top:10px;background:none;border:none;color:#fff;font-size:40px;cursor:pointer;z-index:10;">&times;</button>
+				<iframe src="for_coaches.html" style="width:100%;height:85vh;border:none;border-radius:16px;display:block;"></iframe>
+			</div>
+		</div>
+		<!-- Owner Modal -->
+		<div id="ownerModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#ffd85a #111;">
+			<div style="position:relative;max-width:1100px;margin:60px auto;padding:20px;">
+				<button id="ownerModalClose" style="position:absolute;right:30px;top:10px;background:none;border:none;color:#fff;font-size:40px;cursor:pointer;z-index:10;">&times;</button>
+				<iframe src="for_owners.html" style="width:100%;height:85vh;border:none;border-radius:16px;display:block;"></iframe>
+			</div>
+		</div>
+		<!-- Athlete Modal -->
+		<div id="athleteModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#ffd85a #111;">
+			<div style="position:relative;max-width:1100px;margin:60px auto;padding:20px;">
+				<button id="athleteModalClose" style="position:absolute;right:30px;top:10px;background:none;border:none;color:#fff;font-size:40px;cursor:pointer;z-index:10;">&times;</button>
+				<iframe src="for_athlete.html" style="width:100%;height:85vh;border:none;border-radius:16px;display:block;"></iframe>
+			</div>
+		</div>
 		<script src="script.js"></script>
 	</body>
 </html>
