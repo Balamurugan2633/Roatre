@@ -1,5 +1,27 @@
 /* Basic layout */
 *{box-sizing:border-box}
+*{scrollbar-width:thin;scrollbar-color:#ffd85a #111}
+*::-webkit-scrollbar{width:8px;height:8px}
+*::-webkit-scrollbar-track{background:#111}
+*::-webkit-scrollbar-thumb{background:#ffd85a;border-radius:4px}
+*::-webkit-scrollbar-thumb:hover{background:#ffcc00}
+/* Force gold scrollbar on modal overlays */
+#coachModal,#ownerModal,#athleteModal{
+	scrollbar-width:thin;
+	scrollbar-color:#ffd85a #111;
+}
+#coachModal::-webkit-scrollbar,
+#ownerModal::-webkit-scrollbar,
+#athleteModal::-webkit-scrollbar{width:8px}
+#coachModal::-webkit-scrollbar-track,
+#ownerModal::-webkit-scrollbar-track,
+#athleteModal::-webkit-scrollbar-track{background:#111}
+#coachModal::-webkit-scrollbar-thumb,
+#ownerModal::-webkit-scrollbar-thumb,
+#athleteModal::-webkit-scrollbar-thumb{background:#ffd85a;border-radius:4px}
+#coachModal::-webkit-scrollbar-thumb:hover,
+#ownerModal::-webkit-scrollbar-thumb:hover,
+#athleteModal::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#ffd85a;background:#000;scrollbar-width:thin;scrollbar-color:#ffd85a #111}
 body::-webkit-scrollbar{width:8px}
 body::-webkit-scrollbar-track{background:#111}
@@ -216,7 +238,7 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 	background:rgba(0,0,0,0.5);
 	z-index:1;
 }
-.hero-content{display:flex;flex-direction:column;align-items:center;gap:24px}
+.hero-content{display:flex;flex-direction:column;align-items:center;gap:24px;position:relative;z-index:2}
 .hero h1{font-size:clamp(32px,8vw,64px);font-weight:700;letter-spacing:2px;margin:0;text-transform:uppercase;color:#ffd85a}
 .scroll-cta{display:flex;flex-direction:column;align-items:center;gap:8px;background:transparent;border:2px solid rgba(255,180,0,0.5);color:#ffd85a;padding:12px 18px;border-radius:50px;cursor:pointer;transition:all .3s ease;margin-top:24px}
 .scroll-cta:hover{background:rgba(255,180,0,0.04);border-color:#ffd85a}
@@ -342,7 +364,7 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 /* Footer */
 .site-footer{
 	background:#000;
-	padding:0;
+	padding:10px;
 	position:relative;
 	overflow:hidden;
 }

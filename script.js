@@ -1,57 +1,76 @@
-document.addEventListener('DOMContentLoaded', function () {
-	const header = document.querySelector('.site-header');
-	const siteVideo = document.getElementById('siteBgVideo');
-	const scrollBtn = document.getElementById('scrollToServices');
+// Load shared header and set active nav link
+function loadHeader() {
+	const placeholder = document.getElementById('site-header-placeholder');
+	if (!placeholder) return;
+	fetch('header.html')
+		.then(r => r.text())
+		.then(html => {
+			placeholder.outerHTML = html;
+			const page = location.pathname.split('/').pop() || 'index.html';
+			document.querySelectorAll('.main-menu a').forEach(a => {
+				if (a.getAttribute('href') === page) a.classList.add('active');
+			});
+			initHeader();
+		});
+}
 
-	// Hamburger nav
+function loadFooter() {
+	const placeholder = document.getElementById('site-footer-placeholder');
+	if (!placeholder) return;
+	fetch('footer.html')
+		.then(r => r.text())
+		.then(html => { placeholder.outerHTML = html; });
+}
+
+function initHeader() {
+	const header = document.querySelector('.site-header');
 	const nav = document.querySelector('.site-nav');
 	if (nav && header) {
 		const overlay = document.createElement('div');
 		overlay.className = 'nav-overlay';
 		document.body.appendChild(overlay);
-
 		const toggle = document.createElement('button');
 		toggle.className = 'nav-toggle';
 		toggle.setAttribute('aria-label', 'Toggle navigation');
 		toggle.innerHTML = '<span></span><span></span><span></span>';
 		header.appendChild(toggle);
-
 		function closeNav() {
 			toggle.classList.remove('open');
 			nav.classList.remove('open');
 			overlay.classList.remove('open');
 			document.body.style.overflow = '';
 		}
-
 		toggle.addEventListener('click', function () {
 			const isOpen = nav.classList.toggle('open');
 			toggle.classList.toggle('open', isOpen);
 			overlay.classList.toggle('open', isOpen);
 			document.body.style.overflow = isOpen ? 'hidden' : '';
 		});
-
 		overlay.addEventListener('click', function(e) {
-			if (!nav.contains(e.target)) {
-				closeNav();
-			}
+			if (!nav.contains(e.target)) closeNav();
 		});
 	}
-
 	if (header) {
 		window.addEventListener('scroll', function () {
-			if (window.scrollY > 50) {
-				header.classList.add('scrolled');
-			} else {
-				header.classList.remove('scrolled');
-			}
+			header.classList.toggle('scrolled', window.scrollY > 50);
 		});
 	}
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+	loadHeader();
+	loadFooter();
+	const siteVideo = document.getElementById('siteBgVideo');
+	const scrollBtn = document.getElementById('scrollToServices');
 
 	if (scrollBtn) {
 		scrollBtn.addEventListener('click', function () {
 			const servicesSection = document.getElementById('services');
 			if (servicesSection) {
-				servicesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				const header = document.querySelector('.site-header');
+				const offset = header ? header.offsetHeight : 0;
+				const y = servicesSection.getBoundingClientRect().top + window.pageYOffset - offset;
+				window.scrollTo({ top: y, behavior: 'smooth' });
 			}
 		});
 	}
