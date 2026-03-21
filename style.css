@@ -4501,6 +4501,9 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .about-values-grid {
+        grid-template-columns: 1fr;
+    }
     .why-hero-content h1 {
         font-size: 2.5rem;
     }
