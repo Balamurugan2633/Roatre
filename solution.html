@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -6,74 +6,760 @@
 		<title>Roatre - Solution</title>
 		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+		<style>
+			/* ── SOLUTION PAGE ── */
+			.sol-page { background: #000; color: #fff; font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial; }
+
+			/* ── HERO ── */
+			.sol-hero {
+				position: relative;
+				min-height: 92vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				padding: 0 60px 72px;
+				overflow: hidden;
+				background: radial-gradient(ellipse at 60% 0%, rgba(255,216,90,0.13) 0%, transparent 55%),
+				            linear-gradient(180deg, #050505 0%, #000 100%);
+			}
+
+			.sol-hero-bg-text {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				font-size: clamp(8rem, 18vw, 22rem);
+				font-weight: 900;
+				text-transform: uppercase;
+				color: rgba(255,255,255,0.025);
+				white-space: nowrap;
+				pointer-events: none;
+				letter-spacing: -4px;
+				user-select: none;
+			}
+
+			.sol-hero-kicker {
+				display: inline-flex;
+				align-items: center;
+				gap: 10px;
+				color: #ffd85a;
+				font-size: 0.75rem;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 3px;
+				margin-bottom: 24px;
+			}
+
+			.sol-hero-kicker::before {
+				content: '';
+				display: block;
+				width: 32px;
+				height: 2px;
+				background: #ffd85a;
+			}
+
+			.sol-hero-title {
+				font-size: clamp(3.5rem, 8vw, 9rem);
+				font-weight: 900;
+				text-transform: uppercase;
+				line-height: 0.92;
+				letter-spacing: -2px;
+				margin: 0 0 36px;
+				max-width: 900px;
+			}
+
+			.sol-hero-title em {
+				font-style: italic;
+				color: #ffd85a;
+			}
+
+			.sol-hero-bottom {
+				display: flex;
+				align-items: flex-end;
+				justify-content: space-between;
+				gap: 40px;
+			}
+
+			.sol-hero-desc {
+				max-width: 480px;
+				color: #aaa;
+				font-size: 1rem;
+				line-height: 1.75;
+			}
+
+			.sol-hero-scroll {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				color: rgba(255,255,255,0.35);
+				font-size: 0.75rem;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				flex-shrink: 0;
+			}
+
+			.sol-hero-scroll-line {
+				width: 1px;
+				height: 60px;
+				background: linear-gradient(180deg, rgba(255,216,90,0.6), transparent);
+			}
+
+			/* ── TOPIC LABEL BAR ── */
+			.sol-label-bar {
+				display: flex;
+				align-items: center;
+				gap: 0;
+				border-top: 1px solid rgba(255,255,255,0.08);
+				border-bottom: 1px solid rgba(255,255,255,0.08);
+				background: #050505;
+				overflow: hidden;
+			}
+
+			.sol-label-item {
+				flex: 1;
+				display: flex;
+				align-items: center;
+				gap: 14px;
+				padding: 20px 36px;
+				border-right: 1px solid rgba(255,255,255,0.08);
+				cursor: default;
+				transition: background 0.2s;
+			}
+
+			.sol-label-item:last-child { border-right: none; }
+
+			.sol-label-item:hover { background: rgba(255,216,90,0.04); }
+
+			/* .sol-label-item.active {
+				background: rgba(255,216,90,0.08);
+			}
+
+			.sol-label-item.active .sol-label-num { opacity: 1; } */
+
+			.sol-label-item { cursor: pointer; }
+
+			.sol-label-num {
+				font-size: 0.7rem;
+				font-weight: 700;
+				color: #ffd85a;
+				opacity: 0.6;
+				letter-spacing: 1px;
+			}
+
+			.sol-label-text {
+				font-size: 0.82rem;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 1.5px;
+				color: #fff;
+			}
+
+			/* ── TOPIC SECTION WRAPPER ── */
+			.sol-topic {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				min-height: 100vh;
+				border-bottom: 1px solid rgba(255,255,255,0.07);
+			}
+
+			/* LEFT PANEL */
+			.sol-topic-left {
+				position: sticky;
+				top: 0;
+				height: 100vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				padding: 64px 56px;
+				border-right: 1px solid rgba(255,255,255,0.07);
+				background: #030303;
+				overflow: hidden;
+			}
+
+			.sol-topic-left::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: radial-gradient(circle at 20% 80%, rgba(255,216,90,0.07), transparent 60%);
+				pointer-events: none;
+			}
+
+			.sol-topic-tag {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				font-size: 0.7rem;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 2.5px;
+				color: #ffd85a;
+				margin-bottom: 28px;
+			}
+
+			.sol-topic-tag-dot {
+				width: 6px;
+				height: 6px;
+				border-radius: 50%;
+				background: #ffd85a;
+			}
+
+			.sol-topic-heading {
+				font-size: clamp(3rem, 4.5vw, 5.5rem);
+				font-weight: 900;
+				text-transform: uppercase;
+				line-height: 0.9;
+				letter-spacing: -1.5px;
+				flex: 1;
+				display: flex;
+				align-items: center;
+			}
+
+			.sol-topic-heading em {
+				font-style: italic;
+				color: #ffd85a;
+				display: block;
+			}
+
+			.sol-topic-bottom {
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+			}
+
+			.sol-topic-index {
+				font-size: 0.7rem;
+				font-weight: 700;
+				color: rgba(255,255,255,0.2);
+				text-transform: uppercase;
+				letter-spacing: 2px;
+			}
+
+			.sol-topic-pills {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+			}
+
+			.sol-topic-pill {
+				padding: 6px 14px;
+				border: 1px solid rgba(255,216,90,0.22);
+				background: rgba(255,216,90,0.06);
+				color: #ffd85a;
+				font-size: 0.72rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				border-radius: 999px;
+			}
+
+			/* RIGHT PANEL */
+			.sol-topic-right {
+				padding: 64px 56px;
+				background: #000;
+				display: flex;
+				flex-direction: column;
+				gap: 0;
+			}
+
+			.sol-topic-intro {
+				padding-bottom: 48px;
+				border-bottom: 1px solid rgba(255,255,255,0.07);
+				margin-bottom: 48px;
+			}
+
+			.sol-topic-intro-label {
+				font-size: 0.7rem;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				color: rgba(255,255,255,0.3);
+				margin-bottom: 16px;
+			}
+
+			.sol-topic-intro p {
+				font-size: 1.15rem;
+				line-height: 1.75;
+				color: #c8c8c8;
+				max-width: 520px;
+			}
+
+			/* Feature rows */
+			.sol-feature-row {
+				display: grid;
+				grid-template-columns: 48px 1fr;
+				gap: 20px;
+				padding: 32px 0;
+				border-bottom: 1px solid rgba(255,255,255,0.06);
+				align-items: start;
+			}
+
+			.sol-feature-row:last-child { border-bottom: none; }
+
+			.sol-feature-icon-wrap {
+				width: 48px;
+				height: 48px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border: 1px solid rgba(255,216,90,0.2);
+				background: rgba(255,216,90,0.06);
+				border-radius: 12px;
+				color: #ffd85a;
+				font-size: 1.1rem;
+				flex-shrink: 0;
+				margin-top: 2px;
+			}
+
+			.sol-feature-content h3 {
+				font-size: 1.05rem;
+				font-weight: 700;
+				color: #fff;
+				margin: 0 0 10px;
+				line-height: 1.2;
+				text-transform: uppercase;
+				letter-spacing: 0.3px;
+			}
+
+			.sol-feature-content p {
+				font-size: 0.93rem;
+				color: #999;
+				line-height: 1.7;
+				margin: 0;
+			}
+
+			/* ── STATS STRIP ── */
+			.sol-stats-strip {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				border-top: 1px solid rgba(255,255,255,0.07);
+				border-bottom: 1px solid rgba(255,255,255,0.07);
+				background: #050505;
+			}
+
+			.sol-stat-cell {
+				padding: 36px 40px;
+				border-right: 1px solid rgba(255,255,255,0.07);
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+			}
+
+			.sol-stat-cell:last-child { border-right: none; }
+
+			.sol-stat-value {
+				font-size: 1.6rem;
+				font-weight: 900;
+				color: #ffd85a;
+				text-transform: uppercase;
+				letter-spacing: -0.5px;
+				line-height: 1;
+			}
+
+			.sol-stat-label {
+				font-size: 0.75rem;
+				color: #666;
+				text-transform: uppercase;
+				letter-spacing: 1.2px;
+				font-weight: 600;
+			}
+
+			/* ── MATCH REPORTS — amber accent ── */
+			.sol-topic--match .sol-topic-left::before {
+				background: radial-gradient(circle at 20% 80%, rgba(255,140,40,0.08), transparent 60%);
+			}
+
+			.sol-topic--match .sol-topic-tag,
+			.sol-topic--match .sol-topic-heading em,
+			.sol-topic--match .sol-feature-icon-wrap,
+			.sol-topic--match .sol-topic-pill,
+			.sol-topic--match .sol-stat-value { color: #ffb347; }
+
+			.sol-topic--match .sol-topic-tag-dot,
+			.sol-topic--match .sol-hero-kicker::before { background: #ffb347; }
+
+			.sol-topic--match .sol-topic-pill {
+				border-color: rgba(255,160,50,0.25);
+				background: rgba(255,160,50,0.07);
+			}
+
+			.sol-topic--match .sol-feature-icon-wrap {
+				border-color: rgba(255,160,50,0.22);
+				background: rgba(255,160,50,0.07);
+			}
+
+			.sol-topic--match .sol-stats-strip {
+				background: #040402;
+				border-color: rgba(255,160,50,0.1);
+			}
+
+			.sol-topic--match .sol-stat-cell {
+				border-color: rgba(255,160,50,0.1);
+			}
+
+			/* ── DRILLS & IMPROVEMENT — green accent ── */
+			.sol-topic--drills .sol-topic-left::before {
+				background: radial-gradient(circle at 20% 80%, rgba(80,200,120,0.08), transparent 60%);
+			}
+
+			.sol-topic--drills .sol-topic-tag,
+			.sol-topic--drills .sol-topic-heading em,
+			.sol-topic--drills .sol-feature-icon-wrap,
+			.sol-topic--drills .sol-topic-pill,
+			.sol-topic--drills .sol-stat-value { color: #5ecb8a; }
+
+			.sol-topic--drills .sol-topic-tag-dot { background: #5ecb8a; }
+
+			.sol-topic--drills .sol-topic-pill {
+				border-color: rgba(94,203,138,0.25);
+				background: rgba(94,203,138,0.07);
+			}
+
+			.sol-topic--drills .sol-feature-icon-wrap {
+				border-color: rgba(94,203,138,0.22);
+				background: rgba(94,203,138,0.07);
+			}
+
+			.sol-stats-strip.sol-topic--drills {
+				background: #020504;
+				border-color: rgba(94,203,138,0.1);
+			}
+
+			.sol-stats-strip.sol-topic--drills .sol-stat-cell {
+				border-color: rgba(94,203,138,0.1);
+			}
+
+			/* ── RESPONSIVE ── */
+			@media (max-width: 1100px) {
+				.sol-hero { padding: 0 36px 56px; }
+				.sol-topic { grid-template-columns: 1fr; min-height: auto; }
+				.sol-topic-left {
+					position: relative;
+					height: auto;
+					min-height: 320px;
+					border-right: none;
+					border-bottom: 1px solid rgba(255,255,255,0.07);
+					padding: 48px 36px;
+				}
+				.sol-topic-heading { font-size: clamp(2.8rem, 7vw, 4.5rem); }
+				.sol-topic-right { padding: 48px 36px; }
+				.sol-label-item { padding: 16px 24px; }
+			}
+
+			@media (max-width: 768px) {
+				.sol-hero { padding: 0 24px 48px; min-height: 80vh; }
+				.sol-hero-bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
+				.sol-hero-scroll { display: none; }
+				.sol-label-bar { flex-direction: column; }
+				.sol-label-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+				.sol-label-item:last-child { border-bottom: none; }
+				.sol-topic-left, .sol-topic-right { padding: 36px 24px; }
+				.sol-stats-strip { grid-template-columns: repeat(2, 1fr); }
+				.sol-stat-cell:nth-child(2) { border-right: none; }
+				.sol-stat-cell:nth-child(3) { border-right: 1px solid rgba(255,255,255,0.07); }
+				.sol-stat-cell { padding: 24px; }
+			}
+
+			@media (max-width: 480px) {
+				.sol-stats-strip { grid-template-columns: 1fr 1fr; }
+				.sol-feature-row { grid-template-columns: 40px 1fr; gap: 14px; }
+			}
+		</style>
 	</head>
-	<body class="about-page">
+	<body class="about-page sol-page">
 		<div id="site-header-placeholder"></div>
+
 		<main>
-			<section class="solution-hero">
-				<div class="solution-hero-left">
-					<h2 class="solution-hero-title">Performance<br>Analysis</h2>
-				</div>
 
-				<div class="solution-hero-right">
-					<p class="solution-hero-kicker">SOLUTION</p>
-					<p class="solution-hero-copy">Capture every training session and turn it into clear, structured insights. Track daily performance, measure weekly progress, and identify what needs improvement.</p>
-					<div class="solution-hero-divider"></div>
-
-					<div class="perf-features">
-						<div class="perf-feature-card">
-							<div class="perf-feature-icon"><i class="fa-solid fa-chart-bar"></i></div>
-							<div class="perf-feature-body">
-								<h3>Understand Training Performance Clearly</h3>
-								<p>Capture every training session and turn it into clear, structured insights.
-									Track daily performance, measure weekly progress, and identify what needs improvement. </p>
-							</div>
-						</div>
-						<div class="perf-feature-card">
-							<div class="perf-feature-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-							<div class="perf-feature-body">
-								<h3>A System That Fits Into Your Coaching</h3>
-								<p>The platform works alongside regular training without changing the coaching process. Coaches continue their sessions as usual, and with a simple tap, important moments are recorded through audio or video. Each session automatically generates daily reports and contributes to weekly progress summaries, creating a clear record of training activity.</p>
-							</div>
-						</div>
-
-						<div class="perf-feature-card">
-							<div class="perf-feature-icon"><i class="fa-solid fa-chart-line"></i></div>
-							<div class="perf-feature-body">
-								<h3>Identify Areas for Improvement</h3>
-								<p>When training information is consistently recorded and reviewed, areas that need improvement become easier to recognize. Patterns across sessions reveal technical weaknesses and skills that require additional focus. This structured view of training helps ensure that adjustments are based on clear observations rather than assumptions.</p>
-							</div>
-						</div>
+			<!-- ══ HERO ══ -->
+			<section class="sol-hero">
+				<div class="sol-hero-bg-text">Solution</div>
+				<div class="sol-hero-kicker">Roatre &mdash; Platform</div>
+				<h1 class="sol-hero-title">Built for<br><em>Real</em><br>Performance</h1>
+				<div class="sol-hero-bottom">
+					<p class="sol-hero-desc">From training sessions to match days, every moment is captured, structured, and turned into insights that drive real improvement.</p>
+					<div class="sol-hero-scroll">
+						<div class="sol-hero-scroll-line"></div>
+						<span>Scroll</span>
 					</div>
 				</div>
 			</section>
 
-			<section class="perf-stats-section">
-				<div class="perf-stats-shell">
-					<div class="perf-stat">
-						<strong>Daily</strong>
-						<span>Session Reports</span>
+			<!-- ══ TOPIC NAV BAR ══ -->
+			<div class="sol-label-bar">
+				<div class="sol-label-item" data-target="topic-01">
+					<span class="sol-label-num">01</span>
+					<span class="sol-label-text">Performance Analysis</span>
+				</div>
+				<div class="sol-label-item" data-target="topic-02">
+					<span class="sol-label-num">02</span>
+					<span class="sol-label-text">Match Reports</span>
+				</div>
+				<div class="sol-label-item" data-target="topic-03">
+					<span class="sol-label-num">03</span>
+					<span class="sol-label-text">Drills &amp; Improvement</span>
+				</div>
+			</div>
+
+			<!-- ══ TOPIC 01 — PERFORMANCE ANALYSIS ══ -->
+			<div class="sol-topic" id="topic-01">
+
+				<div class="sol-topic-left">
+					<div>
+						<div class="sol-topic-tag">
+							<span class="sol-topic-tag-dot"></span>
+							Solution 01
+						</div>
 					</div>
-					<div class="perf-stat-divider"></div>
-					<div class="perf-stat">
-						<strong>Weekly</strong>
-						<span>Progress Summaries</span>
+					<div class="sol-topic-heading">
+						<div>Performance<br><em>Analysis</em></div>
 					</div>
-					<div class="perf-stat-divider"></div>
-					<div class="perf-stat">
-						<strong>Audio &amp; Video</strong>
-						<span>Moment Capture</span>
-					</div>
-					<div class="perf-stat-divider"></div>
-					<div class="perf-stat">
-						<strong>Pattern</strong>
-						<span>Weakness Detection</span>
+					<div class="sol-topic-bottom">
+						<div class="sol-topic-index">01 / 03</div>
+						<div class="sol-topic-pills">
+							<span class="sol-topic-pill">Daily Reports</span>
+							<span class="sol-topic-pill">Weekly Progress</span>
+							<span class="sol-topic-pill">Audio &amp; Video</span>
+							<span class="sol-topic-pill">Pattern Detection</span>
+						</div>
 					</div>
 				</div>
-			</section>
+
+				<div class="sol-topic-right">
+					<div class="sol-topic-intro">
+						<p class="sol-topic-intro-label">Overview</p>
+						<p>Capture every training session and turn it into clear, structured insights. Track daily performance, measure weekly progress, and identify what needs improvement — without changing how you coach.</p>
+					</div>
+
+					<div class="sol-feature-row">
+						<div class="sol-feature-icon-wrap"><i class="fa-solid fa-chart-bar"></i></div>
+						<div class="sol-feature-content">
+							<h3>Understand Training Performance Clearly</h3>
+							<p>Capture every training session and turn it into clear, structured insights. Track daily performance, measure weekly progress, and identify what needs improvement.</p>
+						</div>
+					</div>
+
+					<div class="sol-feature-row">
+						<div class="sol-feature-icon-wrap"><i class="fa-solid fa-mobile-screen-button"></i></div>
+						<div class="sol-feature-content">
+							<h3>A System That Fits Into Your Coaching</h3>
+							<p>The platform works alongside regular training without changing the coaching process. With a simple tap, important moments are recorded through audio or video. Each session automatically generates daily reports and contributes to weekly progress summaries.</p>
+						</div>
+					</div>
+
+					<div class="sol-feature-row">
+						<div class="sol-feature-icon-wrap"><i class="fa-solid fa-chart-line"></i></div>
+						<div class="sol-feature-content">
+							<h3>Identify Areas for Improvement</h3>
+							<p>When training information is consistently recorded and reviewed, areas that need improvement become easier to recognize. Patterns across sessions reveal technical weaknesses and skills that require additional focus.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Stats strip 01 -->
+			<div class="sol-stats-strip">
+				<div class="sol-stat-cell">
+					<span class="sol-stat-value">Daily</span>
+					<span class="sol-stat-label">Session Reports</span>
+				</div>
+				<div class="sol-stat-cell">
+					<span class="sol-stat-value">Weekly</span>
+					<span class="sol-stat-label">Progress Summaries</span>
+				</div>
+				<div class="sol-stat-cell">
+					<span class="sol-stat-value">Audio &amp; Video</span>
+					<span class="sol-stat-label">Moment Capture</span>
+				</div>
+				<div class="sol-stat-cell">
+					<span class="sol-stat-value">Pattern</span>
+					<span class="sol-stat-label">Weakness Detection</span>
+				</div>
+			</div>
+
+			<!-- ══ TOPIC 02 — MATCH REPORTS ══ -->
+			<div class="sol-topic sol-topic--match" id="topic-02">
+
+				<div class="sol-topic-left">
+					<div>
+						<div class="sol-topic-tag">
+							<span class="sol-topic-tag-dot"></span>
+							Solution 02
+						</div>
+					</div>
+					<div class="sol-topic-heading">
+						<div>Match<br><em>Reports</em></div>
+					</div>
+					<div class="sol-topic-bottom">
+						<div class="sol-topic-index">02 / 03</div>
+						<div class="sol-topic-pills">
+							<span class="sol-topic-pill">Per Match</span>
+							<span class="sol-topic-pill">Batting &amp; Bowling</span>
+							<span class="sol-topic-pill">Contributions</span>
+							<span class="sol-topic-pill">Weakness History</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="sol-topic-right">
+					<div class="sol-topic-intro">
+						<p class="sol-topic-intro-label">Overview</p>
+						<p>Capture every match and turn it into structured performance insights. Review match contributions, identify performance gaps, and understand how players perform in real game situations.</p>
+					</div>
+
+					<div class="sol-feature-row">
+						<div class="sol-feature-icon-wrap"><i class="fa-solid fa-clipboard-list"></i></div>
+						<div class="sol-feature-content">
+							<h3>Match Performance Insights</h3>
+							<p>The match reporting system captures key aspects of performance and organizes them into structured insights — highlighting batting and bowling patterns, important match moments, individual contributions, and situations where performance declined.</p>
+						</div>
+					</div>
+
+					<div class="sol-feature-row">
+						<div class="sol-feature-icon-wrap"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+						<div class="sol-feature-content">
+							<h3>Understand Where Players Struggle</h3>
+							<p>By structuring match information into clear reports, the platform makes it easier to recognize patterns across games. These insights reveal technical weaknesses, recurring mistakes, and areas that require focused improvement.</p>
+						</div>
+					</div>
+
+					<div class="sol-feature-row">
+						<div class="sol-feature-icon-wrap"><i class="fa-solid fa-timeline"></i></div>
+						<div class="sol-feature-content">
+							<h3>Build a Reliable Performance History</h3>
+							<p>Over time, match reports build a reliable performance history that helps guide training and prepare players more effectively for upcoming matches — turning every game into a learning opportunity.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Stats strip 02 -->
+			<div class="sol-stats-strip sol-topic--match">
+				<div class="sol-stat-cell">
+					<span class="sol-stat-value">Per Match</span>
+					<span class="sol-stat-label">Structured Reports</span>
+				</div>
+				<div class="sol-stat-cell">
+					<span class="sol-stat-value">Batting &amp; Bowling</span>
+					<span class="sol-stat-label">Pattern Analysis</span>
+				</div>
+				<div class="sol-stat-cell">
+					<span class="sol-stat-value">Individual</span>
+					<span class="sol-stat-label">Contribution Review</span>
+				</div>
+				<div class="sol-stat-cell">
+					<span class="sol-stat-value">Recurring</span>
+					<span class="sol-stat-label">Weakness Detection</span>
+				</div>
+			</div>
+
+			<!-- ══ TOPIC 03 — DRILLS & IMPROVEMENT ══ -->
+			<div class="sol-topic sol-topic--drills" id="topic-03">
+
+				<div class="sol-topic-left">
+					<div>
+						<div class="sol-topic-tag">
+							<span class="sol-topic-tag-dot"></span>
+							Solution 03
+						</div>
+					</div>
+					<div class="sol-topic-heading">
+						<div>Drills &amp;<br><em>Improvement</em></div>
+					</div>
+					<div class="sol-topic-bottom">
+						<div class="sol-topic-index">03 / 03</div>
+						<div class="sol-topic-pills">
+							<span class="sol-topic-pill">Targeted Drills</span>
+							<span class="sol-topic-pill">Skill Gaps</span>
+							<span class="sol-topic-pill">Parent Visibility</span>
+							<span class="sol-topic-pill">Progress Tracking</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="sol-topic-right">
+					<div class="sol-topic-intro">
+						<p class="sol-topic-intro-label">Overview</p>
+						<p>Turn insights into action. This system connects performance observations with targeted training, ensuring that every identified gap leads to meaningful improvement.</p>
+					</div>
+
+					<div class="sol-feature-row">
+						<div class="sol-feature-icon-wrap"><i class="fa-solid fa-dumbbell"></i></div>
+						<div class="sol-feature-content">
+							<h3>From Observation to Structured Training</h3>
+							<p>Training becomes more effective when improvement areas are clearly defined and translated into specific drills. Instead of relying on general feedback, the system organizes performance observations into focused training actions linked directly to the skills that need improvement — allowing players to work on the right areas at the right time.</p>
+						</div>
+					</div>
+
+					<div class="sol-feature-row">
+						<div class="sol-feature-icon-wrap"><i class="fa-solid fa-eye"></i></div>
+						<div class="sol-feature-content">
+							<h3>Parent Visibility Into Development</h3>
+							<p>Parents gain clear visibility into the drills their child is practicing and how development is progressing. This structured approach keeps families informed and connected to the player's improvement journey without disrupting the coaching process.</p>
+						</div>
+					</div>
+
+					<div class="sol-feature-row">
+						<div class="sol-feature-icon-wrap"><i class="fa-solid fa-arrow-trend-up"></i></div>
+						<div class="sol-feature-content">
+							<h3>Track Progress and Build Consistent Development</h3>
+							<p>The platform tracks drill activity and player development, allowing academies to see whether corrections are working and where further attention is needed. Over time, this structured drill management creates a consistent coaching process where training remains focused, measurable, and aligned with long-term player development.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Stats strip 03 -->
+			<div class="sol-stats-strip sol-topic--drills">
+				<div class="sol-stat-cell">
+					<span class="sol-stat-value">Targeted</span>
+					<span class="sol-stat-label">Drill Assignment</span>
+				</div>
+				<div class="sol-stat-cell">
+					<span class="sol-stat-value">Skill-Linked</span>
+					<span class="sol-stat-label">Gap Correction</span>
+				</div>
+				<div class="sol-stat-cell">
+					<span class="sol-stat-value">Parent</span>
+					<span class="sol-stat-label">Progress Visibility</span>
+				</div>
+				<div class="sol-stat-cell">
+					<span class="sol-stat-value">Consistent</span>
+					<span class="sol-stat-label">Development Tracking</span>
+				</div>
+			</div>
+
 		</main>
 
 		<div id="site-footer-placeholder"></div>
 		<script src="script.js"></script>
+		<script>
+			(function () {
+				const items = document.querySelectorAll('.sol-label-item[data-target]');
+				const topics = document.querySelectorAll('.sol-topic[id]');
+				const labelBar = document.querySelector('.sol-label-bar');
+
+				function setActive(targetId) {
+					items.forEach(el => el.classList.toggle('active', el.dataset.target === targetId));
+				}
+
+				items.forEach(item => {
+					item.addEventListener('click', () => {
+						const target = document.getElementById(item.dataset.target);
+						if (target) {
+							const offset = labelBar.getBoundingClientRect().height;
+							window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+						}
+					});
+				});
+
+				const observer = new IntersectionObserver(entries => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) setActive(entry.target.id);
+					});
+				}, { threshold: 0.3 });
+
+				topics.forEach(t => observer.observe(t));
+			})();
+		</script>
 	</body>
 </html>
