@@ -1033,7 +1033,7 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 .role-section{
 	max-width:1200px;
 	margin:0 auto;
-	padding:0 28px 100px;
+	padding:0 10px 60px;
 }
 .role-top{
 	display:grid;
@@ -1311,7 +1311,7 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 }
 .about-quote{
 	max-width:900px;
-	margin:0 auto 110px;
+	margin:0 auto 40px;
 	padding:32px 28px;
 	text-align:center;
 	border-top:1px solid rgba(255,255,255,0.08);
@@ -5256,7 +5256,7 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 .appr-section {
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 0 28px 100px;
+	padding: 0 28px 60px;
 }
 
 .appr-header {
@@ -5310,10 +5310,17 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 	font-size: 1.1rem;
 	line-height: 1.75;
 	color: #888;
-	max-width: 460px;
+	max-width: 600px;
 	align-self: end;
 }
-
+.appr-header-desc1 {
+	margin: 0;
+	font-size: 1.1rem;
+	line-height: 1.75;
+	color: #888;
+	max-width: 600px;
+	align-self: end;
+}
 /* List */
 .appr-list {
 	display: flex;
@@ -5594,7 +5601,7 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 /* appr-card 06 — connect image background */
 .appr-card:nth-child(6) {
 	position: relative;
-	background-image: url('assets/connect.jpg');
+	background-image: url('assets/connects.jpg');
 	background-size: cover;
 	background-position: center;
 	overflow: hidden;
@@ -5712,7 +5719,7 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 /* role-card 2 — players */
 .role-card:nth-child(2) {
 	position: relative;
-	background-image: url('assets/player.jpg');
+	background-image: url('assets/players.jpeg');
 	background-size: cover;
 	background-position: center;
 	overflow: hidden;
@@ -6196,3 +6203,7 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 	background-position: center top !important;
 	background-repeat: no-repeat !important;
 }
+/*  */
+
+/* Role title — single line */
+.role-section .appr-title em { display: inline !important; }
