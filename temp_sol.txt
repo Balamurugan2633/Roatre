@@ -12,9 +12,6 @@
 
 			/* ── HERO ── */
 			.sol-hero {
-				background-image: url('assets/solutionback.png');
-				background-size: cover;
-				background-position: center top;
 				position: relative;
 				min-height: 92vh;
 				display: flex;
@@ -22,7 +19,8 @@
 				justify-content: flex-end;
 				padding: 0 60px 72px;
 				overflow: hidden;
-				background-color: #030303;
+				background: radial-gradient(ellipse at 60% 0%, rgba(255,216,90,0.13) 0%, transparent 55%),
+				            linear-gradient(180deg, #050505 0%, #000 100%);
 			}
 
 			.sol-hero-bg-text {
@@ -465,18 +463,13 @@
 				.sol-stats-strip { grid-template-columns: 1fr 1fr; }
 				.sol-feature-row { grid-template-columns: 40px 1fr; gap: 14px; }
 			}
-		#topic-03 .sol-topic-left{background-image:url('assets/drill improvement1.png');background-size:cover;background-position:center;}
-#topic-02 .sol-topic-left{background-image:url('assets/match report1.png');background-size:cover;background-position:center;}
-#topic-01 .sol-topic-left{background-image:url('assets/performance1.png');background-size:cover;background-position:center;}
-.sol-topic-left::before{background:linear-gradient(to top,rgba(3,3,3,0.92) 40%,rgba(3,3,3,0.55) 100%)!important;z-index:1;}
-.sol-topic-left>*{position:relative;z-index:2;}
-</style>
+		</style>
 	</head>
 	<body class="about-page sol-page">
 		<div id="site-header-placeholder"></div>
 
 		<main>
-<br><br><br>
+
 			<!-- ══ HERO ══ -->
 			<section class="sol-hero">
 				<div class="sol-hero-bg-text">Solution</div>
