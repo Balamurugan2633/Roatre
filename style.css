@@ -4340,7 +4340,7 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 }
 
 .value-list li:before {
-    content: "âœ“";
+	content: "✓";
     position: absolute;
     left: 0;
     color: #ffd85a;
