@@ -6198,3 +6198,237 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 
 /* Role title — single line */
 .role-section .appr-title em { display: inline !important; }
+
+/* ── OUR SERVICES CARDS SECTION ── */
+.svc-cards-section {
+	background: #000;
+	padding: 80px 36px 90px;
+}
+
+.svc-cards-title {
+	text-align: center;
+	font-size: clamp(2rem, 5vw, 3.5rem);
+	font-weight: 900;
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	color: #fff;
+	margin: 0 0 52px;
+}
+
+.svc-cards-title span { color: #ffd85a; }
+
+.svc-cards-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.svc-card {
+	position: relative;
+	border-radius: 20px;
+	overflow: hidden;
+	min-height: 420px;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.svc-card-img {
+	position: absolute;
+	inset: 0;
+	background-size: cover;
+	background-position: center;
+	transition: transform 0.5s ease;
+}
+
+.svc-card:hover .svc-card-img { transform: scale(1.06); }
+
+.svc-card-overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.1) 100%);
+	transition: background 0.3s ease;
+}
+
+.svc-card:hover .svc-card-overlay {
+	background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.15) 100%);
+}
+
+.svc-card-body {
+	position: relative;
+	z-index: 2;
+	padding: 24px 22px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.svc-card-label {
+	font-size: 1.15rem;
+	font-weight: 700;
+	color: #fff;
+	letter-spacing: 0.3px;
+}
+
+.svc-card-arrow {
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	border: 1.5px solid rgba(255,216,90,0.55);
+	background: rgba(255,216,90,0.08);
+	color: #ffd85a;
+	font-size: 1.1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	flex-shrink: 0;
+	transition: background 0.2s, border-color 0.2s;
+}
+
+.svc-card:hover .svc-card-arrow {
+	background: #ffd85a;
+	color: #000;
+	border-color: #ffd85a;
+}
+
+/* ── SERVICE MODALS ── */
+.svc-modal {
+	display: none;
+	position: fixed;
+	inset: 0;
+	background: rgba(0,0,0,0.88);
+	z-index: 9999;
+	overflow-y: auto;
+	scrollbar-width: thin;
+	scrollbar-color: #ffd85a #111;
+	align-items: center;
+	justify-content: center;
+	padding: 40px 20px;
+}
+
+.svc-modal.open { display: flex; }
+
+.svc-modal-dialog {
+	position: relative;
+	width: min(1000px, 100%);
+	background: #0a0a0a;
+	border-radius: 20px;
+	border: 1px solid rgba(255,216,90,0.18);
+	overflow: hidden;
+	box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+}
+
+.svc-modal-close {
+	position: absolute;
+	top: 16px;
+	right: 20px;
+	background: none;
+	border: none;
+	color: #fff;
+	font-size: 36px;
+	cursor: pointer;
+	z-index: 10;
+	line-height: 1;
+	transition: color 0.2s;
+}
+
+.svc-modal-close:hover { color: #ffd85a; }
+
+.svc-modal-inner {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	min-height: 480px;
+}
+
+.svc-modal-img {
+	background-size: cover;
+	background-position: center;
+	min-height: 320px;
+}
+
+.svc-modal-content {
+	padding: 52px 44px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 16px;
+}
+
+.svc-modal-tag {
+	display: inline-block;
+	background: rgba(255,216,90,0.12);
+	border: 1px solid rgba(255,216,90,0.3);
+	color: #ffd85a;
+	padding: 6px 14px;
+	border-radius: 999px;
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	width: fit-content;
+}
+
+.svc-modal-content h2 {
+	margin: 0;
+	font-size: clamp(1.5rem, 2.5vw, 2rem);
+	font-weight: 900;
+	color: #fff;
+	line-height: 1.15;
+	text-transform: uppercase;
+}
+
+.svc-modal-content p {
+	margin: 0;
+	font-size: 0.97rem;
+	line-height: 1.75;
+	color: #b8b8b8;
+}
+
+.svc-modal-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.svc-modal-list li {
+	position: relative;
+	padding-left: 20px;
+	font-size: 0.93rem;
+	color: #d0d0d0;
+	line-height: 1.5;
+}
+
+.svc-modal-list li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 8px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #ffd85a;
+}
+
+@media (max-width: 900px) {
+	.svc-cards-grid { grid-template-columns: 1fr; }
+	.svc-card { min-height: 300px; }
+	.svc-modal-inner { grid-template-columns: 1fr; }
+	.svc-modal-img { min-height: 220px; }
+	.svc-modal-content { padding: 32px 24px; }
+}
+
+@media (max-width: 600px) {
+	.svc-cards-section { padding: 56px 16px 64px; }
+	.svc-cards-title { font-size: 1.8rem; letter-spacing: 3px; }
+}
+
+/* svc-card as anchor fix */
+a.svc-card { text-decoration: none; color: inherit; }
