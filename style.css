@@ -1,4 +1,5 @@
 ﻿/* Basic layout */
+
 *{box-sizing:border-box}
 *{scrollbar-width:thin;scrollbar-color:#ffd85a #111}
 *::-webkit-scrollbar{width:8px;height:8px}
@@ -1068,7 +1069,7 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 }
 .role-card{
 	background:linear-gradient(150deg,#141414,#0f0f0f);
-	border:1px solid rgba(255,255,255,0.06);
+	border:1px solid rgba(8, 2, 2, 0.06);
 	border-radius:18px;
 	padding:24px;
 	transition:border-color 0.25s;
@@ -3984,15 +3985,17 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
     padding: 16px;
 }
 
-.coach-academy-card-tag{
-    margin: 0 0 8px;
-    color: #ffbf46;
-    font-size: 0.76rem;
-    text-transform: uppercase;
-    letter-spacing: 1.1px;
-    font-weight: 700;
+.coach-academy-card-tag {
+	display: inline-block;
+	background: rgba(255, 216, 90, 0.16);
+	color: #ffd85a;
+	padding: 6px 12px;
+	border-radius: 3px;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 1px;
+	margin-bottom: 10px;
 }
-
 .coach-academy-card h3{
     margin: 0 0 8px;
     color: #fff;
@@ -4171,18 +4174,6 @@ body::-webkit-scrollbar-thumb:hover{background:#ffcc00}
 	flex: 1;
 }
 
-.coach-academy-card-tag {
-	display: inline-block;
-	width: fit-content;
-	background: rgba(255, 216, 90, 0.16);
-	color: #ffd85a;
-	padding: 6px 11px;
-	font-size: 0.75rem;
-	font-weight: 700;
-	text-transform: uppercase;
-	letter-spacing: 1.05px;
-	margin: 0;
-}
 
 .coach-academy-card h3 {
 	font-size: 1.05rem;
