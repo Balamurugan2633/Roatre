@@ -8,10 +8,8 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 	</head>
 	<body>
-		<!-- Site background video (autoplay muted loop). Hidden on small screens. -->
 		<video id="siteBgVideo" class="site-bg-video" autoplay muted loop playsinline preload="metadata" poster="assets/load.mp4" aria-hidden="true">
 			<source src="assets/load.mp4" type="video/mp4">
-			<!-- fallback: poster image will show if video unavailable -->
 		</video>
 		<div id="site-header-placeholder"></div>
 
@@ -28,7 +26,8 @@
 				</div>
 			</section>
 		</main>
-	<!-- Our Services Cards Section -->
+
+		<!-- Our Services Cards Section -->
 		<section class="svc-cards-section">
 			<h2 class="svc-cards-title">OUR <span>Solutions</span></h2>
 			<div class="svc-cards-grid">
@@ -59,43 +58,69 @@
 			</div>
 		</section>
 
-		<!-- Services section: two feature panels (Athletes / Coaches) -->
+		<!-- Services section -->
 		<section id="services" class="services">
 			<h2 class="services-title">OUR <span>SERVICES</span></h2>
 			<div class="services-wrap">
+
+				<!-- Athletes -->
 				<div class="feature feature--left">
 					<div class="feature-media">
 						<img src="assets/service-athletes.jpg" alt="Athletes" />
+						<!-- <div class="feature-media-thumbs">
+							<img class="feature-media-thumb" src="assets/performance-analysis.jpg" alt="Performance" />
+							<div class="feature-media-accent"><i class="fa-solid fa-bolt"></i></div>
+						</div> -->
 					</div>
 					<div class="feature-content">
-						<h3>FOR <span>ATHLETES</span></h3>
+						<h3>#1 <span>For Athletes</span></h3>
 						<p>Athletes gain a clearer understanding of their performance and development journey. Structured insights reveal strengths, highlight areas that require improvement, and connect directly to drills designed for skill development. With this clarity, training becomes more purposeful and aligned with long-term performance growth.</p>
-					<a class="read-more" href="#" id="athleteReadMore">→ Read more</a>
+						<div class="feature-actions">
+							<!-- <a class="read-more" href="#" id="athleteReadMore">Get Started</a> -->
+							<a class="read-more-ghost" href="solution.html">Learn More</a>
+						</div>
 					</div>
 				</div>
+
+				<!-- Coaches -->
 				<div class="feature feature--right">
 					<div class="feature-content">
-						<h3>FOR <span>Coaches & Academy Owners</span></h3>
-						<p>The platform brings structure and visibility to athlete development across the academy. Performance analysis provides deeper insights into player progress, match reports capture real game performance patterns, and targeted drills connect those insights to focused improvement. This creates a more organized development environment where coaching decisions are guided by clear performance understanding rather than observation alone.</p>
-						<a class="read-more" href="#" id="coachReadMore">→ Read more</a>
+						<h3>#2 <span>For Coaches &amp; Academies</span></h3>
+						<p>The platform brings structure and visibility to athlete development across the academy. Performance analysis provides deeper insights into player progress, match reports capture real game performance patterns, and targeted drills connect those insights to focused improvement.</p>
+						<div class="feature-actions">
+							<!-- <a class="read-more" href="#" id="coachReadMore">Get Started</a> -->
+							<a class="read-more-ghost" href="solution.html">Learn More</a>
+						</div>
 					</div>
 					<div class="feature-media">
 						<img src="assets/service-coaches.jpeg" alt="Coaches" />
+						<!-- <div class="feature-media-thumbs">
+							<img class="feature-media-thumb" src="assets/matchreporthome.jpg" alt="Match Reports" />
+							<div class="feature-media-accent"><i class="fa-solid fa-chart-line"></i></div>
+						</div> -->
 					</div>
 				</div>
+
+				<!-- Parents -->
 				<div class="feature feature--owner">
 					<div class="feature-media">
-						<img src="assets/parents.jpg" alt="Owners" />
+						<img src="assets/parents.jpg" alt="Parents" />
+						<!-- <div class="feature-media-thumbs">
+							<img class="feature-media-thumb" src="assets/improvements.jpg" alt="Progress" />
+							<div class="feature-media-accent"><i class="fa-solid fa-heart"></i></div>
+						</div> -->
 					</div>
 					<div class="feature-content">
-						<h3>FOR <span>Parents</span></h3>
-						<p>Parents gain meaningful visibility into their child’s sporting journey. Structured insights and development reports provide a clearer view of participation, progress, and improvement over time. This transparency strengthens the connection between training efforts and athlete development.</p>
-						<a class="read-more" href="#" id="ownerReadMore">→ Read more</a>
+						<h3>#3 <span>For Parents</span></h3>
+						<p>Parents gain meaningful visibility into their child's sporting journey. Structured insights and development reports provide a clearer view of participation, progress, and improvement over time. This transparency strengthens the connection between training efforts and athlete development.</p>
+						<div class="feature-actions">
+							<!-- <a class="read-more" href="#" id="ownerReadMore">Get Started</a> -->
+							<a class="read-more-ghost" href="solution.html">Learn More</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-	
 		<section class="demo-cta" aria-label="Demo call to action">
 			<div class="demo-cta-inner">
 				<h2>See Roatre in action.</h2>
@@ -104,6 +129,7 @@
 		</section>
 
 		<div id="site-footer-placeholder"></div>
+
 		<!-- Coach Modal -->
 		<div id="coachModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#ffd85a #111;">
 			<div style="position:relative;max-width:1100px;margin:60px auto;padding:20px;">
@@ -126,8 +152,5 @@
 			</div>
 		</div>
 		<script src="script.js"></script>
-
 	</body>
 </html>
-
-
