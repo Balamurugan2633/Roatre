@@ -436,7 +436,6 @@ body::-webkit-scrollbar-thumb:hover {
 	will-change: transform, opacity;
 	backface-visibility: hidden
 }
-
 .site-bg-video {
 	position: fixed;
 	inset: 0;
@@ -447,9 +446,13 @@ body::-webkit-scrollbar-thumb:hover {
 	opacity: 0.65;
 	pointer-events: none;
 	will-change: transform, opacity;
-	backface-visibility: hidden
+	backface-visibility: hidden;
 }
 
+.site-bg-video.hero-bg {
+	position: absolute;
+	z-index: 0;
+}
 /* Modal overlay */
 .modal-overlay {
 	position: fixed;
@@ -3954,6 +3957,7 @@ body::-webkit-scrollbar-thumb:hover {
 	font-size: 1.02rem;
 	font-weight: 700;
 	letter-spacing: 0.6px;
+	flex: none;
 }
 
 .resource-section--blog .blog-feature-card h3 {

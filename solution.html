@@ -111,72 +111,42 @@
 			background: linear-gradient(180deg, rgba(255, 216, 90, 0.6), transparent);
 		}
 
-		/* ── TOPIC LABEL BAR ── */
-		.sol-label-bar {
-			position: sticky;
-			top: 70px;
-			z-index: 50;
+		/* ── PLATFORM MARQUEE ── */
+		.sol-marquee {
+			position: relative;
+			background: #ffd85a;
+			color: #000;
+			padding: 18px 0;
 			display: flex;
 			align-items: center;
-			justify-content: center;
-			gap: 16px;
-			padding: 16px 24px;
-			background: rgba(5, 5, 5, 0.65);
-			backdrop-filter: blur(16px);
-			-webkit-backdrop-filter: blur(16px);
-			border-top: 1px solid rgba(255, 255, 255, 0.05);
-			border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+			overflow: hidden;
+			border-top: 1px solid rgba(255, 216, 90, 0.4);
+			border-bottom: 1px solid rgba(255, 216, 90, 0.4);
 		}
 
-		.sol-label-item {
+		.sol-marquee-track {
 			display: flex;
+			gap: 40px;
 			align-items: center;
-			gap: 12px;
-			padding: 12px 28px;
-			border-radius: 100px;
-			border: 1px solid transparent;
-			cursor: pointer;
-			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			white-space: nowrap;
+			animation: scrollMarquee 20s linear infinite;
 		}
 
-		.sol-label-item:hover {
-			background: rgba(255, 255, 255, 0.03);
-		}
-
-		.sol-label-item.active {
-			background: rgba(255, 216, 90, 0.08);
-			border: 1px solid rgba(255, 216, 90, 0.2);
-			box-shadow: 0 4px 24px rgba(255, 216, 90, 0.06);
-		}
-
-		.sol-label-num {
-			font-size: 0.75rem;
-			font-weight: 700;
-			color: #ffd85a;
-			opacity: 0.5;
-			letter-spacing: 1px;
-			transition: opacity 0.3s ease;
-		}
-
-		.sol-label-item.active .sol-label-num {
-			opacity: 1;
-		}
-
-		.sol-label-text {
-			font-size: 0.8rem;
-			font-weight: 700;
+		.sol-marquee-track span {
+			font-size: 1rem;
+			font-weight: 800;
 			text-transform: uppercase;
-			letter-spacing: 1.5px;
-			color: rgba(255, 255, 255, 0.6);
-			transition: color 0.3s ease;
+			letter-spacing: 2px;
 		}
 
-		.sol-label-item:hover .sol-label-text {
-			color: rgba(255, 255, 255, 0.9);
+		.sol-marquee-track i {
+			font-size: 0.8rem;
+			opacity: 0.8;
 		}
 
-		.sol-label-item.active .sol-label-text {
-			color: #fff;
+		@keyframes scrollMarquee {
+			0% { transform: translateX(0); }
+			100% { transform: translateX(-50%); }
 		}
 
 		/* ── TOPIC SECTION WRAPPER ── */
@@ -493,23 +463,6 @@
 			.sol-topic-right {
 				padding: 48px 36px;
 			}
-
-			.sol-label-bar {
-				justify-content: flex-start;
-				overflow-x: auto;
-				flex-direction: row;
-				flex-wrap: nowrap;
-				-webkit-overflow-scrolling: touch;
-				scrollbar-width: none;
-				padding: 12px 24px;
-			}
-			.sol-label-bar::-webkit-scrollbar {
-				display: none;
-			}
-			.sol-label-item {
-				padding: 12px 20px;
-				flex-shrink: 0;
-			}
 		}
 
 		@media (max-width: 768px) {
@@ -611,19 +564,27 @@
 			</div>
 		</section>
 
-		<!--══ TOPIC NAV BAR ══ -->
-		<div class="sol-label-bar">
-			<div class="sol-label-item" data-target="topic-01">
-				<span class="sol-label-num">01</span>
-				<span class="sol-label-text">Performance Analysis</span>
-			</div>
-			<div class="sol-label-item" data-target="topic-02">
-				<span class="sol-label-num">02</span>
-				<span class="sol-label-text">Match Reports</span>
-			</div>
-			<div class="sol-label-item" data-target="topic-03">
-				<span class="sol-label-num">03</span>
-				<span class="sol-label-text">Drills &amp; Improvement</span>
+		<!--══ PLATFORM MARQUEE ══ -->
+		<div class="sol-marquee">
+			<div class="sol-marquee-track">
+				<span>Performance Analysis</span>
+				<i class="fa-solid fa-bolt"></i>
+				<span>Match Reports</span>
+				<i class="fa-solid fa-bolt"></i>
+				<span>Drills &amp; Improvement</span>
+				<i class="fa-solid fa-bolt"></i>
+				<span>Performance Analysis</span>
+				<i class="fa-solid fa-bolt"></i>
+				<span>Match Reports</span>
+				<i class="fa-solid fa-bolt"></i>
+				<span>Drills &amp; Improvement</span>
+				<i class="fa-solid fa-bolt"></i>
+				<span>Performance Analysis</span>
+				<i class="fa-solid fa-bolt"></i>
+				<span>Match Reports</span>
+				<i class="fa-solid fa-bolt"></i>
+				<span>Drills &amp; Improvement</span>
+				<i class="fa-solid fa-bolt"></i>
 			</div>
 		</div>
 
@@ -882,35 +843,6 @@
 
 	<div id="site-footer-placeholder"></div>
 	<script src="script.js"></script>
-	<script>
-		(function () {
-			const items = document.querySelectorAll('.sol-label-item[data-target]');
-			const topics = document.querySelectorAll('.sol-topic[id]');
-			const labelBar = document.querySelector('.sol-label-bar');
-
-			function setActive(targetId) {
-				items.forEach(el => el.classList.toggle('active', el.dataset.target === targetId));
-			}
-
-			items.forEach(item => {
-				item.addEventListener('click', () => {
-					const target = document.getElementById(item.dataset.target);
-					if (target) {
-						const offset = labelBar.getBoundingClientRect().height;
-						window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset - 70, behavior: 'smooth' });
-					}
-				});
-			});
-
-			const observer = new IntersectionObserver(entries => {
-				entries.forEach(entry => {
-					if (entry.isIntersecting) setActive(entry.target.id);
-				});
-			}, { threshold: 0.3 });
-
-			topics.forEach(t => observer.observe(t));
-		})();
-	</script>
 </body>
 
 </html>
