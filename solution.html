@@ -494,8 +494,21 @@
 				padding: 48px 36px;
 			}
 
+			.sol-label-bar {
+				justify-content: flex-start;
+				overflow-x: auto;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				-webkit-overflow-scrolling: touch;
+				scrollbar-width: none;
+				padding: 12px 24px;
+			}
+			.sol-label-bar::-webkit-scrollbar {
+				display: none;
+			}
 			.sol-label-item {
-				padding: 16px 24px;
+				padding: 12px 20px;
+				flex-shrink: 0;
 			}
 		}
 
@@ -513,23 +526,6 @@
 
 			.sol-hero-scroll {
 				display: none;
-			}
-
-			.sol-label-bar {
-				justify-content: flex-start;
-				overflow-x: auto;
-				flex-wrap: nowrap;
-				-webkit-overflow-scrolling: touch;
-				scrollbar-width: none;
-				padding: 12px 24px;
-			}
-
-			.sol-label-bar::-webkit-scrollbar {
-				display: none;
-			}
-
-			.sol-label-item {
-				flex-shrink: 0;
 			}
 
 			.sol-topic-left,
