@@ -436,6 +436,7 @@ body::-webkit-scrollbar-thumb:hover {
 	will-change: transform, opacity;
 	backface-visibility: hidden
 }
+
 .site-bg-video {
 	position: fixed;
 	inset: 0;
@@ -453,6 +454,7 @@ body::-webkit-scrollbar-thumb:hover {
 	position: absolute;
 	z-index: 0;
 }
+
 /* Modal overlay */
 .modal-overlay {
 	position: fixed;
@@ -7004,7 +7006,7 @@ body::-webkit-scrollbar-thumb:hover {
 	min-height: 420px;
 	border-radius: 0;
 	border: none;
-	border-right: 1px solid rgba(255, 255, 255, 0.07);
+	/* border-right: 1px solid rgba(255, 255, 255, 0.07); */
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
