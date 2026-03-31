@@ -640,3 +640,44 @@ if (ownerModal) {
 		}
 	});
 }
+
+// Persona Tabs Logic
+const personaTabs = document.querySelectorAll('.persona-tab');
+const personaPanels = document.querySelectorAll('.persona-panel');
+
+if(personaTabs.length > 0) {
+	personaTabs.forEach(tab => {
+		tab.addEventListener('click', () => {
+			personaTabs.forEach(t => t.classList.remove('active'));
+			personaPanels.forEach(p => p.classList.remove('active'));
+			
+			tab.classList.add('active');
+			const targetId = tab.getAttribute('data-target');
+			const targetPanel = document.getElementById(targetId);
+			if (targetPanel) {
+				targetPanel.classList.add('active');
+			}
+		});
+	});
+
+	// Handle initial tab from URL hash (e.g., #tab-athletes)
+	if (window.location.hash) {
+		const targetHash = window.location.hash.substring(1);
+		const targetTab = document.querySelector(`.persona-tab[data-target="${targetHash}"]`);
+		if (targetTab) {
+			// Activate immediately to avoid flicker
+			targetTab.click();
+			
+			// Optional: slight delay for smooth scroll to allow layout stabilization
+			requestAnimationFrame(() => {
+				const tabsSection = document.querySelector('.persona-tabs-section');
+				if (tabsSection) {
+					const header = document.querySelector('.site-header');
+					const offset = header ? header.offsetHeight + 20 : 0;
+					const y = tabsSection.getBoundingClientRect().top + window.pageYOffset - offset;
+					window.scrollTo({ top: y, behavior: 'smooth' });
+				}
+			});
+		}
+	}
+}
