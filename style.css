@@ -796,8 +796,8 @@ body::-webkit-scrollbar-thumb:hover {
 	gap: 8px;
 	padding: 14px 32px;
 	border-radius: 12px;
-	background: #ff6a00;
-	color: #fff;
+	background: #ffd100;
+	color: #0a0a0a;
 	text-decoration: none;
 	font-weight: 600;
 	font-size: 1rem;
@@ -805,7 +805,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .read-more:hover {
-	background: #e65c00;
+	background: #ffd100;
 	transform: translateY(-2px);
 }
 
@@ -7820,7 +7820,7 @@ a.svc-card {
 	z-index: 1;
 }
 
-.sol-topic-left > * {
+.sol-topic-left>* {
 	position: relative;
 	z-index: 2;
 }
@@ -7981,6 +7981,7 @@ a.svc-card {
 }
 
 @media (max-width: 768px) {
+
 	.sol-topic-left,
 	.sol-topic-right {
 		padding: 36px 24px;
@@ -8010,7 +8011,7 @@ a.svc-card {
 
 .persona-tab {
 	background: transparent;
-	border: 1px solid rgba(255,216,90,0.3);
+	border: 1px solid rgba(255, 216, 90, 0.3);
 	color: #fff;
 	font-family: inherit;
 	font-size: 0.9rem;
@@ -8025,14 +8026,14 @@ a.svc-card {
 
 .persona-tab:hover {
 	border-color: #ffd85a;
-	background: rgba(255,216,90,0.05);
+	background: rgba(255, 216, 90, 0.05);
 }
 
 .persona-tab.active {
 	background: #ffd85a;
 	color: #000;
 	border-color: #ffd85a;
-	box-shadow: 0 0 20px rgba(255,216,90,0.4);
+	box-shadow: 0 0 20px rgba(255, 216, 90, 0.4);
 }
 
 .persona-panel {
@@ -8045,8 +8046,15 @@ a.svc-card {
 }
 
 @keyframes fadeInTabs {
-	from { opacity: 0; transform: translateY(10px); }
-	to { opacity: 1; transform: translateY(0); }
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .persona-top {
@@ -8112,7 +8120,7 @@ a.svc-card {
 
 .persona-feature {
 	background: linear-gradient(145deg, #0d0d0d, #141414);
-	border: 1px solid rgba(255,216,90,0.15);
+	border: 1px solid rgba(255, 216, 90, 0.15);
 	border-radius: 20px;
 	padding: 40px 32px;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -8120,15 +8128,15 @@ a.svc-card {
 
 .persona-feature:hover {
 	transform: translateY(-5px);
-	box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-	border-color: rgba(255,216,90,0.4);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+	border-color: rgba(255, 216, 90, 0.4);
 }
 
 .pf-icon {
 	width: 56px;
 	height: 56px;
-	background: rgba(255,216,90,0.1);
-	border: 1px solid rgba(255,216,90,0.3);
+	background: rgba(255, 216, 90, 0.1);
+	border: 1px solid rgba(255, 216, 90, 0.3);
 	border-radius: 14px;
 	display: flex;
 	align-items: center;
@@ -8161,13 +8169,16 @@ a.svc-card {
 		grid-template-columns: 1fr;
 		gap: 0;
 	}
+
 	.persona-image {
 		order: -1;
 		min-height: 300px;
 	}
+
 	.persona-text {
 		padding: 40px;
 	}
+
 	.persona-bottom {
 		grid-template-columns: 1fr;
 	}
@@ -8178,6 +8189,7 @@ a.svc-card {
 		flex-direction: column;
 		align-items: stretch;
 	}
+
 	.persona-tab {
 		text-align: center;
 	}
