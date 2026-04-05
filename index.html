@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<title>Roatre - Home</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style.css?v=2">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -16,69 +16,43 @@
 		<section class="hero">
 			<video id="siteBgVideo" class="site-bg-video hero-bg" autoplay muted loop playsinline preload="metadata"
 				aria-hidden="true">
-				<source src="assets/load.mp4" type="video/mp4">
+				<source src="assets/Video Project.mp4" type="video/mp4">
 			</video>
 			<div class="hero-content">
-				<h1>Root Athlete Rise</h1>
-				<button id="scrollToServices" class="scroll-cta" aria-label="Scroll to services">
+				<!-- <h4>Train with clarity. Perform beyond limits.
+
+					AI-powered insights that uncover performance gaps and turn training into measurable progress.</h4> -->
+				<!-- <button id="scrollToServices" class="scroll-cta" aria-label="Scroll to services">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" stroke-width="2"
 							stroke-linecap="round" stroke-linejoin="round" />
 					</svg>
 					<span>Scroll to explore</span>
-				</button>
+				</button> -->
 			</div>
 		</section>
 	</main>
 
-	<!-- Our Services Cards Section -->
-	<section class="svc-cards-section">
-		<h2 class="svc-cards-title">OUR <span>Solutions</span></h2>
-		<div class="svc-cards-grid">
-			<a class="svc-card" href="solution.html#topic-01">
-				<div class="svc-card-img" style="background-image:url('assets/performance-analysis.jpg')"></div>
-				<div class="svc-card-overlay"></div>
-				<div class="svc-card-body">
-					<span class="svc-card-label">Performance Analysis</span>
-					<span class="svc-card-arrow">&#8599;</span>
-				</div>
-			</a>
-			<a class="svc-card" href="solution.html#topic-02">
-				<div class="svc-card-img" style="background-image:url('assets/matchreporthome.jpg')"></div>
-				<div class="svc-card-overlay"></div>
-				<div class="svc-card-body">
-					<span class="svc-card-label">Match Reports</span>
-					<span class="svc-card-arrow">&#8599;</span>
-				</div>
-			</a>
-			<a class="svc-card" href="solution.html#topic-03">
-				<div class="svc-card-img" style="background-image:url('assets/improvements.jpg')"></div>
-				<div class="svc-card-overlay"></div>
-				<div class="svc-card-body">
-					<span class="svc-card-label">Drills &amp; Improvement</span>
-					<span class="svc-card-arrow">&#8599;</span>
-				</div>
-			</a>
+
+	<!-- Services Persona Section -->
+	<section id="services" class="services-persona">
+		<div class="section-header reveal-on-scroll">
+			<span class="eyebrow">Discover</span>
+			<h2 class="services-title">OUR <span>SERVICES</span></h2>
+			<div class="ghost-text">Services</div>
+			<div class="title-underline"></div>
 		</div>
-	</section>
-
-	<!-- Services section -->
-	<section id="services" class="services">
-		<h2 class="services-title">OUR <span>SERVICES</span></h2>
-		<div class="services-wrap">
-
-			<!-- Athletes -->
-			<div class="feature feature--left">
-				<div class="feature-media">
-					<img src="assets/service-athletes.jpg" alt="Athletes" />
-					<!-- <div class="feature-media-thumbs">
-							<img class="feature-media-thumb" src="assets/performance-analysis.jpg" alt="Performance" />
-							<div class="feature-media-accent"><i class="fa-solid fa-asterisk"></i></div>
-						</div> -->
+		<!-- Athletes: Black Background, Image Left -->
+		<div class="service-block service-block--athletes">
+			<div class="service-container">
+				<div class="service-media reveal-on-scroll">
+					<img src="assets/athelete.jpeg" alt="Athletes" />
 				</div>
-				<div class="feature-content">
-					<h3><span>For Athletes</span></h3>
-					<p>Athletes gain a clearer understanding of their performance and development journey. Structured
+				<div class="service-text reveal-on-scroll">
+					<!-- <div class="service-accent"></div> -->
+					<h2 class="service-heading">For Athletes</h2>
+					<p class="service-desc">Athletes gain a clearer understanding of their performance and development
+						journey. Structured
 						insights reveal strengths, highlight areas that require improvement, and connect directly to
 						drills designed for skill development. With this clarity, training becomes more purposeful and
 						aligned with long-term performance growth.</p>
@@ -87,12 +61,16 @@
 					</div>
 				</div>
 			</div>
+		</div>
 
-			<!-- Coaches -->
-			<div class="feature feature--right">
-				<div class="feature-content">
-					<h3><span>For Coaches &amp; Academies</span></h3>
-					<p>The platform brings structure and visibility to athlete development across the academy.
+		<!-- Coaches: Dark Grey Background, Image Right -->
+		<div class="service-block service-block--coaches">
+			<div class="service-container">
+				<div class="service-text reveal-on-scroll" style="order: 1;">
+					<!-- <div class="service-accent"></div> -->
+					<h2 class="service-heading">For Coaches & <br>Academies</h2>
+					<p class="service-desc">The platform brings structure and visibility to athlete development across
+						the academy.
 						Performance analysis provides deeper insights into player progress, match reports capture real
 						game performance patterns, and targeted drills connect those insights to focused improvement.
 					</p>
@@ -100,27 +78,23 @@
 						<a class="read-more" href="roatre.html#tab-coaches">Learn More</a>
 					</div>
 				</div>
-				<div class="feature-media">
-					<img src="assets/service-coaches.jpeg" alt="Coaches" />
-					<!-- <div class="feature-media-thumbs">
-						<img class="feature-media-thumb" src="assets/matchreporthome.jpg" alt="Match Reports" />
-						<div class="feature-media-accent"><i class="fa-solid fa-asterisk"></i></div>
-					</div> -->
+				<div class="service-media reveal-on-scroll" style="order: 2;">
+					<img src="assets/coachesindex.jpeg" alt="Coaches" />
 				</div>
 			</div>
+		</div>
 
-			<!-- Parents -->
-			<div class="feature feature--owner">
-				<div class="feature-media">
+		<!-- Parents: White Background, Image Left -->
+		<div class="service-block service-block--parents">
+			<div class="service-container">
+				<div class="service-media reveal-on-scroll">
 					<img src="assets/parents.jpg" alt="Parents" />
-					<!-- <div class="feature-media-thumbs">
-						<img class="feature-media-thumb" src="assets/improvements.jpg" alt="Progress" />
-						<div class="feature-media-accent"><i class="fa-solid fa-asterisk"></i></div>
-					</div> -->
 				</div>
-				<div class="feature-content">
-					<h3><span>For Parents</span></h3>
-					<p>Parents gain meaningful visibility into their child's sporting journey. Structured insights and
+				<div class="service-text reveal-on-scroll">
+					<!-- <div class="service-accent"></div> -->
+					<h2 class="service-heading">For Parents</h2>
+					<p class="service-desc">Parents gain meaningful visibility into their child's sporting journey.
+						Structured insights and
 						development reports provide a clearer view of participation, progress, and improvement over
 						time. This transparency strengthens the connection between training efforts and athlete
 						development.</p>
@@ -131,17 +105,94 @@
 			</div>
 		</div>
 	</section>
-	<section class="demo-cta" aria-label="Demo call to action">
-		<div class="demo-cta-inner">
-			<h2>See Roatre in action.</h2>
-			<a class="demo-cta-btn" href="demo.html#demoRegisterForm">Register Now</a>
+
+	<!-- Our Services Cards Section -->
+	<section class="svc-cards-section">
+		<div class="section-header reveal-on-scroll">
+			<span class="eyebrow">Explore</span>
+			<h2 class="svc-cards-title">OUR <span>Solutions</span></h2>
+			<div class="ghost-text">Solutions</div>
+			<div class="title-underline"></div>
+		</div>
+		<div class="svc-cards-grid">
+			<a class="svc-card" href="solution.html#topic-01">
+				<div class="svc-card-top">
+					<img class="svc-card-img" src="assets/perform.jpeg" alt="Performance Analysis">
+				</div>
+				<div class="svc-card-bottom">
+					<div class="svc-card-header">
+						<span>Performance Analysis</span>
+						<span class="svc-card-arrow"><i class="fa-solid fa-arrow-up"></i></span>
+					</div>
+					<!-- <h3 class="svc-card-label">Performance Analysis</h3>
+					<div class="svc-card-footer">
+						<span class="svc-card-arrow">&#8599;</span>
+					</div> -->
+				</div>
+			</a>
+
+			<a class="svc-card" href="solution.html#topic-02">
+				<div class="svc-card-top">
+					<img class="svc-card-img" src="assets/report.jpeg" alt="Match Reports">
+				</div>
+				<div class="svc-card-bottom">
+					<div class="svc-card-header">
+						<span>Match Reports</span>
+						<span class="svc-card-arrow"><i class="fa-solid fa-arrow-up"></i></span>
+					</div>
+					<!-- <h3 class="svc-card-label">Match Reports</h3>
+					<div class="svc-card-footer">
+						<span class="svc-card-arrow">&#8599;</span>
+					</div> -->
+				</div>
+			</a>
+
+			<a class="svc-card" href="solution.html#topic-03">
+				<div class="svc-card-top">
+					<img class="svc-card-img" src="assets/drills.jpeg" alt="Drills & Improvement">
+				</div>
+				<div class="svc-card-bottom">
+					<div class="svc-card-header">
+						<span>Drills &amp; Improvement</span>
+						<span class="svc-card-arrow"><i class="fa-solid fa-arrow-up"></i></span>
+					</div>
+					<!-- <h3 class="svc-card-label">Drills &amp; Improvement</h3>
+					<div class="svc-card-footer">
+						<span class="svc-card-arrow">&#8599;</span>
+					</div> -->
+				</div>
+			</a>
+		</div>
+	</section>
+	<!-- Blog Editorial Spotlight (Redesigned Demo CTA) -->
+	<section class="blog-spotlight" aria-label="Featured Story">
+		<div class="blog-spotlight-container reveal-on-scroll">
+			<div class="blog-spotlight-card">
+				<div class="blog-media">
+					<img src="assets/perform.jpeg" alt="Athlete Performance" />
+					<div class="media-overlay"></div>
+				</div>
+				<div class="blog-content">
+					<div class="blog-badge">Featured <span>Insights</span></div>
+					<h2 class="blog-headline">From Every <span>Second</span> to Every <span>Success</span>.</h2>
+					<p class="blog-summary">Discover how elite athletes and academies leverage Roatre's granular performance data to close development gaps and redefine their peak potential. It's more than tracking—it's your roadmap to dominance.</p>
+					<div class="blog-actions">
+						<a class="blog-cta-main" href="demo.html#demoRegisterForm">
+							Join the Elite <i class="fa-solid fa-arrow-right"></i>
+						</a>
+						<a class="blog-cta-secondary" href="resources.html">
+							Explore Reports
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 
 	<div id="site-footer-placeholder"></div>
 
 	<!-- Coach Modal -->
-	<div id="coachModal"
+	<!-- <div id="coachModal"
 		style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#ffd85a #111;">
 		<div style="position:relative;max-width:1100px;margin:60px auto;padding:20px;">
 			<button id="coachModalClose"
@@ -149,9 +200,9 @@
 			<iframe src="for_coaches.html"
 				style="width:100%;height:85vh;border:none;border-radius:16px;display:block;"></iframe>
 		</div>
-	</div>
+	</div> -->
 	<!-- Owner Modal -->
-	<div id="ownerModal"
+	<!-- <div id="ownerModal"
 		style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#ffd85a #111;">
 		<div style="position:relative;max-width:1100px;margin:60px auto;padding:20px;">
 			<button id="ownerModalClose"
@@ -159,9 +210,9 @@
 			<iframe src="for_owners.html"
 				style="width:100%;height:85vh;border:none;border-radius:16px;display:block;"></iframe>
 		</div>
-	</div>
+	</div> -->
 	<!-- Athlete Modal -->
-	<div id="athleteModal"
+	<!-- <div id="athleteModal"
 		style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#ffd85a #111;">
 		<div style="position:relative;max-width:1100px;margin:60px auto;padding:20px;">
 			<button id="athleteModalClose"
@@ -169,7 +220,7 @@
 			<iframe src="for_athlete.html"
 				style="width:100%;height:85vh;border:none;border-radius:16px;display:block;"></iframe>
 		</div>
-	</div>
+	</div> -->
 	<script src="script.js"></script>
 </body>
 

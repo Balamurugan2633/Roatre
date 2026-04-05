@@ -60,6 +60,7 @@ function initHeader() {
 document.addEventListener('DOMContentLoaded', function () {
 	loadHeader();
 	loadFooter();
+	initServiceScroll();
 	const siteVideo = document.getElementById('siteBgVideo');
 	const scrollBtn = document.getElementById('scrollToServices');
 
@@ -680,4 +681,57 @@ if(personaTabs.length > 0) {
 			});
 		}
 	}
+}
+
+function initServiceScroll() {
+	const personaSection = document.querySelector('.services-persona');
+	const blocks = document.querySelectorAll('.service-block');
+	if (!personaSection || blocks.length === 0) return;
+
+	const observerOptions = {
+		root: null,
+		threshold: 0.4, // Trigger when 40% of the block is visible
+		rootMargin: '-10% 0px -10% 0px'
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				const block = entry.target;
+				let persona = 'athletes';
+				if (block.classList.contains('service-block--coaches')) persona = 'coaches';
+				if (block.classList.contains('service-block--parents')) persona = 'parents';
+				
+				personaSection.setAttribute('data-active-persona', persona);
+			}
+		});
+	}, observerOptions);
+
+	blocks.forEach(block => observer.observe(block));
+
+	// Initialize reveal observer for slide-up effects
+	initRevealObserver();
+}
+
+function initRevealObserver() {
+	const revealElements = document.querySelectorAll('.reveal-on-scroll');
+	if (revealElements.length === 0) return;
+
+	const revealOptions = {
+		threshold: 0.1,
+		rootMargin: '0px 0px -15% 0px'
+	};
+
+	const revealObserver = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('is-visible');
+			} else {
+				// Remove for repeatability as per user request
+				entry.target.classList.remove('is-visible');
+			}
+		});
+	}, revealOptions);
+
+	revealElements.forEach(el => revealObserver.observe(el));
 }
