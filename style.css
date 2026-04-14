@@ -60,7 +60,7 @@
 	background: #ffcc00
 }
 
-html, 
+html,
 body {
 	margin: 0;
 	font-family: 'Inter', sans-serif;
@@ -347,48 +347,65 @@ body::-webkit-scrollbar-thumb:hover {
 	}
 }
 
-.hero {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	min-height: 100vh;
-	padding: 36px;
-	padding-top: 96px;
-	text-align: center;
-	color: #ffd85a;
-	background-size: cover;
-	background-position: center;
-	position: relative;
-	overflow: hidden;
+.hero-spacer {
+	height: 100vh;
+	width: 100%;
 }
 
-.hero::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, 0.5);
-	z-index: 1;
+.hero-overlay {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	padding: 0 8%;
+	position: relative;
+	z-index: 2;
 }
 
 .hero-content {
+	max-width: 900px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	gap: 24px;
-	position: relative;
-	z-index: 2
+	gap: 20px;
 }
 
-.hero h1 {
-	font-size: clamp(32px, 8vw, 64px);
-	font-weight: 700;
-	letter-spacing: 2px;
-	margin: 0;
+.hero-content h4 {
+	font-size: clamp(40px, 8vw, 84px);
+	font-weight: 900;
+	color: #ffd85a;
 	text-transform: uppercase;
-	color: #ffd85a
+	line-height: 0.95;
+	margin: 0;
+	letter-spacing: -2px;
+	text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.hero-rule {
+	width: 120px;
+	height: 8px;
+	background: #ffd85a;
+	margin: 10px 0;
+}
+
+.hero-content p {
+	font-size: clamp(18px, 1.5vw, 24px);
+	color: #fff;
+	max-width: 600px;
+	line-height: 1.4;
+	font-weight: 500;
+	margin: 0;
+	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes slideUpFade {
+	from {
+		opacity: 0;
+		transform: translateY(40px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .scroll-cta {
@@ -434,23 +451,11 @@ body::-webkit-scrollbar-thumb:hover {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	z-index: -1;
+	z-index: 1;
+	/* Above body background, below content */
 	opacity: 0.65;
 	pointer-events: none;
 	filter: none;
-	will-change: transform, opacity;
-	backface-visibility: hidden
-}
-
-.site-bg-video {
-	position: fixed;
-	inset: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	z-index: -1;
-	opacity: 0.65;
-	pointer-events: none;
 	will-change: transform, opacity;
 	backface-visibility: hidden;
 }
@@ -667,10 +672,20 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* Services section */
+.services-persona {
+	padding: 80px 36px 100px;
+	background: #000;
+	color: #fff;
+	position: relative;
+	z-index: 2;
+}
+
 .services {
 	padding: 80px 36px 100px;
-	background: #0a0a0a;
-	color: #fff
+	background: #000;
+	color: #fff;
+	position: relative;
+	z-index: 2;
 }
 
 .services-title {
@@ -896,12 +911,13 @@ body::-webkit-scrollbar-thumb:hover {
 /* Demo CTA section */
 .demo-cta {
 	padding: 100px 28px 140px;
-	background: #030303;
+	background: #000;
 	position: relative;
 	overflow: hidden;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	z-index: 2;
 }
 
 .demo-cta::before {
@@ -994,9 +1010,10 @@ body::-webkit-scrollbar-thumb:hover {
 /* Footer */
 .site-footer {
 	background: #000;
-	padding: 10px;
+	padding: 0;
 	position: relative;
 	overflow: hidden;
+	z-index: 2; /* Ensure it stays above background video */
 }
 
 .site-footer::before {
@@ -1024,7 +1041,7 @@ body::-webkit-scrollbar-thumb:hover {
 .footer-shell {
 	max-width: 100%;
 	margin: 0 auto;
-	padding: 60px 54px 40px;
+	padding: 80px 8% 60px;
 	position: relative;
 	z-index: 1;
 }
@@ -7584,7 +7601,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 /* ── OUR SERVICES CARDS SECTION ── */
 .svc-cards-section {
-	background: #FFD100;
+	background: #ffd100;
 	padding: 100px 36px 110px;
 }
 
@@ -8646,12 +8663,20 @@ a.svc-card {
 	transition-delay: 0.15s;
 }
 
+.svc-cards-section {
+	background: #ffd100;
+	position: relative;
+	z-index: 2;
+	padding: 100px 36px;
+}
+
 /* ── BLOG EDITORIAL SPOTLIGHT (REDESIGNED DEMO CTA) ── */
 .blog-spotlight {
 	padding: 120px 5% 140px;
 	background: #000;
 	position: relative;
 	overflow: hidden;
+	z-index: 2;
 }
 
 .blog-spotlight::before {
@@ -8816,21 +8841,21 @@ a.svc-card {
 	.blog-spotlight-card {
 		grid-template-columns: 1fr;
 	}
-	
+
 	.blog-media {
 		min-height: 380px;
 	}
-	
+
 	.media-overlay {
 		background: linear-gradient(0deg, rgba(10, 10, 10, 0.8) 0%, rgba(10, 10, 10, 0.2) 100%);
 	}
-	
+
 	.blog-content {
 		padding: 48px 32px;
 		text-align: center;
 		align-items: center;
 	}
-	
+
 	.blog-summary {
 		max-width: 100%;
 	}
@@ -8840,17 +8865,17 @@ a.svc-card {
 	.blog-spotlight {
 		padding: 80px 5%;
 	}
-	
+
 	.blog-headline {
 		font-size: 2.2rem;
 	}
-	
+
 	.blog-actions {
 		flex-direction: column;
 		width: 100%;
 		gap: 16px;
 	}
-	
+
 	.blog-cta-main {
 		width: 100%;
 		justify-content: center;

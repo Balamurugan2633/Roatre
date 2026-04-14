@@ -97,6 +97,24 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	tryPlaySiteVideo();
+
+	// Hero parallax effect on scroll
+	// Hero content parallax: moves slightly faster than scroll for a premium feel
+	window.addEventListener('scroll', function() {
+		const heroContent = document.querySelector('.hero-content');
+		if (heroContent) {
+			const scrollY = window.scrollY;
+			// Only apply when the content is in or scrolling into view
+			if (scrollY < window.innerHeight * 2) {
+				const yPos = scrollY * 0.2; 
+				heroContent.style.transform = `translateY(-${yPos}px)`;
+				
+				// Optional: Fade in as it enters the first screen
+				const opacity = Math.min(scrollY / 400, 1);
+				heroContent.style.opacity = opacity;
+			}
+		}
+	});
 });
 
 // Contact Image Modal
