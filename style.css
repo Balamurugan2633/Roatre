@@ -7895,6 +7895,10 @@ body::-webkit-scrollbar-thumb:hover {
 		gap: 32px;
 	}
 
+	.svc-card {
+		height: 300px;
+	}
+
 	.svc-card-top {
 		height: 220px;
 	}
@@ -7924,6 +7928,13 @@ body::-webkit-scrollbar-thumb:hover {
 
 	.svc-card-label {
 		font-size: 1.5rem;
+	}
+	.svc-card {
+		height: 280px;
+	}
+
+	.svc-card-top {
+		height: 200px;
 	}
 }
 
