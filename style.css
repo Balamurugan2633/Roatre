@@ -1323,7 +1323,7 @@ body::-webkit-scrollbar-thumb:hover {
 	.demo-hero-right {
 		flex: none;
 		width: 100%;
-		padding: 60px 5%;
+		padding: 60px 5% 0;
 	}
 }
 
@@ -1467,12 +1467,14 @@ body::-webkit-scrollbar-thumb:hover {
 	min-height: 100vh;
 	background: #000;
 	position: relative;
+	align-items: flex-start;
 }
 
 .demo-hero-left {
-	flex: 1;
-	position: sticky;
+	position: fixed;
 	top: 0;
+	left: 0;
+	width: 45%;
 	height: 100vh;
 	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('assets/demo.jpg');
 	background-size: cover;
@@ -1482,11 +1484,13 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .demo-hero-right {
-	flex: 1.2;
-	padding: 160px 6% 100px;
+	margin-left: 45%;
+	width: 55%;
+	padding: 160px 6% 0;
 	position: relative;
 	z-index: 2;
 	background: #000;
+	min-height: 100vh;
 }
 
 
@@ -8318,4 +8322,83 @@ a.svc-card {
 
 .service-media.reveal-on-scroll {
 	transition-delay: 0.35s;
+}
+
+/* ── Demo Success Modal ── */
+.demo-modal-overlay {
+	display: none;
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.75);
+	backdrop-filter: blur(4px);
+	z-index: 9999;
+	align-items: center;
+	justify-content: center;
+}
+.demo-modal-overlay.active {
+	display: flex;
+}
+.demo-modal {
+	background: #111;
+	border: 1px solid #222;
+	border-radius: 16px;
+	padding: 48px 40px 40px;
+	max-width: 440px;
+	width: 90%;
+	text-align: center;
+	position: relative;
+	animation: modalIn .3s ease;
+}
+@keyframes modalIn {
+	from { opacity: 0; transform: translateY(24px) scale(.97); }
+	to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.demo-modal-close {
+	position: absolute;
+	top: 16px;
+	right: 20px;
+	background: none;
+	border: none;
+	color: #666;
+	font-size: 24px;
+	cursor: pointer;
+	line-height: 1;
+	transition: color .2s;
+}
+.demo-modal-close:hover { color: #fff; }
+.demo-modal-icon {
+	font-size: 56px;
+	color: #ffd100;
+	margin-bottom: 20px;
+}
+.demo-modal h3 {
+	font-size: 26px;
+	font-weight: 800;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: -0.5px;
+	margin: 0 0 12px;
+}
+.demo-modal p {
+	font-size: 15px;
+	color: #999;
+	line-height: 1.7;
+	margin: 0 0 28px;
+}
+.demo-modal-btn {
+	background: #ffd100;
+	color: #000;
+	border: none;
+	padding: 14px 40px;
+	border-radius: 8px;
+	font-size: 15px;
+	font-weight: 700;
+	cursor: pointer;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	transition: background .2s, transform .15s;
+}
+.demo-modal-btn:hover {
+	background: #e6bc00;
+	transform: translateY(-1px);
 }

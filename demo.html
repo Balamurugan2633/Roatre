@@ -74,8 +74,62 @@
 		</section>
 	</main>
 
+	<!-- Demo Success Modal -->
+	<div id="demoModal" class="demo-modal-overlay" aria-hidden="true">
+		<div class="demo-modal">
+			<button class="demo-modal-close" id="demoModalClose" aria-label="Close">&times;</button>
+			<div class="demo-modal-icon"><i class="fa-solid fa-circle-check"></i></div>
+			<h3>You're on the list!</h3>
+			<p>Thanks for registering. Our team will reach out shortly to schedule your personalized Roatre demo.</p>
+			<button class="demo-modal-btn" id="demoModalBtn">Got it</button>
+		</div>
+	</div>
+
 	<div id="site-footer-placeholder"></div>
 	<script src="script.js"></script>
+	<script>
+		['demoModalClose', 'demoModalBtn'].forEach(function(id) {
+			var el = document.getElementById(id);
+			if (el) el.addEventListener('click', function() {
+				var m = document.getElementById('demoModal');
+				m.classList.remove('active');
+				m.setAttribute('aria-hidden', 'true');
+			});
+		});
+		var demoModalEl = document.getElementById('demoModal');
+		if (demoModalEl) demoModalEl.addEventListener('click', function(e) {
+			if (e.target === this) { this.classList.remove('active'); this.setAttribute('aria-hidden','true'); }
+		});
+
+		// Left image: fixed while scrolling, stops exactly when right content ends
+		(function() {
+			var section = document.querySelector('.demo-hero');
+			var left = document.querySelector('.demo-hero-left');
+			var right = document.querySelector('.demo-hero-right');
+			if (!section || !left || !right) return;
+
+			function sync() {
+				// Section height = right content height (so both end together)
+				var rightH = right.offsetHeight;
+				section.style.minHeight = rightH + 'px';
+
+				var sectionBottom = section.getBoundingClientRect().bottom;
+				if (sectionBottom <= window.innerHeight) {
+					left.style.position = 'absolute';
+					left.style.top = 'auto';
+					left.style.bottom = '0';
+				} else {
+					left.style.position = 'fixed';
+					left.style.top = '0';
+					left.style.bottom = 'auto';
+				}
+			}
+
+			window.addEventListener('scroll', sync);
+			window.addEventListener('resize', sync);
+			sync();
+		})();
+	</script>
 </body>
 
 </html>

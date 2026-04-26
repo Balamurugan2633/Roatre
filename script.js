@@ -247,7 +247,7 @@ const demoForm = document.getElementById('demoRegisterForm');
 if (demoForm) {
     demoForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        alert('Thank you for registering! Our team will contact you soon.');
+        const demoModal = document.getElementById('demoModal'); if (demoModal) { demoModal.classList.add('active'); demoModal.setAttribute('aria-hidden', 'false'); }
         demoForm.reset();
     });
 }
