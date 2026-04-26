@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	loadHeader();
 	loadFooter();
 	initServiceScroll();
+	initRoleModals();
 	const siteVideo = document.getElementById('siteBgVideo');
 	const scrollBtn = document.getElementById('scrollToServices');
 
@@ -752,4 +753,52 @@ function initRevealObserver() {
 	}, revealOptions);
 
 	revealElements.forEach(el => revealObserver.observe(el));
+}
+
+function initRoleModals() {
+	const roleLinks = document.querySelectorAll('.role-link');
+	const modal = document.getElementById('roleModal');
+	if (!modal || roleLinks.length === 0) return;
+
+	const modalImg = document.getElementById('roleModalImg');
+	const modalTag = document.getElementById('roleModalTag');
+	const modalTitle = document.getElementById('roleModalTitle');
+	const modalBody = document.getElementById('roleModalBody');
+	const closeBtn = document.getElementById('roleModalClose');
+
+	function openModal(data) {
+		modalImg.style.backgroundImage = `url('${data.imgSrc}')`;
+		modalTag.innerText = data.tag;
+		modalTitle.innerText = data.title;
+		modalBody.innerText = data.body;
+		modal.classList.add('open');
+		document.body.style.overflow = 'hidden';
+	}
+
+	function closeModal() {
+		modal.classList.remove('open');
+		document.body.style.overflow = '';
+	}
+
+	roleLinks.forEach(link => {
+		link.addEventListener('click', function(e) {
+			e.preventDefault();
+			const card = this.closest('.role-card');
+			if (!card) return;
+
+			const data = {
+				imgSrc: card.querySelector('.role-img').getAttribute('src'),
+				tag: card.querySelector('.role-tag').innerText,
+				title: card.querySelector('.role-title').innerText,
+				body: card.querySelector('.role-body').innerText
+			};
+
+			openModal(data);
+		});
+	});
+
+	closeBtn.addEventListener('click', closeModal);
+	modal.addEventListener('click', function(e) {
+		if (e.target === modal) closeModal();
+	});
 }
