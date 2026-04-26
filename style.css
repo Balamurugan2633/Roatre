@@ -6777,7 +6777,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 /* ── OUR ROLE SECTION (IMAGE MODAL GRID) ── */
 .role-section {
-	background: #ffd85a;
+	background: rgb(255, 209, 0);
 	padding: 120px 0;
 	overflow: hidden;
 }
