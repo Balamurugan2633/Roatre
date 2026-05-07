@@ -2,7 +2,7 @@
 function loadHeader() {
 	const placeholder = document.getElementById('site-header-placeholder');
 	if (!placeholder) return;
-	fetch('header.html')
+	fetch('header.html?v=' + Date.now(), { cache: 'no-store' })
 		.then(r => r.text())
 		.then(html => {
 			placeholder.outerHTML = html;
@@ -17,7 +17,7 @@ function loadHeader() {
 function loadFooter() {
 	const placeholder = document.getElementById('site-footer-placeholder');
 	if (!placeholder) return;
-	fetch('footer.html')
+	fetch('footer.html?v=' + Date.now(), { cache: 'no-store' })
 		.then(r => r.text())
 		.then(html => { placeholder.outerHTML = html; });
 }
@@ -459,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Resources submenu navigation: keep all content visible and scroll to target section
-    const resourceSectionLinks = document.querySelectorAll('.resources-submenu a[href^="#"]');
+    const resourceSectionLinks = document.querySelectorAll('.resources-submenu a[href*="#"]');
     const resourceSections = document.querySelectorAll('.resources-page-wrapper .resource-section');
     const resourcesCenter = document.getElementById('resources-center');
     const resourcesNavMainLink = document.querySelector('.resources-nav-item > a[href*="resources.html"]');
@@ -494,16 +494,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if (resourceSectionLinks.length > 0) {
         resourceSectionLinks.forEach(link => {
             link.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (!targetId) return;
+                const href = this.getAttribute('href') || '';
+                const hashIndex = href.indexOf('#');
+                if (hashIndex === -1) return;
+                const hash = href.substring(hashIndex);
+                if (!hash || hash === '#') return;
 
                 if (!isOnResourcesPage) {
-                    e.preventDefault();
-                    window.location.href = `resources.html${targetId}`;
+                    // Let the browser navigate to resources.html#section naturally.
                     return;
                 }
 
-                const target = document.querySelector(targetId);
+                const target = document.querySelector(hash);
                 if (!target) return;
                 e.preventDefault();
                 showAllResourceSections();
@@ -515,6 +517,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.scrollTo({ top: y, behavior: 'smooth' });
             });
         });
+    }
+
+    // On resources.html, if the URL has a hash (e.g. #blog), scroll the target
+    // into view with header offset once the dynamic header has loaded.
+    function scrollToHashWithOffset() {
+        if (!isOnResourcesPage) return;
+        const hash = window.location.hash;
+        if (!hash || hash === '#') return;
+        const target = document.querySelector(hash);
+        if (!target) return;
+
+        showAllResourceSections();
+        const header = document.querySelector('.site-header');
+        const headerOffset = header ? header.offsetHeight + 18 : 0;
+        const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+
+    if (isOnResourcesPage && window.location.hash) {
+        // Delay so the async-loaded header.html has time to render before
+        // we measure its height for the offset calculation.
+        setTimeout(scrollToHashWithOffset, 250);
+        window.addEventListener('load', () => setTimeout(scrollToHashWithOffset, 100));
     }
 
     // Blog section horizontal navigation

@@ -16,101 +16,741 @@
 
 		}
 
-		/* ── HERO ── */
-		.sol-hero {
-			/* background-image: url('assets/solutionback.png'); */
-			background-size: cover;
-			background-position: center top;
+		/* ── HERO (CINEMATIC v2 — INTL EDITION) ── */
+		.sol-hero--cinematic {
+			--accent: #ffd85a;
+			--accent-2: #ffb347;
+			--ink: #f5f5f7;
 			position: relative;
-			min-height: 92vh;
+			min-height: 100vh;
 			display: flex;
 			flex-direction: column;
-			justify-content: flex-end;
-			padding: 0 60px 72px;
+			padding: 0 clamp(20px, 5vw, 64px);
 			overflow: hidden;
-			background-color: #030303;
+			background-color: #000;
+			isolation: isolate;
+		}
+
+		/* Layered background system */
+		.sol-hero-bg {
+			position: absolute;
+			inset: 0;
+			z-index: 0;
+			background-color: #050505;
+			pointer-events: none;
+		}
+
+		.sol-hero-aurora {
+			position: absolute;
+			border-radius: 50%;
+			filter: blur(110px);
+			opacity: 0.55;
+			will-change: transform;
+		}
+
+		.sol-hero-aurora--a {
+			width: 60vw;
+			height: 60vw;
+			top: -20vw;
+			left: -10vw;
+			background: radial-gradient(circle, rgba(255, 216, 90, 0.32), transparent 65%);
+			animation: auroraDrift 22s ease-in-out infinite;
+		}
+
+		.sol-hero-aurora--b {
+			width: 50vw;
+			height: 50vw;
+			bottom: -25vw;
+			right: -15vw;
+			background: radial-gradient(circle, rgba(255, 179, 71, 0.18), transparent 70%);
+			animation: auroraDrift 28s ease-in-out infinite reverse;
+		}
+
+		.sol-hero-aurora--c {
+			width: 40vw;
+			height: 40vw;
+			top: 30%;
+			left: 35%;
+			background: radial-gradient(circle, rgba(120, 90, 255, 0.10), transparent 65%);
+			animation: auroraDrift 35s ease-in-out infinite;
+		}
+
+		@keyframes auroraDrift {
+
+			0%,
+			100% {
+				transform: translate3d(0, 0, 0) scale(1);
+			}
+
+			33% {
+				transform: translate3d(6vw, -4vw, 0) scale(1.08);
+			}
+
+			66% {
+				transform: translate3d(-4vw, 5vw, 0) scale(0.95);
+			}
+		}
+
+		.sol-hero-grid {
+			position: absolute;
+			inset: 0;
+			background-image:
+				linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+			background-size: 80px 80px;
+			mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 80%);
+			-webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 80%);
+		}
+
+		.sol-hero-noise {
+			position: absolute;
+			inset: 0;
+			opacity: 0.035;
+			mix-blend-mode: overlay;
+			background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+		}
+
+		.sol-hero-vignette {
+			position: absolute;
+			inset: 0;
+			background:
+				linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, transparent 22%, transparent 70%, #000 100%),
+				radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+		}
+
+		/* Utility bar */
+		.sol-hero-utility {
+			position: relative;
+			z-index: 3;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+			max-width: 1400px;
+			margin: 0 auto;
+			padding-top: 120px;
+			font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+			font-size: 0.72rem;
+			letter-spacing: 0.18em;
+			text-transform: uppercase;
+			color: rgba(255, 255, 255, 0.55);
+		}
+
+		.sol-hero-status {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.sol-hero-pulse {
+			position: relative;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: #5fff8b;
+			box-shadow: 0 0 10px rgba(95, 255, 139, 0.7);
+		}
+
+		.sol-hero-pulse::after {
+			content: '';
+			position: absolute;
+			inset: -4px;
+			border-radius: 50%;
+			border: 1px solid rgba(95, 255, 139, 0.6);
+			animation: pulseRing 2s ease-out infinite;
+		}
+
+		@keyframes pulseRing {
+			0% {
+				transform: scale(0.8);
+				opacity: 1;
+			}
+
+			100% {
+				transform: scale(2.2);
+				opacity: 0;
+			}
+		}
+
+		.sol-hero-status-label {
+			color: #fff;
+			font-weight: 600;
+		}
+
+		.sol-hero-meta {
+			display: inline-flex;
+			gap: 10px;
+			align-items: center;
+		}
+
+		.sol-hero-meta-sep {
+			opacity: 0.35;
+		}
+
+		/* Main content shell */
+		.sol-hero-content {
+			position: relative;
+			z-index: 2;
+			width: 100%;
+			max-width: 1400px;
+			margin: 0 auto;
+			padding: 56px 0 40px;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
 		}
 
 		.sol-hero-bg-text {
 			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
+			top: -2vw;
+			left: -1vw;
+			right: -1vw;
 			font-size: clamp(8rem, 18vw, 22rem);
 			font-weight: 900;
 			text-transform: uppercase;
-			color: rgba(255, 255, 255, 0.025);
-			white-space: nowrap;
+			color: transparent;
+			-webkit-text-stroke: 1px rgba(255, 255, 255, 0.04);
+			line-height: 0.85;
 			pointer-events: none;
-			letter-spacing: -4px;
 			user-select: none;
+			letter-spacing: -0.04em;
+			z-index: 0;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		.sol-hero-grid-layout {
+			position: relative;
+			z-index: 2;
+			display: grid;
+			grid-template-columns: minmax(0, 1.6fr) minmax(360px, 1fr);
+			gap: clamp(32px, 4vw, 64px);
+			align-items: center;
+		}
+
+		/* LEFT — Typography column */
+		.sol-hero-left {
+			display: flex;
+			flex-direction: column;
+			gap: 32px;
+			min-width: 0;
 		}
 
 		.sol-hero-kicker {
 			display: inline-flex;
 			align-items: center;
-			gap: 10px;
-			color: #ffd85a;
-			font-size: 0.75rem;
+			gap: 12px;
+			align-self: flex-start;
+			color: #fff;
+			font-size: 0.72rem;
 			font-weight: 700;
 			text-transform: uppercase;
-			letter-spacing: 3px;
-			margin-bottom: 24px;
+			letter-spacing: 0.32em;
+			background: rgba(255, 255, 255, 0.04);
+			padding: 10px 18px 10px 14px;
+			border-radius: 50px;
+			border: 1px solid rgba(255, 255, 255, 0.09);
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			animation: heroFadeUp 0.9s ease 0.1s both;
 		}
 
-		.sol-hero-kicker::before {
+		.sol-hero-dot {
+			position: relative;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: var(--accent);
+			box-shadow: 0 0 12px rgba(255, 216, 90, 0.7);
+		}
+
+		.sol-hero-dot::after {
 			content: '';
-			display: block;
-			width: 32px;
-			height: 2px;
-			background: #ffd85a;
+			position: absolute;
+			inset: -3px;
+			border-radius: 50%;
+			border: 1px solid rgba(255, 216, 90, 0.6);
+			animation: pulseRing 2.4s ease-out infinite;
 		}
 
 		.sol-hero-title {
-			font-size: clamp(3.5rem, 8vw, 9rem);
+			font-family: 'Inter', system-ui, sans-serif;
+			font-size: clamp(2.8rem, 6.4vw, 6.8rem);
 			font-weight: 900;
 			text-transform: uppercase;
 			line-height: 0.92;
-			letter-spacing: -2px;
-			margin: 0 0 36px;
-			max-width: 900px;
+			letter-spacing: -0.035em;
+			margin: 0;
+			color: var(--ink);
+			min-width: 0;
+			overflow-wrap: break-word;
+		}
+
+		.sol-hero-title .sol-hero-line {
+			display: block;
+			opacity: 0;
+			transform: translateY(40px);
+			animation: heroLineRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+		}
+
+		.sol-hero-title .sol-hero-line:nth-child(1) {
+			animation-delay: 0.15s;
+		}
+
+		.sol-hero-title .sol-hero-line:nth-child(2) {
+			animation-delay: 0.32s;
+		}
+
+		.sol-hero-title .sol-hero-line:nth-child(3) {
+			animation-delay: 0.50s;
 		}
 
 		.sol-hero-title em {
 			font-style: italic;
-			color: #ffd85a;
+			background: linear-gradient(120deg, var(--accent) 0%, #ffefa6 50%, var(--accent-2) 100%);
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+			padding-right: 0.05em;
+			position: relative;
 		}
 
-		.sol-hero-bottom {
+		.sol-hero-title em::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 6%;
+			bottom: 0.04em;
+			height: 0.08em;
+			background: linear-gradient(90deg, var(--accent), transparent);
+			opacity: 0.55;
+		}
+
+		.sol-hero-lead {
+			max-width: 540px;
+			color: rgba(245, 245, 247, 0.72);
+			font-size: clamp(1rem, 1.15vw, 1.18rem);
+			line-height: 1.65;
+			margin: 0;
+			animation: heroFadeUp 0.9s ease 0.7s both;
+		}
+
+		.sol-hero-cta {
 			display: flex;
-			align-items: flex-end;
-			justify-content: space-between;
-			gap: 40px;
+			gap: 14px;
+			flex-wrap: wrap;
+			animation: heroFadeUp 0.9s ease 0.85s both;
 		}
 
-		.sol-hero-desc {
-			max-width: 480px;
-			color: #aaa;
-			font-size: 1rem;
-			line-height: 1.75;
-		}
-
-		.sol-hero-scroll {
-			display: flex;
+		.sol-hero-btn {
+			display: inline-flex;
 			align-items: center;
-			gap: 10px;
-			color: rgba(255, 255, 255, 0.35);
-			font-size: 0.75rem;
+			gap: 12px;
+			padding: 16px 28px;
+			border-radius: 999px;
+			font-size: 0.85rem;
+			font-weight: 700;
 			text-transform: uppercase;
-			letter-spacing: 2px;
-			flex-shrink: 0;
+			letter-spacing: 0.12em;
+			text-decoration: none;
+			transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s, background .35s, color .35s;
+			cursor: pointer;
+			border: 1px solid transparent;
 		}
 
-		.sol-hero-scroll-line {
-			width: 1px;
-			height: 60px;
-			background: linear-gradient(180deg, rgba(255, 216, 90, 0.6), transparent);
+		.sol-hero-btn i {
+			font-size: 0.78rem;
+			transition: transform .35s;
 		}
+
+		.sol-hero-btn--primary {
+			background: var(--accent);
+			color: #0c0c0c;
+			box-shadow: 0 14px 40px -12px rgba(255, 216, 90, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+		}
+
+		.sol-hero-btn--primary:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 20px 50px -12px rgba(255, 216, 90, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+		}
+
+		.sol-hero-btn--primary:hover i {
+			transform: translateX(4px);
+		}
+
+		.sol-hero-btn--ghost {
+			background: rgba(255, 255, 255, 0.04);
+			color: #fff;
+			border-color: rgba(255, 255, 255, 0.14);
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+		}
+
+		.sol-hero-btn--ghost:hover {
+			background: rgba(255, 255, 255, 0.09);
+			border-color: rgba(255, 255, 255, 0.25);
+			transform: translateY(-2px);
+		}
+
+		/* RIGHT — Glass panel */
+		.sol-hero-panel {
+			position: relative;
+			padding: 28px;
+			border-radius: 20px;
+			background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+			border: 1px solid rgba(255, 255, 255, 0.10);
+			backdrop-filter: blur(20px);
+			-webkit-backdrop-filter: blur(20px);
+			box-shadow:
+				0 30px 80px -20px rgba(0, 0, 0, 0.6),
+				inset 0 1px 0 rgba(255, 255, 255, 0.08);
+			animation: heroFadeUp 1s ease 0.6s both;
+			overflow: hidden;
+		}
+
+		.sol-hero-panel::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			padding: 1px;
+			background: linear-gradient(135deg, rgba(255, 216, 90, 0.45), transparent 35%, transparent 65%, rgba(255, 255, 255, 0.18));
+			-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+			-webkit-mask-composite: xor;
+			mask-composite: exclude;
+			pointer-events: none;
+		}
+
+		.sol-hero-panel-head {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+			font-size: 0.7rem;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+			color: rgba(255, 255, 255, 0.6);
+		}
+
+		.sol-hero-panel-tag {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			padding: 4px 10px;
+			border-radius: 999px;
+			background: rgba(95, 255, 139, 0.10);
+			border: 1px solid rgba(95, 255, 139, 0.25);
+			color: #5fff8b;
+			font-size: 0.65rem;
+		}
+
+		.sol-hero-panel-tag::before {
+			content: '';
+			width: 5px;
+			height: 5px;
+			border-radius: 50%;
+			background: #5fff8b;
+			box-shadow: 0 0 6px rgba(95, 255, 139, 0.8);
+		}
+
+		.sol-hero-panel-figure {
+			display: flex;
+			align-items: baseline;
+			gap: 14px;
+			margin-top: 20px;
+		}
+
+		.sol-hero-panel-num {
+			font-size: clamp(3rem, 5vw, 4.5rem);
+			font-weight: 900;
+			line-height: 1;
+			letter-spacing: -0.04em;
+			background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.55) 100%);
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+		}
+
+		.sol-hero-panel-num sup {
+			font-size: 0.45em;
+			color: var(--accent);
+			-webkit-text-fill-color: var(--accent);
+			margin-left: 4px;
+			top: -0.6em;
+		}
+
+		.sol-hero-panel-arrow {
+			color: var(--accent);
+			font-size: 1.35rem;
+		}
+
+		.sol-hero-panel-cap {
+			margin-top: 10px;
+			color: rgba(255, 255, 255, 0.55);
+			font-size: 0.85rem;
+			line-height: 1.55;
+			max-width: 320px;
+		}
+
+		.sol-hero-panel-spark {
+			margin: 22px 0 8px;
+			height: 64px;
+			width: 100%;
+			position: relative;
+		}
+
+		.sol-hero-panel-spark svg {
+			width: 100%;
+			height: 100%;
+			overflow: visible;
+		}
+
+		.sol-hero-panel-spark path {
+			fill: none;
+			stroke: url(#sparkGrad);
+			stroke-width: 2.2;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			filter: drop-shadow(0 4px 10px rgba(255, 216, 90, 0.35));
+			stroke-dasharray: 600;
+			stroke-dashoffset: 600;
+			animation: sparkDraw 2.4s ease 1s forwards;
+		}
+
+		@keyframes sparkDraw {
+			to {
+				stroke-dashoffset: 0;
+			}
+		}
+
+		.sol-hero-panel-spark::after {
+			content: '';
+			position: absolute;
+			inset: auto 0 0 0;
+			height: 50%;
+			background: linear-gradient(180deg, transparent, rgba(255, 216, 90, 0.06));
+			pointer-events: none;
+		}
+
+		.sol-hero-panel-stats {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 16px;
+			padding-top: 22px;
+			margin-top: 22px;
+			border-top: 1px solid rgba(255, 255, 255, 0.08);
+		}
+
+		.sol-hero-panel-stat {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+		}
+
+		.sol-hero-panel-stat-num {
+			font-size: 1.35rem;
+			font-weight: 800;
+			color: #fff;
+			letter-spacing: -0.02em;
+		}
+
+		.sol-hero-panel-stat-num sup {
+			font-size: 0.55em;
+			color: var(--accent);
+			margin-left: 2px;
+			top: -0.5em;
+		}
+
+		.sol-hero-panel-stat-label {
+			font-size: 0.7rem;
+			color: rgba(255, 255, 255, 0.5);
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			line-height: 1.35;
+		}
+
+		/* Bottom rail */
+		.sol-hero-rail {
+			position: relative;
+			z-index: 3;
+			display: grid;
+			grid-template-columns: auto 1fr auto;
+			align-items: center;
+			gap: 24px;
+			width: 100%;
+			max-width: 1400px;
+			margin: 0 auto;
+			padding: 28px 0 36px;
+			border-top: 1px solid rgba(255, 255, 255, 0.07);
+			font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+			font-size: 0.72rem;
+			letter-spacing: 0.18em;
+			text-transform: uppercase;
+			color: rgba(255, 255, 255, 0.55);
+			animation: heroFadeUp 0.9s ease 1.1s both;
+		}
+
+		.sol-hero-rail-section {
+			display: inline-flex;
+			gap: 14px;
+			align-items: center;
+		}
+
+		.sol-hero-rail-label {
+			color: rgba(255, 255, 255, 0.4);
+		}
+
+		.sol-hero-rail-num {
+			color: #fff;
+			font-weight: 600;
+		}
+
+		.sol-hero-rail-progress {
+			position: relative;
+			height: 1px;
+			background: rgba(255, 255, 255, 0.10);
+			overflow: hidden;
+		}
+
+		.sol-hero-rail-progress-bar {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 33%;
+			background: linear-gradient(90deg, var(--accent), transparent);
+			animation: railSweep 4s ease-in-out infinite;
+		}
+
+		@keyframes railSweep {
+
+			0%,
+			100% {
+				transform: translateX(-20%);
+			}
+
+			50% {
+				transform: translateX(160%);
+			}
+		}
+
+		.sol-hero-rail-scroll {
+			display: inline-flex;
+			gap: 10px;
+			align-items: center;
+			color: #fff;
+		}
+
+		.sol-hero-rail-scroll i {
+			color: var(--accent);
+			animation: scrollHint 1.8s ease-in-out infinite;
+		}
+
+		@keyframes scrollHint {
+
+			0%,
+			100% {
+				transform: translateY(0);
+				opacity: 0.7;
+			}
+
+			50% {
+				transform: translateY(4px);
+				opacity: 1;
+			}
+		}
+
+		/* Animations */
+		@keyframes heroFadeUp {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes heroLineRise {
+			from {
+				opacity: 0;
+				transform: translateY(40px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		/* Responsive */
+		@media (max-width: 1280px) {
+			.sol-hero-grid-layout {
+				grid-template-columns: 1fr;
+				gap: 48px;
+			}
+
+			.sol-hero-panel {
+				max-width: 560px;
+				width: 100%;
+			}
+
+			.sol-hero-title {
+				font-size: clamp(3rem, 9vw, 6.4rem);
+			}
+		}
+
+		@media (max-width: 720px) {
+			.sol-hero-utility {
+				padding-top: 100px;
+				font-size: 0.65rem;
+			}
+
+			.sol-hero-meta-item:not(:last-child)~.sol-hero-meta-sep,
+			.sol-hero-meta-item:last-child {
+				display: none;
+			}
+
+			.sol-hero-content {
+				padding: 32px 0 24px;
+			}
+
+			.sol-hero-cta {
+				width: 100%;
+			}
+
+			.sol-hero-btn {
+				flex: 1;
+				justify-content: center;
+			}
+
+			.sol-hero-panel {
+				padding: 22px;
+			}
+
+			.sol-hero-panel-stats {
+				grid-template-columns: repeat(3, 1fr);
+				gap: 12px;
+			}
+
+			.sol-hero-panel-stat-num {
+				font-size: 1.1rem;
+			}
+
+			.sol-hero-rail {
+				grid-template-columns: 1fr;
+				gap: 14px;
+				padding-bottom: 28px;
+			}
+
+			.sol-hero-rail-progress {
+				display: none;
+			}
+		}
+
 
 		/* ── PLATFORM MARQUEE ── */
 		.sol-marquee {
@@ -547,6 +1187,685 @@
 			position: relative;
 			z-index: 2;
 		}
+
+		/* ══════════════════════════════════════════════════════
+		   SOLUTION SHOWCASE — international editorial layout
+		   ══════════════════════════════════════════════════════ */
+		.sol-show {
+			position: relative;
+			padding: 140px 0 0;
+			background: #060606;
+			color: #fff;
+			overflow: hidden;
+			border-top: 1px solid rgba(255, 255, 255, 0.06);
+		}
+
+		.sol-show--light {
+			background: #f4f3ee;
+			color: #0a0a0a;
+		}
+
+		.sol-show--white {
+			background: #ffffff;
+			color: #0a0a0a;
+		}
+
+		.sol-show--yellow {
+			background: #ffd85a;
+			color: #0a0a0a;
+		}
+
+		.sol-show--mid {
+			background: #0c0c0c;
+		}
+
+		.sol-show-bg-num {
+			position: absolute;
+			top: 40px;
+			right: -40px;
+			font-size: clamp(12rem, 28vw, 26rem);
+			font-weight: 900;
+			line-height: 0.8;
+			color: rgba(255, 255, 255, 0.025);
+			letter-spacing: -8px;
+			pointer-events: none;
+			user-select: none;
+			z-index: 0;
+		}
+
+		.sol-show--light .sol-show-bg-num,
+		.sol-show--white .sol-show-bg-num {
+			color: rgba(0, 0, 0, 0.04);
+		}
+
+		.sol-show--yellow .sol-show-bg-num {
+			color: rgba(0, 0, 0, 0.06);
+		}
+
+		.sol-show-container {
+			position: relative;
+			z-index: 2;
+			max-width: 1400px;
+			margin: 0 auto;
+			padding: 0 5%;
+		}
+
+		/* Header */
+		.sol-show-head {
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 60px;
+			align-items: end;
+			padding-bottom: 64px;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+			margin-bottom: 80px;
+		}
+
+		.sol-show--light .sol-show-head,
+		.sol-show--white .sol-show-head {
+			border-bottom-color: rgba(0, 0, 0, 0.1);
+		}
+
+		.sol-show--yellow .sol-show-head {
+			border-bottom-color: rgba(0, 0, 0, 0.18);
+		}
+
+		.sol-show-index {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			padding-top: 14px;
+			border-top: 2px solid #ffd85a;
+		}
+
+		.sol-show--yellow .sol-show-index {
+			border-top-color: #0a0a0a;
+		}
+
+		.sol-show-index-num {
+			font-size: 3.6rem;
+			font-weight: 900;
+			line-height: 1;
+			color: #ffd85a;
+			letter-spacing: -2px;
+		}
+
+		.sol-show--yellow .sol-show-index-num {
+			color: #0a0a0a;
+		}
+
+		.sol-show-index-label {
+			font-size: 0.72rem;
+			font-weight: 800;
+			letter-spacing: 3px;
+			text-transform: uppercase;
+			color: rgba(255, 255, 255, 0.6);
+		}
+
+		.sol-show--light .sol-show-index-label,
+		.sol-show--white .sol-show-index-label {
+			color: rgba(0, 0, 0, 0.55);
+		}
+
+		.sol-show--yellow .sol-show-index-label {
+			color: rgba(0, 0, 0, 0.7);
+		}
+
+		.sol-show-head-text {
+			max-width: 900px;
+		}
+
+		.sol-show-cat {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			font-size: 0.74rem;
+			font-weight: 800;
+			text-transform: uppercase;
+			letter-spacing: 3px;
+			color: #ffd85a;
+			margin-bottom: 24px;
+		}
+
+		.sol-show-cat::before {
+			content: '';
+			width: 28px;
+			height: 1px;
+			background: #ffd85a;
+		}
+
+		.sol-show--yellow .sol-show-cat {
+			color: #0a0a0a;
+		}
+
+		.sol-show--yellow .sol-show-cat::before {
+			background: #0a0a0a;
+		}
+
+		.sol-show-title {
+			font-size: clamp(2.4rem, 5.5vw, 5rem);
+			font-weight: 900;
+			text-transform: uppercase;
+			line-height: 0.96;
+			letter-spacing: -2px;
+			margin: 0 0 28px;
+		}
+
+		.sol-show-title em {
+			font-style: italic;
+			color: #ffd85a;
+			font-weight: 900;
+		}
+
+		.sol-show--yellow .sol-show-title em {
+			color: #fff;
+			-webkit-text-stroke: 1px #0a0a0a;
+		}
+
+		.sol-show--white .sol-show-title em {
+			color: #ffd85a;
+			-webkit-text-stroke: 1px #0a0a0a;
+		}
+
+		.sol-show-lead {
+			font-size: 1.1rem;
+			line-height: 1.7;
+			color: rgba(255, 255, 255, 0.72);
+			margin: 0;
+			max-width: 62ch;
+		}
+
+		.sol-show--light .sol-show-lead,
+		.sol-show--white .sol-show-lead {
+			color: rgba(0, 0, 0, 0.7);
+		}
+
+		.sol-show--yellow .sol-show-lead {
+			color: rgba(0, 0, 0, 0.78);
+		}
+
+		/* Main split */
+		.sol-show-main {
+			display: grid;
+			grid-template-columns: 1.15fr 1fr;
+			gap: 80px;
+			align-items: stretch;
+			margin-bottom: 100px;
+		}
+
+		.sol-show--reverse .sol-show-main {
+			grid-template-columns: 1fr 1.15fr;
+		}
+
+		.sol-show--reverse .sol-show-media {
+			order: 2;
+		}
+
+		.sol-show--reverse .sol-show-points {
+			order: 1;
+		}
+
+		/* Media */
+		.sol-show-media {
+			position: relative;
+			border-radius: 6px;
+			overflow: hidden;
+			min-height: 560px;
+			background: #111;
+			box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+		}
+
+		.sol-show-media img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+			transition: transform 1s ease;
+		}
+
+		.sol-show-media:hover img {
+			transform: scale(1.05);
+		}
+
+		.sol-show-media::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+			pointer-events: none;
+		}
+
+		.sol-show-media-tag {
+			position: absolute;
+			top: 24px;
+			left: 24px;
+			z-index: 2;
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			background: rgba(0, 0, 0, 0.55);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			color: #ffd85a;
+			font-size: 0.7rem;
+			font-weight: 800;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			padding: 9px 16px;
+			border: 1px solid rgba(255, 216, 90, 0.3);
+			border-radius: 999px;
+		}
+
+		.sol-show-media-tag::before {
+			content: '';
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: #ffd85a;
+			box-shadow: 0 0 8px rgba(255, 216, 90, 0.7);
+		}
+
+		.sol-show-media-card {
+			position: absolute;
+			bottom: 24px;
+			left: 24px;
+			right: 24px;
+			z-index: 2;
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			gap: 20px;
+		}
+
+		.sol-show-media-stat {
+			background: #ffd85a;
+			color: #000;
+			padding: 16px 22px;
+			border-radius: 4px;
+			min-width: 160px;
+		}
+
+		.sol-show-media-stat strong {
+			display: block;
+			font-size: 1.5rem;
+			font-weight: 900;
+			line-height: 1;
+			margin-bottom: 4px;
+			letter-spacing: -0.5px;
+		}
+
+		.sol-show-media-stat span {
+			font-size: 0.68rem;
+			font-weight: 700;
+			letter-spacing: 1.5px;
+			text-transform: uppercase;
+			opacity: 0.75;
+		}
+
+		.sol-show-media-quote {
+			color: #fff;
+			font-size: 0.85rem;
+			line-height: 1.5;
+			max-width: 240px;
+			text-align: right;
+			font-weight: 500;
+			text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+		}
+
+		/* Points list */
+		.sol-show-points {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		.sol-show-point {
+			display: grid;
+			grid-template-columns: 56px 1fr;
+			gap: 22px;
+			padding: 26px 0;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+			align-items: start;
+			transition: padding 0.3s ease;
+		}
+
+		.sol-show-point:hover {
+			padding-left: 8px;
+		}
+
+		.sol-show--light .sol-show-point,
+		.sol-show--white .sol-show-point {
+			border-bottom-color: rgba(0, 0, 0, 0.08);
+		}
+
+		.sol-show--yellow .sol-show-point {
+			border-bottom-color: rgba(0, 0, 0, 0.15);
+		}
+
+		.sol-show-point:first-child {
+			border-top: 1px solid rgba(255, 255, 255, 0.08);
+		}
+
+		.sol-show--light .sol-show-point:first-child,
+		.sol-show--white .sol-show-point:first-child {
+			border-top-color: rgba(0, 0, 0, 0.08);
+		}
+
+		.sol-show--yellow .sol-show-point:first-child {
+			border-top-color: rgba(0, 0, 0, 0.15);
+		}
+
+		.sol-show-point-icon {
+			width: 48px;
+			height: 48px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: rgba(255, 216, 90, 0.08);
+			border: 1px solid rgba(255, 216, 90, 0.25);
+			color: #ffd85a;
+			border-radius: 10px;
+			font-size: 1.05rem;
+			flex-shrink: 0;
+		}
+
+		.sol-show--light .sol-show-point-icon,
+		.sol-show--white .sol-show-point-icon {
+			background: rgba(0, 0, 0, 0.04);
+			border-color: rgba(0, 0, 0, 0.12);
+			color: #0a0a0a;
+		}
+
+		.sol-show--yellow .sol-show-point-icon {
+			background: rgba(0, 0, 0, 0.08);
+			border-color: rgba(0, 0, 0, 0.25);
+			color: #0a0a0a;
+		}
+
+		.sol-show-point-content h4 {
+			font-size: 1rem;
+			font-weight: 800;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+			margin: 0 0 8px;
+			line-height: 1.25;
+			color: #fff;
+		}
+
+		.sol-show--light .sol-show-point-content h4,
+		.sol-show--white .sol-show-point-content h4,
+		.sol-show--yellow .sol-show-point-content h4 {
+			color: #0a0a0a;
+		}
+
+		.sol-show-point-content p {
+			font-size: 0.92rem;
+			line-height: 1.65;
+			color: rgba(255, 255, 255, 0.62);
+			margin: 0;
+		}
+
+		.sol-show--light .sol-show-point-content p,
+		.sol-show--white .sol-show-point-content p {
+			color: rgba(0, 0, 0, 0.65);
+		}
+
+		.sol-show--yellow .sol-show-point-content p {
+			color: rgba(0, 0, 0, 0.72);
+		}
+
+		/* Stats strip (integrated) */
+		.sol-show-stats {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+			background: rgba(255, 255, 255, 0.015);
+		}
+
+		.sol-show--light .sol-show-stats,
+		.sol-show--white .sol-show-stats {
+			border-color: rgba(0, 0, 0, 0.1);
+			background: rgba(0, 0, 0, 0.02);
+		}
+
+		.sol-show--yellow .sol-show-stats {
+			border-color: rgba(0, 0, 0, 0.2);
+			background: rgba(0, 0, 0, 0.04);
+		}
+
+		.sol-show-stat {
+			padding: 44px 36px;
+			border-right: 1px solid rgba(255, 255, 255, 0.08);
+			position: relative;
+		}
+
+		.sol-show--light .sol-show-stat,
+		.sol-show--white .sol-show-stat {
+			border-right-color: rgba(0, 0, 0, 0.08);
+		}
+
+		.sol-show--yellow .sol-show-stat {
+			border-right-color: rgba(0, 0, 0, 0.18);
+		}
+
+		.sol-show--yellow .sol-show-stat-tag {
+			color: #0a0a0a;
+		}
+
+		.sol-show-stat:last-child {
+			border-right: none;
+		}
+
+		.sol-show-stat-tag {
+			display: block;
+			font-size: 0.65rem;
+			font-weight: 800;
+			letter-spacing: 2.5px;
+			color: #ffd85a;
+			text-transform: uppercase;
+			margin-bottom: 14px;
+		}
+
+		.sol-show-stat-value {
+			font-size: 1.7rem;
+			font-weight: 900;
+			color: #fff;
+			line-height: 1.1;
+			margin-bottom: 8px;
+			letter-spacing: -0.5px;
+			text-transform: uppercase;
+		}
+
+		.sol-show--light .sol-show-stat-value,
+		.sol-show--white .sol-show-stat-value,
+		.sol-show--yellow .sol-show-stat-value {
+			color: #0a0a0a;
+		}
+
+		.sol-show-stat-label {
+			font-size: 0.78rem;
+			color: rgba(255, 255, 255, 0.5);
+			font-weight: 500;
+			line-height: 1.4;
+		}
+
+		.sol-show--light .sol-show-stat-label,
+		.sol-show--white .sol-show-stat-label {
+			color: rgba(0, 0, 0, 0.55);
+		}
+
+		.sol-show--yellow .sol-show-stat-label {
+			color: rgba(0, 0, 0, 0.65);
+		}
+
+		/* Section bottom spacer */
+		.sol-show-foot {
+			padding: 80px 0 100px;
+			text-align: center;
+		}
+
+		.sol-show-foot a {
+			display: inline-flex;
+			align-items: center;
+			gap: 12px;
+			color: #ffd85a;
+			font-size: 0.85rem;
+			font-weight: 800;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			text-decoration: none;
+			padding: 16px 32px;
+			border: 1px solid rgba(255, 216, 90, 0.4);
+			border-radius: 999px;
+			transition: all 0.3s ease;
+		}
+
+		.sol-show-foot a:hover {
+			background: #ffd85a;
+			color: #000;
+			gap: 18px;
+		}
+
+		.sol-show--light .sol-show-foot a,
+		.sol-show--white .sol-show-foot a,
+		.sol-show--yellow .sol-show-foot a {
+			color: #0a0a0a;
+			border-color: rgba(0, 0, 0, 0.4);
+		}
+
+		.sol-show--light .sol-show-foot a:hover,
+		.sol-show--white .sol-show-foot a:hover,
+		.sol-show--yellow .sol-show-foot a:hover {
+			background: #0a0a0a;
+			color: #ffd85a;
+			border-color: #0a0a0a;
+		}
+
+		/* Responsive */
+		@media (max-width: 1100px) {
+			.sol-show {
+				padding: 100px 0 0;
+			}
+
+			.sol-show-head {
+				grid-template-columns: 140px 1fr;
+				gap: 40px;
+				margin-bottom: 60px;
+				padding-bottom: 48px;
+			}
+
+			.sol-show-index-num {
+				font-size: 2.8rem;
+			}
+
+			.sol-show-main {
+				gap: 56px;
+				margin-bottom: 80px;
+			}
+		}
+
+		@media (max-width: 900px) {
+			.sol-show-head {
+				grid-template-columns: 1fr;
+				gap: 28px;
+				align-items: start;
+			}
+
+			.sol-show-main {
+				grid-template-columns: 1fr !important;
+				gap: 40px;
+			}
+
+			.sol-show--reverse .sol-show-media {
+				order: 0;
+			}
+
+			.sol-show--reverse .sol-show-points {
+				order: 1;
+			}
+
+			.sol-show-media {
+				min-height: 380px;
+			}
+
+			.sol-show-stats {
+				grid-template-columns: 1fr 1fr;
+			}
+
+			.sol-show-stat:nth-child(2) {
+				border-right: none;
+			}
+
+			.sol-show-stat:nth-child(1),
+			.sol-show-stat:nth-child(2) {
+				border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+			}
+
+			.sol-show--light .sol-show-stat:nth-child(1),
+			.sol-show--light .sol-show-stat:nth-child(2),
+			.sol-show--white .sol-show-stat:nth-child(1),
+			.sol-show--white .sol-show-stat:nth-child(2) {
+				border-bottom-color: rgba(0, 0, 0, 0.08);
+			}
+
+			.sol-show--yellow .sol-show-stat:nth-child(1),
+			.sol-show--yellow .sol-show-stat:nth-child(2) {
+				border-bottom-color: rgba(0, 0, 0, 0.18);
+			}
+		}
+
+		@media (max-width: 560px) {
+			.sol-show {
+				padding: 72px 0 0;
+			}
+
+			.sol-show-bg-num {
+				font-size: 10rem;
+				right: -20px;
+			}
+
+			.sol-show-head {
+				margin-bottom: 40px;
+				padding-bottom: 36px;
+			}
+
+			.sol-show-stats {
+				grid-template-columns: 1fr;
+			}
+
+			.sol-show-stat {
+				border-right: none !important;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+				padding: 32px 24px;
+			}
+
+			.sol-show--light .sol-show-stat,
+			.sol-show--white .sol-show-stat {
+				border-bottom-color: rgba(0, 0, 0, 0.08);
+			}
+
+			.sol-show--yellow .sol-show-stat {
+				border-bottom-color: rgba(0, 0, 0, 0.18);
+			}
+
+			.sol-show-stat:last-child {
+				border-bottom: none;
+			}
+
+			.sol-show-media-card {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+			.sol-show-media-quote {
+				text-align: left;
+			}
+
+			.sol-show-foot {
+				padding: 48px 0 64px;
+			}
+		}
 	</style>
 </head>
 
@@ -554,15 +1873,118 @@
 	<div id="site-header-placeholder"></div>
 
 	<main>
-		<br><br><br>
-		<!-- ══ HERO ══ -->
-		<section class="sol-hero">
-			<div class="sol-hero-bg-text">Solution</div>
-			<div class="sol-hero-kicker">Roatre &mdash; Platform</div>
-			<h1 class="sol-hero-title">Built for<br><em>Real</em><br>Performance</h1>
-			<div class="sol-hero-bottom">
-				<p class="sol-hero-desc">From training sessions to match days, every moment is captured, structured, and
-					turned into insights that drive real improvement.</p>
+		<!-- ══ HERO (CINEMATIC v2) ══ -->
+		<section class="sol-hero sol-hero--cinematic">
+			<div class="sol-hero-bg" aria-hidden="true">
+				<div class="sol-hero-aurora sol-hero-aurora--a"></div>
+				<div class="sol-hero-aurora sol-hero-aurora--b"></div>
+				<div class="sol-hero-aurora sol-hero-aurora--c"></div>
+				<div class="sol-hero-grid"></div>
+				<div class="sol-hero-noise"></div>
+				<div class="sol-hero-vignette"></div>
+			</div>
+
+			<div class="sol-hero-utility">
+				<div class="sol-hero-status">
+					<span class="sol-hero-pulse"></span>
+					<span class="sol-hero-status-label">Live &middot; Roatre Platform</span>
+				</div>
+				<div class="sol-hero-meta">
+					<span class="sol-hero-meta-item">v2.0</span>
+					<span class="sol-hero-meta-sep">/</span>
+					<span class="sol-hero-meta-item">2025 Edition</span>
+				</div>
+			</div>
+
+			<div class="sol-hero-content">
+				<div class="sol-hero-bg-text" aria-hidden="true">Solutions</div>
+
+				<div class="sol-hero-grid-layout">
+					<div class="sol-hero-left">
+						<div class="sol-hero-kicker">
+							<span class="sol-hero-dot"></span>
+							<span>Roatre &mdash; Platform</span>
+						</div>
+
+						<h1 class="sol-hero-title">
+							<span class="sol-hero-line">Built for</span>
+							<span class="sol-hero-line"><em>Real</em></span>
+							<span class="sol-hero-line">Performance.</span>
+						</h1>
+
+						<p class="sol-hero-lead">From training sessions to match days, every moment is captured,
+							structured, and turned into insights that drive measurable improvement &mdash; built to fit
+							naturally into your coaching workflow.</p>
+
+						<div class="sol-hero-cta">
+							<a href="#topic-01" class="sol-hero-btn sol-hero-btn--primary">
+								<span>Explore Platform</span>
+								<i class="fa-solid fa-arrow-right"></i>
+							</a>
+							<a href="demo.html" class="sol-hero-btn sol-hero-btn--ghost">
+								<i class="fa-solid fa-play"></i>
+								<span>Watch demo</span>
+							</a>
+						</div>
+					</div>
+
+					<aside class="sol-hero-panel" aria-label="Performance index">
+						<div class="sol-hero-panel-head">
+							<span>Performance Index</span>
+							<span class="sol-hero-panel-tag">Live</span>
+						</div>
+
+						<div class="sol-hero-panel-figure">
+							<span class="sol-hero-panel-num">247<sup>%</sup></span>
+							<span class="sol-hero-panel-arrow"><i class="fa-solid fa-arrow-trend-up"></i></span>
+						</div>
+						<p class="sol-hero-panel-cap">Average growth across academies tracked Q1&ndash;Q4, measured
+							against baseline KPIs.</p>
+
+						<div class="sol-hero-panel-spark">
+							<svg viewBox="0 0 200 50" preserveAspectRatio="none">
+								<defs>
+									<linearGradient id="sparkGrad" x1="0" x2="1" y1="0" y2="0">
+										<stop offset="0%" stop-color="#ffd85a" stop-opacity="0.2" />
+										<stop offset="50%" stop-color="#ffd85a" />
+										<stop offset="100%" stop-color="#ffb347" />
+									</linearGradient>
+								</defs>
+								<path
+									d="M0,40 L18,34 L36,37 L54,24 L72,29 L90,20 L108,25 L126,14 L144,18 L162,8 L180,12 L200,6" />
+							</svg>
+						</div>
+
+						<div class="sol-hero-panel-stats">
+							<div class="sol-hero-panel-stat">
+								<span class="sol-hero-panel-stat-num">45<sup>+</sup></span>
+								<span class="sol-hero-panel-stat-label">Clubs &amp; federations</span>
+							</div>
+							<div class="sol-hero-panel-stat">
+								<span class="sol-hero-panel-stat-num">12k</span>
+								<span class="sol-hero-panel-stat-label">Sessions analysed</span>
+							</div>
+							<div class="sol-hero-panel-stat">
+								<span class="sol-hero-panel-stat-num">99.9<sup>%</sup></span>
+								<span class="sol-hero-panel-stat-label">Uptime SLA</span>
+							</div>
+						</div>
+					</aside>
+				</div>
+			</div>
+
+			<div class="sol-hero-rail">
+				<div class="sol-hero-rail-section">
+					<span class="sol-hero-rail-label">Section</span>
+					<span class="sol-hero-rail-num">01 / 03</span>
+				</div>
+				<div class="sol-hero-rail-progress" aria-hidden="true">
+					<span class="sol-hero-rail-progress-bar"></span>
+				</div>
+				<div class="sol-hero-rail-scroll">
+					<span>Scroll to discover</span>
+					<i class="fa-solid fa-arrow-down"></i>
+				</div>
 			</div>
 		</section>
 
@@ -591,260 +2013,298 @@
 		</div>
 
 		<!-- ══ TOPIC 01 — PERFORMANCE ANALYSIS ══ -->
-		<div class="sol-topic" id="topic-01" style="scroll-margin-top:140px;">
+		<section class="sol-show" id="topic-01">
+			<div class="sol-show-bg-num" aria-hidden="true">01</div>
+			<div class="sol-show-container">
+				<header class="sol-show-head">
+					<div class="sol-show-index">
+						<span class="sol-show-index-num">01</span>
+						<span class="sol-show-index-label">Section / 03</span>
+					</div>
+					<div class="sol-show-head-text">
+						<span class="sol-show-cat">Performance Analysis</span>
+						<h2 class="sol-show-title">A new generation of <em>performance analysis</em> is here</h2>
+						<p class="sol-show-lead">From training sessions to match days, every moment is captured,
+							structured, and turned into insights that drive real improvement &mdash; built to fit
+							naturally into your coaching workflow.</p>
+					</div>
+				</header>
 
-			<div class="sol-topic-left">
-				<!-- <div>
-						<div class="sol-topic-tag">
-							<span class="sol-topic-tag-dot"></span>
-							Solution 01
+				<div class="sol-show-main">
+					<div class="sol-show-media">
+						<span class="sol-show-media-tag">Live Session</span>
+						<img src="assets/perform.jpeg" alt="Performance Analysis Engine">
+						<div class="sol-show-media-card">
+							<div class="sol-show-media-stat">
+								<strong>Daily</strong>
+								<span>Session Reports</span>
+							</div>
+							<p class="sol-show-media-quote">Every session, structured and ready to review &mdash; no
+								manual work.</p>
 						</div>
-					</div> -->
-				<div class="sol-topic-heading">
-					<div>Performance<br><em>Analysis</em></div>
-				</div>
-				<div class="sol-topic-bottom">
-					<div class="sol-topic-index">01 / 03</div>
-					<div class="sol-topic-pills">
-						<span class="sol-topic-pill">Daily Reports</span>
-						<span class="sol-topic-pill">Weekly Progress</span>
-						<span class="sol-topic-pill">Audio &amp; Video</span>
-						<span class="sol-topic-pill">Pattern Detection</span>
 					</div>
-				</div>
-			</div>
 
-			<div class="sol-topic-right">
-				<div class="sol-topic-intro">
-					<p class="sol-topic-intro-label">Overview</p>
-					<p>Capture every training session and turn it into clear, structured insights. Track daily
-						performance, measure weekly progress, and identify what needs improvement without changing how
-						you coach.</p>
-				</div>
-
-				<div class="sol-feature-row">
-					<div class="sol-feature-icon-wrap"><i class="fa-solid fa-chart-bar"></i></div>
-					<div class="sol-feature-content">
-						<h3>Understand Training Performance Clearly</h3>
-						<p>Capture every training session and turn it into clear, structured insights. Track daily
-							performance, measure weekly progress, and identify what needs improvement.</p>
-					</div>
-				</div>
-
-				<div class="sol-feature-row">
-					<div class="sol-feature-icon-wrap"><i class="fa-solid fa-mobile-screen-button"></i></div>
-					<div class="sol-feature-content">
-						<h3>A System That Fits Into Your Coaching</h3>
-						<p>The platform works alongside regular training without changing the coaching process. With a
-							simple tap, important moments are recorded through audio or video. Each session
-							automatically generates daily reports and contributes to weekly progress summaries.</p>
+					<div class="sol-show-points">
+						<div class="sol-show-point">
+							<div class="sol-show-point-icon"><i class="fa-solid fa-chart-line"></i></div>
+							<div class="sol-show-point-content">
+								<h4>Understand Training Performance Clearly</h4>
+								<p>Daily sessions translated into structured reports that show what worked and what
+									needs attention.</p>
+							</div>
+						</div>
+						<div class="sol-show-point">
+							<div class="sol-show-point-icon"><i class="fa-solid fa-layer-group"></i></div>
+							<div class="sol-show-point-content">
+								<h4>Fits Into Your Coaching</h4>
+								<p>A system designed around how coaches already work &mdash; nothing extra to learn,
+									nothing in the way.</p>
+							</div>
+						</div>
+						<div class="sol-show-point">
+							<div class="sol-show-point-icon"><i class="fa-solid fa-bullseye"></i></div>
+							<div class="sol-show-point-content">
+								<h4>Identify Areas for Improvement</h4>
+								<p>Pattern detection surfaces gaps and recurring issues you would otherwise have to
+									track manually.</p>
+							</div>
+						</div>
+						<div class="sol-show-point">
+							<div class="sol-show-point-icon"><i class="fa-solid fa-video"></i></div>
+							<div class="sol-show-point-content">
+								<h4>Audio &amp; Video Moment Capture</h4>
+								<p>Critical moments captured in context so you can review, share, and build a real
+									performance record.</p>
+							</div>
+						</div>
 					</div>
 				</div>
 
-				<div class="sol-feature-row">
-					<div class="sol-feature-icon-wrap"><i class="fa-solid fa-chart-line"></i></div>
-					<div class="sol-feature-content">
-						<h3>Identify Areas for Improvement</h3>
-						<p>When training information is consistently recorded and reviewed, areas that need improvement
-							become easier to recognize. Patterns across sessions reveal technical frailtyes and skills
-							that require additional focus.</p>
+				<div class="sol-show-stats">
+					<div class="sol-show-stat">
+						<span class="sol-show-stat-tag">01</span>
+						<div class="sol-show-stat-value">Daily</div>
+						<div class="sol-show-stat-label">Session Reports</div>
+					</div>
+					<div class="sol-show-stat">
+						<span class="sol-show-stat-tag">02</span>
+						<div class="sol-show-stat-value">Weekly</div>
+						<div class="sol-show-stat-label">Progress Summaries</div>
+					</div>
+					<div class="sol-show-stat">
+						<span class="sol-show-stat-tag">03</span>
+						<div class="sol-show-stat-value">Audio &amp; Video</div>
+						<div class="sol-show-stat-label">Moment Capture</div>
+					</div>
+					<div class="sol-show-stat">
+						<span class="sol-show-stat-tag">04</span>
+						<div class="sol-show-stat-value">Pattern</div>
+						<div class="sol-show-stat-label">Detection</div>
 					</div>
 				</div>
-			</div>
-		</div>
 
-		<!-- Stats strip 01 -->
-		<div class="sol-stats-strip">
-			<div class="sol-stat-cell">
-				<span class="sol-stat-value">Daily</span>
-				<span class="sol-stat-label">Session Reports</span>
+				<div class="sol-show-foot">
+					<a href="#topic-02">Continue to Match Reports <i class="fa-solid fa-arrow-down"></i></a>
+				</div>
 			</div>
-			<div class="sol-stat-cell">
-				<span class="sol-stat-value">Weekly</span>
-				<span class="sol-stat-label">Progress Summaries</span>
-			</div>
-			<div class="sol-stat-cell">
-				<span class="sol-stat-value">Audio &amp; Video</span>
-				<span class="sol-stat-label">Moment Capture</span>
-			</div>
-			<div class="sol-stat-cell">
-				<span class="sol-stat-value">Pattern</span>
-				<span class="sol-stat-label">Detection</span>
-			</div>
-		</div>
+		</section>
 
 		<!-- ══ TOPIC 02 — MATCH REPORTS ══ -->
-		<div class="sol-topic sol-topic--match" id="topic-02" style="scroll-margin-top:140px;">
+		<section class="sol-show sol-show--yellow sol-show--reverse" id="topic-02">
+			<div class="sol-show-bg-num" aria-hidden="true">02</div>
+			<div class="sol-show-container">
+				<header class="sol-show-head">
+					<div class="sol-show-index">
+						<span class="sol-show-index-num">02</span>
+						<span class="sol-show-index-label">Section / 03</span>
+					</div>
+					<div class="sol-show-head-text">
+						<span class="sol-show-cat">Match Reports</span>
+						<h2 class="sol-show-title">Structured match <em>insights</em> for every game</h2>
+						<p class="sol-show-lead">Capture every match and turn it into structured performance insights.
+							Review match contributions, identify performance gaps, and understand how players perform in
+							real game situations.</p>
+					</div>
+				</header>
 
-			<div class="sol-topic-left">
-				<!-- <div>
-						<div class="sol-topic-tag">
-							<span class="sol-topic-tag-dot"></span>
-							Solution 02
+				<div class="sol-show-main">
+					<div class="sol-show-media">
+						<span class="sol-show-media-tag">Match Day</span>
+						<img src="assets/report.jpeg" alt="Match Report Analysis">
+						<div class="sol-show-media-card">
+							<div class="sol-show-media-stat">
+								<strong>Per Match</strong>
+								<span>Reports</span>
+							</div>
+							<p class="sol-show-media-quote">Every game becomes a record &mdash; structured, comparable,
+								and useful.</p>
 						</div>
-					</div> -->
-				<div class="sol-topic-heading">
-					<div>Match<br><em>Reports</em></div>
-				</div>
-				<div class="sol-topic-bottom">
-					<div class="sol-topic-index">02 / 03</div>
-					<div class="sol-topic-pills">
-						<span class="sol-topic-pill">Per Match</span>
-						<span class="sol-topic-pill">Batting &amp; Bowling</span>
-						<span class="sol-topic-pill">Contributions</span>
-						<span class="sol-topic-pill">History</span>
 					</div>
-				</div>
-			</div>
 
-			<div class="sol-topic-right">
-				<div class="sol-topic-intro">
-					<p class="sol-topic-intro-label">Overview</p>
-					<p>Capture every match and turn it into structured performance insights. Review match contributions,
-						identify performance gaps, and understand how players perform in real game situations.</p>
-				</div>
-
-				<div class="sol-feature-row">
-					<div class="sol-feature-icon-wrap"><i class="fa-solid fa-clipboard-list"></i></div>
-					<div class="sol-feature-content">
-						<h3>Match Performance Insights</h3>
-						<p>The match reporting system captures key aspects of performance and organizes them into
-							structured insights highlighting batting and bowling patterns, important match moments,
-							individual contributions, and situations where performance declined.</p>
-					</div>
-				</div>
-
-				<div class="sol-feature-row">
-					<div class="sol-feature-icon-wrap"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-					<div class="sol-feature-content">
-						<h3>Understand Where Players Struggle</h3>
-						<p>By structuring match information into clear reports, the platform makes it easier to
-							recognize patterns across games. These insights reveal technical frailtyes, recurring
-							mistakes, and areas that require focused improvement.</p>
+					<div class="sol-show-points">
+						<div class="sol-show-point">
+							<div class="sol-show-point-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+							<div class="sol-show-point-content">
+								<h4>Match Performance Insights</h4>
+								<p>Match data turned into structured insights so you see contribution, not just
+									scoreboard.</p>
+							</div>
+						</div>
+						<div class="sol-show-point">
+							<div class="sol-show-point-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+							<div class="sol-show-point-content">
+								<h4>Where Players Struggle</h4>
+								<p>Pinpoint repeated issues and patterns that hold a player back game after game.</p>
+							</div>
+						</div>
+						<div class="sol-show-point">
+							<div class="sol-show-point-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+							<div class="sol-show-point-content">
+								<h4>Reliable Performance History</h4>
+								<p>Build a complete history per player across matches, seasons, and conditions.</p>
+							</div>
+						</div>
+						<div class="sol-show-point">
+							<div class="sol-show-point-icon"><i class="fa-solid fa-people-group"></i></div>
+							<div class="sol-show-point-content">
+								<h4>Individual Contributions</h4>
+								<p>Review each player's role in the result &mdash; not just outcomes, but how they got
+									there.</p>
+							</div>
+						</div>
 					</div>
 				</div>
 
-				<div class="sol-feature-row">
-					<div class="sol-feature-icon-wrap"><i class="fa-solid fa-timeline"></i></div>
-					<div class="sol-feature-content">
-						<h3>Build a Reliable Performance History</h3>
-						<p>Over time, match reports build a reliable performance history that helps guide training and
-							prepare players more effectively for upcoming matches turning every game into a learning
-							opportunity.</p>
+				<div class="sol-show-stats">
+					<div class="sol-show-stat">
+						<span class="sol-show-stat-tag">01</span>
+						<div class="sol-show-stat-value">Per Match</div>
+						<div class="sol-show-stat-label">Structured Reports</div>
+					</div>
+					<div class="sol-show-stat">
+						<span class="sol-show-stat-tag">02</span>
+						<div class="sol-show-stat-value">Batting &amp; Bowling</div>
+						<div class="sol-show-stat-label">Pattern Analysis</div>
+					</div>
+					<div class="sol-show-stat">
+						<span class="sol-show-stat-tag">03</span>
+						<div class="sol-show-stat-value">Individual</div>
+						<div class="sol-show-stat-label">Contribution Review</div>
+					</div>
+					<div class="sol-show-stat">
+						<span class="sol-show-stat-tag">04</span>
+						<div class="sol-show-stat-value">Recurring</div>
+						<div class="sol-show-stat-label">Issue Detection</div>
 					</div>
 				</div>
-			</div>
-		</div>
 
-		<!-- Stats strip 02 -->
-		<div class="sol-stats-strip sol-topic--match">
-			<div class="sol-stat-cell">
-				<span class="sol-stat-value">Per Match</span>
-				<span class="sol-stat-label">Structured Reports</span>
+				<div class="sol-show-foot">
+					<a href="#topic-03">Continue to Drills &amp; Improvement <i class="fa-solid fa-arrow-down"></i></a>
+				</div>
 			</div>
-			<div class="sol-stat-cell">
-				<span class="sol-stat-value">Batting &amp; Bowling</span>
-				<span class="sol-stat-label">Pattern Analysis</span>
-			</div>
-			<div class="sol-stat-cell">
-				<span class="sol-stat-value">Individual</span>
-				<span class="sol-stat-label">Contribution Review</span>
-			</div>
-			<div class="sol-stat-cell">
-				<span class="sol-stat-value">Recurring</span>
-				<span class="sol-stat-label">Detection</span>
-			</div>
-		</div>
+		</section>
 
 		<!-- ══ TOPIC 03 — DRILLS & IMPROVEMENT ══ -->
-		<div class="sol-topic sol-topic--drills" id="topic-03" style="scroll-margin-top:140px;">
+		<section class="sol-show sol-show--white" id="topic-03">
+			<div class="sol-show-bg-num" aria-hidden="true">03</div>
+			<div class="sol-show-container">
+				<header class="sol-show-head">
+					<div class="sol-show-index">
+						<span class="sol-show-index-num">03</span>
+						<span class="sol-show-index-label">Section / 03</span>
+					</div>
+					<div class="sol-show-head-text">
+						<span class="sol-show-cat">Drills &amp; Improvement</span>
+						<h2 class="sol-show-title">From observation to <em>structured</em> training</h2>
+						<p class="sol-show-lead">Turn insights into action. The system connects performance observations
+							with targeted training, ensuring every identified gap leads to meaningful improvement
+							&mdash; with full visibility for parents.</p>
+					</div>
+				</header>
 
-			<div class="sol-topic-left">
-				<!-- <div>
-						<div class="sol-topic-tag">
-							<span class="sol-topic-tag-dot"></span>
-							Solution 03
+				<div class="sol-show-main">
+					<div class="sol-show-media">
+						<span class="sol-show-media-tag">Drill Plan</span>
+						<img src="assets/drills.jpeg" alt="Drills and Training">
+						<div class="sol-show-media-card">
+							<div class="sol-show-media-stat">
+								<strong>Targeted</strong>
+								<span>Drill Assignment</span>
+							</div>
+							<p class="sol-show-media-quote">Every gap turns into a structured plan &mdash; not a guess.
+							</p>
 						</div>
-					</div> -->
-				<div class="sol-topic-heading">
-					<div>Drills &amp;<br><em>Improvement</em></div>
-				</div>
-				<div class="sol-topic-bottom">
-					<div class="sol-topic-index">03 / 03</div>
-					<div class="sol-topic-pills">
-						<span class="sol-topic-pill">Targeted Drills</span>
-						<span class="sol-topic-pill">Skill Gaps</span>
-						<span class="sol-topic-pill">Parent Visibility</span>
-						<span class="sol-topic-pill">Progress Tracking</span>
 					</div>
-				</div>
-			</div>
 
-			<div class="sol-topic-right">
-				<div class="sol-topic-intro">
-					<p class="sol-topic-intro-label">Overview</p>
-					<p>Turn insights into action. This system connects performance observations with targeted training,
-						ensuring that every identified gap leads to meaningful improvement.</p>
-				</div>
-
-				<div class="sol-feature-row">
-					<div class="sol-feature-icon-wrap"><i class="fa-solid fa-dumbbell"></i></div>
-					<div class="sol-feature-content">
-						<h3>From Observation to Structured Training</h3>
-						<p>Training becomes more effective when improvement areas are clearly defined and translated
-							into specific drills. Instead of relying on general feedback, the system organizes
-							performance observations into focused training actions linked directly to the skills that
-							need improvement allowing players to work on the right areas at the right time.</p>
-					</div>
-				</div>
-
-				<div class="sol-feature-row">
-					<div class="sol-feature-icon-wrap"><i class="fa-solid fa-eye"></i></div>
-					<div class="sol-feature-content">
-						<h3>Parent Visibility Into Development</h3>
-						<p>Parents gain clear visibility into the drills their child is practicing and how development
-							is progressing. This structured approach keeps families informed and connected to the
-							player's improvement journey without disrupting the coaching process.</p>
+					<div class="sol-show-points">
+						<div class="sol-show-point">
+							<div class="sol-show-point-icon"><i class="fa-solid fa-crosshairs"></i></div>
+							<div class="sol-show-point-content">
+								<h4>Targeted Drill Assignment</h4>
+								<p>Specific drills mapped to specific gaps &mdash; no more generic plans for individual
+									issues.</p>
+							</div>
+						</div>
+						<div class="sol-show-point">
+							<div class="sol-show-point-icon"><i class="fa-solid fa-link"></i></div>
+							<div class="sol-show-point-content">
+								<h4>Skill-Linked Gap Correction</h4>
+								<p>Every drill links back to the skill it strengthens, so progress is traceable and
+									intentional.</p>
+							</div>
+						</div>
+						<div class="sol-show-point">
+							<div class="sol-show-point-icon"><i class="fa-solid fa-eye"></i></div>
+							<div class="sol-show-point-content">
+								<h4>Parent Visibility</h4>
+								<p>Parents see structured progress &mdash; no guesswork, no asking, just clear
+									development trails.</p>
+							</div>
+						</div>
+						<div class="sol-show-point">
+							<div class="sol-show-point-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+							<div class="sol-show-point-content">
+								<h4>Consistent Development</h4>
+								<p>Track improvement week over week so you know plans are working &mdash; or that
+									adjustment is needed.</p>
+							</div>
+						</div>
 					</div>
 				</div>
 
-				<div class="sol-feature-row">
-					<div class="sol-feature-icon-wrap"><i class="fa-solid fa-arrow-trend-up"></i></div>
-					<div class="sol-feature-content">
-						<h3>Track Progress and Build Consistent Development</h3>
-						<p>The platform tracks drill activity and player development, allowing academies to see whether
-							corrections are working and where further attention is needed. Over time, this structured
-							drill management creates a consistent coaching process where training remains focused,
-							measurable, and aligned with long-term player development.</p>
+				<div class="sol-show-stats">
+					<div class="sol-show-stat">
+						<span class="sol-show-stat-tag">01</span>
+						<div class="sol-show-stat-value">Targeted</div>
+						<div class="sol-show-stat-label">Drill Assignment</div>
+					</div>
+					<div class="sol-show-stat">
+						<span class="sol-show-stat-tag">02</span>
+						<div class="sol-show-stat-value">Skill-Linked</div>
+						<div class="sol-show-stat-label">Gap Correction</div>
+					</div>
+					<div class="sol-show-stat">
+						<span class="sol-show-stat-tag">03</span>
+						<div class="sol-show-stat-value">Parent</div>
+						<div class="sol-show-stat-label">Progress Visibility</div>
+					</div>
+					<div class="sol-show-stat">
+						<span class="sol-show-stat-tag">04</span>
+						<div class="sol-show-stat-value">Consistent</div>
+						<div class="sol-show-stat-label">Development Tracking</div>
 					</div>
 				</div>
-			</div>
-		</div>
 
-		<!-- Stats strip 03 -->
-		<div class="sol-stats-strip sol-topic--drills">
-			<div class="sol-stat-cell">
-				<span class="sol-stat-value">Targeted</span>
-				<span class="sol-stat-label">Drill Assignment</span>
+				<div class="sol-show-foot">
+					<a href="demo.html">Book a Live Walkthrough <i class="fa-solid fa-arrow-right"></i></a>
+				</div>
 			</div>
-			<div class="sol-stat-cell">
-				<span class="sol-stat-value">Skill-Linked</span>
-				<span class="sol-stat-label">Gap Correction</span>
-			</div>
-			<div class="sol-stat-cell">
-				<span class="sol-stat-value">Parent</span>
-				<span class="sol-stat-label">Progress Visibility</span>
-			</div>
-			<div class="sol-stat-cell">
-				<span class="sol-stat-value">Consistent</span>
-				<span class="sol-stat-label">Development Tracking</span>
-			</div>
-		</div>
+		</section>
 
 	</main>
 
 	<div id="site-footer-placeholder"></div>
-	<script src="script.js"></script>
+	<script src="script.js?v=3"></script>
 </body>
 
 </html>

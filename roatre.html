@@ -12,28 +12,125 @@
 <body class="about-page">
 	<div id="site-header-placeholder"></div>
 	<main>
-		<!-- Hero Section -->
+		<!-- ============ HERO SECTION ============ -->
 		<section class="why-hero">
+			<div class="why-hero-bg" aria-hidden="true">
+				<span class="why-orb why-orb-1"></span>
+				<span class="why-orb why-orb-2"></span>
+				<span class="why-orb why-orb-3"></span>
+				<div class="why-grid-overlay"></div>
+			</div>
 			<div class="why-hero-content">
-				<h1>Why <span class="highlight">Roatre</span>?</h1>
-				<p class="hero-subtitle">The Digital Engine of Athlete Development</p>
-				<p class="hero-description">Empowering athletes and coaches through data-driven insights, comprehensive
-					management tools, and performance optimization.</p>
+				<span class="why-eyebrow">
+					<i class="fa-solid fa-bolt"></i> The Digital Engine of Athlete Development
+				</span>
+				<h1>Why Choose <span class="highlight">Roatre</span><span class="highlight-dot">.</span></h1>
+				<p class="hero-subtitle">Where data, structure, and ambition meet on the field.</p>
+				<p class="hero-description">Roatre brings together performance analysis, match intelligence,
+					and targeted training into one connected platform — built for academies, coaches,
+					athletes, and the families behind every champion.</p>
+
+				<div class="why-hero-actions">
+					<a href="demo.html" class="btn-primary why-hero-cta-primary">
+						Request a Demo <i class="fa-solid fa-arrow-right"></i>
+					</a>
+					<a href="#tab-coaches" class="btn-secondary why-hero-cta-secondary">
+						Explore the Platform
+					</a>
+				</div>
+
+				<div class="why-hero-stats" role="list">
+					<div class="why-stat" role="listitem">
+						<div class="why-stat-num">360°</div>
+						<div class="why-stat-label">Player Visibility</div>
+					</div>
+					<div class="why-stat-divider"></div>
+					<div class="why-stat" role="listitem">
+						<div class="why-stat-num">3-in-1</div>
+						<div class="why-stat-label">Analysis · Reports · Drills</div>
+					</div>
+					<div class="why-stat-divider"></div>
+					<div class="why-stat" role="listitem">
+						<div class="why-stat-num">Built For</div>
+						<div class="why-stat-label">Academies, Athletes & Parents</div>
+					</div>
+				</div>
+			</div>
+			<div class="why-hero-scroll" aria-hidden="true">
+				<span></span>
+				<small>Scroll to explore</small>
 			</div>
 		</section>
 
-		<!-- Persona Tabs Section -->
+		<!-- ============ CORE PILLARS ============ -->
+		<section class="why-pillars">
+			<div class="why-section-head">
+				<span class="why-section-tag">CORE PILLARS</span>
+				<h2>Built on four foundations that move athletes forward.</h2>
+				<p>Every feature inside Roatre exists to support one mission — turning effort into measurable
+					improvement, season after season.</p>
+			</div>
+			<div class="why-pillars-grid">
+				<article class="why-pillar">
+					<div class="why-pillar-num">01</div>
+					<div class="why-pillar-icon"><i class="fa-solid fa-chart-line"></i></div>
+					<h3>Data-Driven Insight</h3>
+					<p>Every drill, match, and session feeds structured insights that make development
+						decisions clearer and more confident.</p>
+				</article>
+				<article class="why-pillar">
+					<div class="why-pillar-num">02</div>
+					<div class="why-pillar-icon"><i class="fa-solid fa-diagram-project"></i></div>
+					<h3>Structured Development</h3>
+					<p>Move beyond gut feel. Roatre brings a repeatable framework to long-term player
+						growth across every age and skill level.</p>
+				</article>
+				<article class="why-pillar">
+					<div class="why-pillar-num">03</div>
+					<div class="why-pillar-icon"><i class="fa-solid fa-people-group"></i></div>
+					<h3>Connected Stakeholders</h3>
+					<p>Coaches, athletes, and parents stay aligned through transparent reports and
+					shared performance views.</p>
+				</article>
+				<article class="why-pillar">
+					<div class="why-pillar-num">04</div>
+					<div class="why-pillar-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+					<h3>Designed to Scale</h3>
+					<p>Whether you coach one team or run a multi-branch academy, Roatre adapts to your
+						scale without losing the human touch.</p>
+				</article>
+			</div>
+		</section>
+
+		<!-- ============ PERSONA TABS SECTION ============ -->
 		<section class="persona-tabs-section">
+			<div class="why-section-head">
+				<span class="why-section-tag">FOR EVERY ROLE</span>
+				<h2>One platform. Three perspectives. A shared journey.</h2>
+				<p>Roatre adapts to who you are and what you need to see — whether you're shaping
+					a player, becoming one, or supporting one from the sidelines.</p>
+			</div>
+
 			<div class="persona-tabs">
-				<button class="persona-tab active" data-target="tab-coaches">For Coaches & Academies</button>
-				<button class="persona-tab" data-target="tab-athletes">For Athletes</button>
-				<button class="persona-tab" data-target="tab-parents">For Parents</button>
+				<button class="persona-tab active" data-target="tab-coaches">
+					<i class="fa-solid fa-chalkboard-user"></i>
+					<span>For Coaches &amp; Academies</span>
+				</button>
+				<button class="persona-tab" data-target="tab-athletes">
+					<i class="fa-solid fa-medal"></i>
+					<span>For Athletes</span>
+				</button>
+				<button class="persona-tab" data-target="tab-parents">
+					<i class="fa-solid fa-people-roof"></i>
+					<span>For Parents</span>
+				</button>
 			</div>
 
 			<!-- Coaches Panel -->
 			<div class="persona-panel active" id="tab-coaches">
 				<div class="persona-top">
 					<div class="persona-text">
+						<span class="persona-text-tag">COACHES &amp; ACADEMIES</span>
 						<h2>Supporting Structured Player Development</h2>
 						<p>Managing an academy and guiding multiple players requires clear visibility into performance
 							and progress. Our platform helps coaches and academy owners bring structure to athlete
@@ -76,6 +173,7 @@
 			<div class="persona-panel" id="tab-athletes">
 				<div class="persona-top">
 					<div class="persona-text">
+						<span class="persona-text-tag">ATHLETES</span>
 						<h2>Helping Athletes Improve With Clarity</h2>
 						<p>Athlete development becomes more effective when players clearly understand their performance
 							and the areas they need to improve. Our platform helps athletes gain better visibility into
@@ -116,8 +214,9 @@
 			<div class="persona-panel" id="tab-parents">
 				<div class="persona-top">
 					<div class="persona-text">
-						<h2>Visibility Into Your Child’s Development</h2>
-						<p>Parents play an important role in supporting their child’s sporting journey. Our platform
+						<span class="persona-text-tag">PARENTS</span>
+						<h2>Visibility Into Your Child's Development</h2>
+						<p>Parents play an important role in supporting their child's sporting journey. Our platform
 							provides better visibility into how athletes are participating, improving, and progressing
 							over time.</p>
 						<a href="demo.html" class="btn-primary persona-cta">See Parent Tools in Action <i
@@ -138,8 +237,8 @@
 					<div class="persona-feature">
 						<div class="pf-icon"><i class="fa-solid fa-eye"></i></div>
 						<h4>Stay Connected to the Journey</h4>
-						<p>Performance insights and match reports provide a transparent view of the athlete’s
-							development journey. This helps parents stay informed and better support their child’s
+						<p>Performance insights and match reports provide a transparent view of the athlete's
+							development journey. This helps parents stay informed and better support their child's
 							growth in sports.</p>
 					</div>
 					<div class="persona-feature">
@@ -153,42 +252,102 @@
 			</div>
 		</section>
 
-		<!-- Use Cases -->
-		<!-- <section class="use-cases">
-			<h2>Real-World Applications</h2>
-			<div class="cases-grid">
-				<div class="case-card">
-					<h4>Individual Athletes</h4>
-					<p>Track performance, receive personalized feedback, and showcase your journey to recruiters.</p>
+		<!-- ============ HOW IT WORKS ============ -->
+		<section class="why-process">
+			<div class="why-section-head">
+				<span class="why-section-tag">HOW ROATRE WORKS</span>
+				<h2>From observation to improvement — in four connected steps.</h2>
+				<p>A simple, repeatable rhythm that turns everyday training into compounding progress.</p>
+			</div>
+			<div class="why-process-track">
+				<div class="why-process-line" aria-hidden="true"></div>
+				<article class="why-step">
+					<div class="why-step-num">1</div>
+					<div class="why-step-icon"><i class="fa-solid fa-eye"></i></div>
+					<h3>Observe</h3>
+					<p>Capture performance signals from training sessions and matches with a structured
+						framework that scales across teams.</p>
+				</article>
+				<article class="why-step">
+					<div class="why-step-num">2</div>
+					<div class="why-step-icon"><i class="fa-solid fa-chart-simple"></i></div>
+					<h3>Analyze</h3>
+					<p>Turn raw observation into clear insight — strengths, gaps, and patterns mapped
+						across time, position, and context.</p>
+				</article>
+				<article class="why-step">
+					<div class="why-step-num">3</div>
+					<div class="why-step-icon"><i class="fa-solid fa-bullseye"></i></div>
+					<h3>Plan</h3>
+					<p>Match each insight with a focused drill or development plan, so practice
+						time is always aligned with what matters most.</p>
+				</article>
+				<article class="why-step">
+					<div class="why-step-num">4</div>
+					<div class="why-step-icon"><i class="fa-solid fa-arrow-up-right-dots"></i></div>
+					<h3>Improve</h3>
+					<p>Track measurable progress over weeks and seasons — and share it transparently with
+						athletes, coaches, and parents.</p>
+				</article>
+			</div>
+		</section>
+
+		<!-- ============ COMPARISON ============ -->
+		<section class="why-compare">
+			<div class="why-section-head">
+				<span class="why-section-tag">THE ROATRE DIFFERENCE</span>
+				<h2>The traditional way vs. the Roatre way.</h2>
+				<p>What changes when development moves from scattered notebooks and group chats into
+					one structured, shared system.</p>
+			</div>
+			<div class="why-compare-grid">
+				<div class="why-compare-col why-compare-old">
+					<div class="why-compare-head">
+						<i class="fa-solid fa-circle-xmark"></i>
+						<h3>Traditional Approach</h3>
+					</div>
+					<ul>
+						<li><i class="fa-solid fa-xmark"></i> Feedback lives in scattered notebooks and chats.</li>
+						<li><i class="fa-solid fa-xmark"></i> Match learnings get lost a few days later.</li>
+						<li><i class="fa-solid fa-xmark"></i> Player progress is hard to prove to parents.</li>
+						<li><i class="fa-solid fa-xmark"></i> Drills aren't tied to actual weaknesses.</li>
+						<li><i class="fa-solid fa-xmark"></i> Academies struggle to scale beyond a few teams.</li>
+					</ul>
 				</div>
-				<div class="case-card">
-					<h4>Team Management</h4>
-					<p>Manage rosters, monitor player development, and optimize training programs efficiently.</p>
-				</div>
-				<div class="case-card">
-					<h4>Talent Scouting</h4>
-					<p>Discover prospects, evaluate performance data, and identify recruitment opportunities.</p>
-				</div>
-				<div class="case-card">
-					<h4>Academy Programs</h4>
-					<p>Scale your coaching operations with tools that handle administration and analytics.</p>
+				<div class="why-compare-col why-compare-new">
+					<div class="why-compare-badge">RECOMMENDED</div>
+					<div class="why-compare-head">
+						<i class="fa-solid fa-circle-check"></i>
+						<h3>The Roatre Way</h3>
+					</div>
+					<ul>
+						<li><i class="fa-solid fa-check"></i> One connected home for performance &amp; reports.</li>
+						<li><i class="fa-solid fa-check"></i> Match insights captured and revisited later.</li>
+						<li><i class="fa-solid fa-check"></i> Transparent progress visible to every stakeholder.</li>
+						<li><i class="fa-solid fa-check"></i> Targeted drills mapped to real development gaps.</li>
+						<li><i class="fa-solid fa-check"></i> A platform that grows with your academy.</li>
+					</ul>
 				</div>
 			</div>
-		</section> -->
+		</section>
 
-		<!-- CTA Section -->
+		<!-- ============ CTA SECTION ============ -->
 		<section class="why-cta">
-			<h2>Ready to Transform Your Training?</h2>
-			<p>Join athletes and coaches who are already using Roatre to achieve their goals.</p>
-			<div class="cta-buttons">
-				<a href="demo.html" class="btn-primary">Request a Demo</a>
-				<a href="contact.html" class="btn-secondary">Contact Sales</a>
+			<div class="why-cta-inner">
+				<span class="why-section-tag why-cta-tag">START THE JOURNEY</span>
+				<h2>Ready to Transform Your Training?</h2>
+				<p>Join the academies, athletes, and families building the next generation of champions
+					with Roatre.</p>
+				<div class="cta-buttons">
+					<a href="demo.html" class="btn-primary">Request a Demo <i class="fa-solid fa-arrow-right"></i></a>
+					<a href="contact.html" class="btn-secondary">Contact Sales</a>
+				</div>
 			</div>
 		</section>
 	</main>
 	<div id="site-footer-placeholder"></div>
 
-	<script src="script.js"></script>
+	<script src="script.js?v=3"></script>
 </body>
 
 </html>

@@ -14,31 +14,127 @@
 
 	<main>
 		<section class="demo-hero">
+			<!-- Fixed left visual -->
 			<div class="demo-hero-left">
-				<!-- <div class="tagline-box">
-					<h2>Experience the Future of Sports Training</h2>
-				</div> -->
+				<div class="demo-hero-overlay">
+					<div class="demo-overlay-card">
+						<div class="demo-overlay-badge">
+							<i class="fa-solid fa-circle-play"></i> LIVE WALKTHROUGH
+						</div>
+						<h3>See Roatre in action.</h3>
+						<p>A focused 30-minute session — tailored to your academy, athletes, and goals.</p>
+						<div class="demo-overlay-stats">
+							<div>
+								<strong>30<span>min</span></strong>
+								<small>Personalized walkthrough</small>
+							</div>
+							<div>
+								<strong>1:1</strong>
+								<small>With a Roatre product expert</small>
+							</div>
+							<div>
+								<strong>Free</strong>
+								<small>No credit card required</small>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
+			<!-- Scrolling right content -->
 			<div class="demo-hero-right">
+				<span class="demo-eyebrow">
+					<i class="fa-solid fa-bolt"></i> BOOK A PERSONALIZED DEMO
+				</span>
+
 				<div class="demo-hero-title">
 					<h2>Experience the Future of <br><span>Sports Training</span></h2>
 				</div>
+
 				<p class="demo-hero-copy">
-					<span class="dropcap">S</span>ee how Roatre transforms sports training into
-					measurable progress. Our platform showcases how athletes record and upload training sessions,
+					<span class="dropcap">S</span>ee how Roatre transforms sports training into measurable progress.
+					Our platform showcases how athletes record and upload training sessions,
 					how coaches provide structured video feedback, and how performance development is tracked over time.
 				</p>
 				<p class="demo-hero-copy">
 					Explore the athlete dashboard, coaching review tools, and collaboration features that enable
-					smarter,
-					remote-ready training. Experience how Roatre connects athletes and coaches in one seamless
-					performance platform.
+					smarter, remote-ready training — all in one seamless performance platform.
 				</p>
 
-				<div class="demo-form">
-					<h2>Register for Demo</h2>
-					<form id="demoRegisterForm">
+				<!-- What you'll see -->
+				<div class="demo-benefits">
+					<span class="demo-section-tag">WHAT YOU'LL SEE</span>
+					<h3 class="demo-section-title">A complete tour of the Roatre platform.</h3>
+					<ul class="demo-benefit-list">
+						<li>
+							<i class="fa-solid fa-circle-check"></i>
+							<div>
+								<strong>The Athlete Dashboard</strong>
+								<p>How players upload sessions, track progress, and view structured feedback.</p>
+							</div>
+						</li>
+						<li>
+							<i class="fa-solid fa-circle-check"></i>
+							<div>
+								<strong>Coaching &amp; Review Tools</strong>
+								<p>Video annotation, drill prescription, and match-report workflows that coaches use every day.</p>
+							</div>
+						</li>
+						<li>
+							<i class="fa-solid fa-circle-check"></i>
+							<div>
+								<strong>Academy &amp; Team Management</strong>
+								<p>Group rosters, plan sessions, and monitor multiple players from a single dashboard.</p>
+							</div>
+						</li>
+						<li>
+							<i class="fa-solid fa-circle-check"></i>
+							<div>
+								<strong>Performance Analytics &amp; Reports</strong>
+								<p>Long-term player development reports your athletes and parents can actually understand.</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+				<!-- What happens next -->
+				<div class="demo-process">
+					<span class="demo-section-tag">WHAT HAPPENS NEXT</span>
+					<h3 class="demo-section-title">From request to live demo — three simple steps.</h3>
+					<div class="demo-process-list">
+						<div class="demo-step">
+							<div class="demo-step-num">1</div>
+							<div>
+								<strong>Submit Your Details</strong>
+								<p>Tell us a little about your role and what you'd like to explore.</p>
+							</div>
+						</div>
+						<div class="demo-step">
+							<div class="demo-step-num">2</div>
+							<div>
+								<strong>We Reach Out</strong>
+								<p>A Roatre expert will contact you within one business day to schedule a time.</p>
+							</div>
+						</div>
+						<div class="demo-step">
+							<div class="demo-step-num">3</div>
+							<div>
+								<strong>Live Walkthrough</strong>
+								<p>30 minutes, fully tailored — leave with a clear plan for your academy or career.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Form -->
+				<div class="demo-form" id="demoFormCard">
+					<div class="demo-form-head">
+						<span class="demo-form-tag">REGISTER FOR DEMO</span>
+						<h2>Reserve your slot</h2>
+						<p>Fill in a few details below — we'll handle the rest.</p>
+					</div>
+
+					<form id="demoRegisterForm" novalidate>
 						<div class="form-group">
 							<i class="fa-solid fa-user"></i>
 							<input type="text" name="name" placeholder="Full Name" required>
@@ -66,27 +162,65 @@
 								rows="4"></textarea>
 						</div>
 						<button type="submit" class="demo-submit-btn">
-							Request My Demo <i class="fa-solid fa-chevron-right"></i>
+							<span>Request My Demo</span>
+							<i class="fa-solid fa-arrow-right"></i>
 						</button>
+
+						<div class="demo-form-foot">
+							<small><i class="fa-solid fa-shield-halved"></i> Your details are private.
+								We'll only use them to contact you about your demo.</small>
+						</div>
 					</form>
 				</div>
 			</div>
 		</section>
 	</main>
 
-	<!-- Demo Success Modal -->
+	<!-- ============ DEMO SUCCESS MODAL ============ -->
 	<div id="demoModal" class="demo-modal-overlay" aria-hidden="true">
 		<div class="demo-modal">
 			<button class="demo-modal-close" id="demoModalClose" aria-label="Close">&times;</button>
-			<div class="demo-modal-icon"><i class="fa-solid fa-circle-check"></i></div>
+			<div class="demo-modal-icon">
+				<svg viewBox="0 0 60 60" class="demo-check-svg" aria-hidden="true">
+					<circle class="demo-check-circle" cx="30" cy="30" r="27" />
+					<path class="demo-check-mark" d="M18 31 L27 40 L43 22" />
+				</svg>
+			</div>
+			<span class="demo-modal-tag">REQUEST RECEIVED</span>
 			<h3>You're on the list!</h3>
-			<p>Thanks for registering. Our team will reach out shortly to schedule your personalized Roatre demo.</p>
+			<p>Thanks for registering. Our team will reach out within one business day to schedule
+				your personalized Roatre demo.</p>
+
+			<div class="demo-modal-next">
+				<div class="demo-modal-step">
+					<i class="fa-solid fa-envelope-open-text"></i>
+					<div>
+						<strong>Check your email</strong>
+						<small>We've sent a confirmation to your inbox.</small>
+					</div>
+				</div>
+				<div class="demo-modal-step">
+					<i class="fa-solid fa-calendar-check"></i>
+					<div>
+						<strong>Pick a time</strong>
+						<small>We'll share a few slots that work for you.</small>
+					</div>
+				</div>
+				<div class="demo-modal-step">
+					<i class="fa-solid fa-circle-play"></i>
+					<div>
+						<strong>Join the demo</strong>
+						<small>30-minute live walkthrough, made for your goals.</small>
+					</div>
+				</div>
+			</div>
+
 			<button class="demo-modal-btn" id="demoModalBtn">Got it</button>
 		</div>
 	</div>
 
 	<div id="site-footer-placeholder"></div>
-	<script src="script.js"></script>
+	<script src="script.js?v=3"></script>
 	<script>
 		['demoModalClose', 'demoModalBtn'].forEach(function(id) {
 			var el = document.getElementById(id);
@@ -98,7 +232,7 @@
 		});
 		var demoModalEl = document.getElementById('demoModal');
 		if (demoModalEl) demoModalEl.addEventListener('click', function(e) {
-			if (e.target === this) { this.classList.remove('active'); this.setAttribute('aria-hidden','true'); }
+			if (e.target === this) { this.classList.remove('active'); this.setAttribute('aria-hidden', 'true'); }
 		});
 
 		// Left image: fixed while scrolling, stops exactly when right content ends
@@ -109,7 +243,6 @@
 			if (!section || !left || !right) return;
 
 			function sync() {
-				// Section height = right content height (so both end together)
 				var rightH = right.offsetHeight;
 				section.style.minHeight = rightH + 'px';
 

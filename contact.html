@@ -13,17 +13,79 @@
 	<div id="site-header-placeholder"></div>
 
 	<main class="contact-page-wrapper">
+		<!-- ============ HERO ============ -->
 		<section class="contact-hero">
-			<h1>Get in <span>Touch</span></h1>
-			<p>Have questions about Roatre? Ready to elevate your academy's performance? We're here to help.</p>
+			<div class="contact-hero-bg" aria-hidden="true">
+				<span class="contact-orb contact-orb-1"></span>
+				<span class="contact-orb contact-orb-2"></span>
+				<div class="contact-grid-overlay"></div>
+			</div>
+			<div class="contact-hero-inner">
+				<span class="contact-hero-eyebrow">
+					<i class="fa-solid fa-comments"></i> WE'D LOVE TO HEAR FROM YOU
+				</span>
+				<h1>Get in <span>Touch</span></h1>
+				<p>Have questions about Roatre? Ready to elevate your academy's performance?
+					Our team is here to listen, guide, and help you take the next step.</p>
+
+				<div class="contact-hero-stats">
+					<div class="c-stat">
+						<div class="c-stat-num"><i class="fa-solid fa-bolt"></i> &lt; 24h</div>
+						<div class="c-stat-label">Average Response Time</div>
+					</div>
+					<div class="c-stat-divider"></div>
+					<div class="c-stat">
+						<div class="c-stat-num"><i class="fa-solid fa-headset"></i> 1-on-1</div>
+						<div class="c-stat-label">Personal Onboarding Support</div>
+					</div>
+					<div class="c-stat-divider"></div>
+					<div class="c-stat">
+						<div class="c-stat-num"><i class="fa-solid fa-globe"></i> Global</div>
+						<div class="c-stat-label">Academies & Athletes Served</div>
+					</div>
+				</div>
+			</div>
 		</section>
 
+		<!-- ============ QUICK CONNECT CHANNELS ============ -->
+		<section class="contact-channels">
+			<a href="mailto:support@roatre.com" class="contact-channel">
+				<div class="cc-icon"><i class="fa-regular fa-envelope"></i></div>
+				<div class="cc-text">
+					<span class="cc-label">EMAIL US</span>
+					<strong>support@roatre.com</strong>
+					<small>Replies within one business day</small>
+				</div>
+				<i class="fa-solid fa-arrow-right cc-arrow"></i>
+			</a>
+			<a href="tel:+919876543210" class="contact-channel">
+				<div class="cc-icon"><i class="fa-solid fa-phone-volume"></i></div>
+				<div class="cc-text">
+					<span class="cc-label">CALL US</span>
+					<strong>+91 98765 43210</strong>
+					<small>Mon – Sat · 9am to 7pm IST</small>
+				</div>
+				<i class="fa-solid fa-arrow-right cc-arrow"></i>
+			</a>
+			<a href="demo.html" class="contact-channel contact-channel-accent">
+				<div class="cc-icon"><i class="fa-solid fa-calendar-check"></i></div>
+				<div class="cc-text">
+					<span class="cc-label">SCHEDULE A DEMO</span>
+					<strong>Book a Live Walkthrough</strong>
+					<small>30 mins · Tailored to your academy</small>
+				</div>
+				<i class="fa-solid fa-arrow-right cc-arrow"></i>
+			</a>
+		</section>
+
+		<!-- ============ MAIN CONTAINER ============ -->
 		<div class="contact-container">
 			<div class="contact-info-card">
 				<div class="contact-info-top">
 					<span class="contact-info-eyebrow">Roatre Support</span>
 					<h3>Contact Information</h3>
-					<p>Tell us about your academy, your athletes, or the challenge you're solving. We'll help you find the right next step.</p>
+					<p>Tell us about your academy, your athletes, or the challenge you're solving. We'll help you find
+						the right next step.</p>
 				</div>
 
 				<div class="contact-highlight-card">
@@ -60,6 +122,14 @@
 					</div>
 				</div>
 
+				<div class="info-item">
+					<span class="icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
+					<div>
+						<label>Office Hours</label>
+						<p>Mon – Sat · 9am to 7pm IST</p>
+					</div>
+				</div>
+
 				<div class="contact-trust-points">
 					<div class="trust-point">
 						<i class="fa-solid fa-circle-check" aria-hidden="true"></i>
@@ -74,9 +144,25 @@
 						<span>Clear next steps after every enquiry</span>
 					</div>
 				</div>
+
+				<div class="contact-social">
+					<span class="contact-social-label">FOLLOW US</span>
+					<div class="contact-social-links">
+						<a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+						<a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+						<a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+						<a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+					</div>
+				</div>
 			</div>
 
 			<form class="contact-form-professional" id="contactForm">
+				<div class="contact-form-head">
+					<span class="contact-form-tag">SEND A MESSAGE</span>
+					<h3>Tell us about your academy</h3>
+					<p>Fill in the form and we'll get back with a tailored response within one business day.</p>
+				</div>
+
 				<div class="form-grid">
 					<div class="form-group">
 						<label for="name">Full Name</label>
@@ -104,16 +190,93 @@
 					</div>
 					<div class="form-group full-width">
 						<label for="message">Message</label>
-						<textarea id="message" name="message" rows="4" placeholder="How can we help you?"></textarea>
+						<textarea id="message" name="message" rows="4"
+							placeholder="How can we help you?"></textarea>
 					</div>
 				</div>
-				<button type="submit" class="submit-btn">Send Message</button>
+
+				<div class="contact-form-footer">
+					<small><i class="fa-solid fa-shield-halved"></i> Your information is private and never shared.</small>
+					<button type="submit" class="submit-btn">
+						<span>Send Message</span>
+						<i class="fa-solid fa-paper-plane"></i>
+					</button>
+				</div>
 			</form>
 		</div>
+
+		<!-- ============ FAQ ============ -->
+		<section class="contact-faq">
+			<div class="contact-faq-head">
+				<span class="contact-faq-tag">FREQUENTLY ASKED</span>
+				<h2>Answers, before you ask.</h2>
+				<p>Quick clarity on the most common questions we receive — for everything else, the form above is the fastest way to reach us.</p>
+			</div>
+			<div class="contact-faq-list">
+				<details class="contact-faq-item">
+					<summary>
+						<span>How quickly can my academy get started with Roatre?</span>
+						<i class="fa-solid fa-plus"></i>
+					</summary>
+					<p>Most academies are onboarded within a week. After your first demo we set up a tailored workspace
+						with your teams, players, and reporting templates ready to go.</p>
+				</details>
+				<details class="contact-faq-item">
+					<summary>
+						<span>Do you offer training for coaches and staff?</span>
+						<i class="fa-solid fa-plus"></i>
+					</summary>
+					<p>Yes — every plan includes hands-on onboarding sessions, structured training material, and ongoing
+						support so your team uses Roatre confidently from day one.</p>
+				</details>
+				<details class="contact-faq-item">
+					<summary>
+						<span>Is Roatre a good fit for individual athletes and parents?</span>
+						<i class="fa-solid fa-plus"></i>
+					</summary>
+					<p>Absolutely. Roatre is built for the entire development ecosystem — athletes get clear performance
+						visibility, and parents stay connected to the journey through transparent reports.</p>
+				</details>
+				<details class="contact-faq-item">
+					<summary>
+						<span>What sports does Roatre support?</span>
+						<i class="fa-solid fa-plus"></i>
+					</summary>
+					<p>Roatre is sport-agnostic by design. Our analysis frameworks adapt to football, cricket, basketball,
+						tennis, and more. Reach out and we'll walk you through what's already configured for your sport.</p>
+				</details>
+				<details class="contact-faq-item">
+					<summary>
+						<span>How is my data protected?</span>
+						<i class="fa-solid fa-plus"></i>
+					</summary>
+					<p>Player and academy data is private by default, hosted securely, and only visible to authorized
+						users in your organization. We're happy to share a full security overview on request.</p>
+				</details>
+			</div>
+		</section>
+
+		<!-- ============ FINAL CTA ============ -->
+		<section class="contact-final-cta">
+			<div class="contact-final-cta-inner">
+				<span class="contact-final-cta-tag">STILL HAVE QUESTIONS?</span>
+				<h2>Let's build the next generation of athletes — together.</h2>
+				<p>Whether you're scouting a platform for your academy or curious about what Roatre can do for one
+					player, we'll help you find the right path forward.</p>
+				<div class="contact-final-cta-buttons">
+					<a href="demo.html" class="btn-primary">
+						Request a Demo <i class="fa-solid fa-arrow-right"></i>
+					</a>
+					<a href="mailto:support@roatre.com" class="btn-secondary">
+						Email Us Directly
+					</a>
+				</div>
+			</div>
+		</section>
 	</main>
 
 	<div id="site-footer-placeholder"></div>
-	<script src="script.js"></script>
+	<script src="script.js?v=3"></script>
 </body>
 
 </html>
