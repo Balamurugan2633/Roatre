@@ -51,9 +51,20 @@ function initHeader() {
 		});
 	}
 	if (header) {
+		let headerScrolled = false;
+		let headerTicking = false;
 		window.addEventListener('scroll', function () {
-			header.classList.toggle('scrolled', window.scrollY > 50);
-		});
+			if (headerTicking) return;
+			headerTicking = true;
+			requestAnimationFrame(function () {
+				const next = window.scrollY > 50;
+				if (next !== headerScrolled) {
+					header.classList.toggle('scrolled', next);
+					headerScrolled = next;
+				}
+				headerTicking = false;
+			});
+		}, { passive: true });
 	}
 }
 
@@ -99,23 +110,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	tryPlaySiteVideo();
 
-	// Hero parallax effect on scroll
-	// Hero content parallax: moves slightly faster than scroll for a premium feel
-	window.addEventListener('scroll', function() {
-		const heroContent = document.querySelector('.hero-content');
-		if (heroContent) {
+	// Hero parallax effect on scroll (rAF-throttled, passive)
+	const heroContent = document.querySelector('.hero-content');
+	if (heroContent) {
+		heroContent.style.willChange = 'transform, opacity';
+		let heroTicking = false;
+		let lastY = -1;
+		let lastOpacity = -1;
+		const updateHero = function () {
 			const scrollY = window.scrollY;
-			// Only apply when the content is in or scrolling into view
-			if (scrollY < window.innerHeight * 2) {
-				const yPos = scrollY * 0.2; 
-				heroContent.style.transform = `translateY(-${yPos}px)`;
-				
-				// Optional: Fade in as it enters the first screen
-				const opacity = Math.min(scrollY / 400, 1);
-				heroContent.style.opacity = opacity;
+			const limit = window.innerHeight * 2;
+			if (scrollY < limit) {
+				const yPos = scrollY * 0.2;
+				if (yPos !== lastY) {
+					heroContent.style.transform = `translate3d(0, -${yPos}px, 0)`;
+					lastY = yPos;
+				}
+				const opacity = scrollY < 400 ? scrollY / 400 : 1;
+				if (opacity !== lastOpacity) {
+					heroContent.style.opacity = opacity;
+					lastOpacity = opacity;
+				}
 			}
-		}
-	});
+			heroTicking = false;
+		};
+		window.addEventListener('scroll', function () {
+			if (heroTicking) return;
+			heroTicking = true;
+			requestAnimationFrame(updateHero);
+		}, { passive: true });
+	}
 });
 
 // Contact Image Modal
@@ -770,9 +794,7 @@ function initRevealObserver() {
 		entries.forEach(entry => {
 			if (entry.isIntersecting) {
 				entry.target.classList.add('is-visible');
-			} else {
-				// Remove for repeatability as per user request
-				entry.target.classList.remove('is-visible');
+				revealObserver.unobserve(entry.target);
 			}
 		});
 	}, revealOptions);

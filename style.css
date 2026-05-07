@@ -458,8 +458,10 @@ body::-webkit-scrollbar-thumb:hover {
 	opacity: 0.65;
 	pointer-events: none;
 	filter: none;
-	will-change: transform, opacity;
+	transform: translateZ(0);
+	will-change: transform;
 	backface-visibility: hidden;
+	contain: strict;
 }
 
 .site-bg-video.hero-bg {
